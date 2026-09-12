@@ -1,689 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aravind & Devika | Wedding Celebration</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aravind &amp; Devika | Wedding Invitation</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --bg: #faf7f2;
-  --card-bg: #ffffff;
-  --primary: #9b7246;
-  --primary-dark: #7a542b;
-  --gold-border: rgba(155, 114, 70, 0.25);
-  --text: #2c2925;
-  --text-muted: #6b6660;
-}
+  <style>
+    :root {
+      --blush: #fdf4f1;
+      --card-bg: #ffffff;
+      --maroon: #7c2233;
+      --maroon-deep: #591722;
+      --gold: #b48a52;
+      --gold-border: rgba(180, 138, 82, 0.3);
+      --text: #3a2426;
+      --text-muted: #7c6264;
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--blush);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-/* --- COVER / FULL-PAGE MODAL --- */
-#cover {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  z-index: 9999;
-  padding: 24px;
-  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-}
+    /* ================= 1. COVER / WELCOME SCREEN ================= */
+    #cover {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      z-index: 9999;
+      background: radial-gradient(circle, #fffaf7 0%, #ecd9d6 100%);
+      transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.7s ease;
+    }
 
-/* Same video as the hero, shown dim and soft-focus behind the cover
-   text — so opening the invitation feels like the scene coming into
-   focus, rather than a hard cut to a different screen. */
-.cover-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(6px) brightness(0.35);
-  transform: scale(1.08); /* hides the blurred edge */
-  z-index: 0;
-}
+    #cover.opened {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
 
-.cover-content {
-  position: relative;
-  z-index: 1;
-}
+    .cover-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
 
-#cover.opened {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-}
+    .cover-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.2rem, 10vw, 5rem);
+      color: var(--maroon);
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
 
-.cover-sub {
-  font-size: 0.9rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: #f0e4d3;
-  margin-bottom: 15px;
-  font-weight: 600;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
+    .cover-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-bottom: 35px;
+    }
 
-.cover-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4rem;
-  color: #ffffff;
-  margin-bottom: 10px;
-  line-height: 1.2;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-}
+    .open-btn {
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-deep));
+      color: #ffffff;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 16px 42px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(124, 34, 51, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.cover-tagline {
-  font-family: 'Cinzel', serif;
-  font-size: 1.3rem;
-  letter-spacing: 2px;
-  color: #f5efe6;
-  margin-bottom: 40px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
+    .open-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 30px rgba(124, 34, 51, 0.45);
+    }
 
-.open-btn {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 16px 40px;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
-  transition: all 0.3s ease;
-}
+    /* ================= 2. MAIN SITE CONTENT ================= */
+    /* Hidden until user clicks the button */
+    #main-site {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease-in;
+    }
 
-.open-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 15px 30px rgba(155, 114, 70, 0.5);
-}
+    #main-site.visible {
+      display: block;
+      opacity: 1;
+    }
 
-/* --- PAGE 1: VIDEO HERO SECTION --- */
-.hero-video-container {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+    /* Video Hero */
+    .hero-video-wrap {
+      position: relative;
+      height: 90vh;
+      min-height: 550px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-.hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 1;
-  object-fit: cover;
-  filter: brightness(0.65);
-}
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+      z-index: 1;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  padding: 20px;
-}
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      padding: 20px;
+      max-width: 600px;
+    }
 
-.hero-content h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem;
-  margin-bottom: 10px;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
+    .hero-text h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.5rem, 8vw, 5rem);
+      margin-bottom: 10px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
 
-.hero-content p {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 4px;
-  font-size: 1.2rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+    .hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  color: #fff;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  animation: bounce 2s infinite;
-}
+    .hero-venue {
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-  40% {transform: translateY(-8px) translateX(-50%);}
-  60% {transform: translateY(-4px) translateX(-50%);}
-}
+    /* Sections Container */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
 
-/* --- COMMON CONTAINER & CARDS --- */
-.section-wrap {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 80px 20px;
-  text-align: center;
-}
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      padding: 40px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(124, 34, 51, 0.05);
+      text-align: center;
+    }
 
-.card {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 45px 30px;
-  border: 1px solid var(--gold-border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  margin-bottom: 50px;
-}
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
 
-.section-subtitle {
-  font-size: 0.8rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--primary);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--maroon);
+      margin-bottom: 18px;
+    }
 
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.9rem;
-  color: var(--text);
-  margin-bottom: 20px;
-}
+    /* Countdown */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
 
-/* --- COUNTDOWN --- */
-.countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 30px;
-}
+    .time-box {
+      background: var(--blush);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 14px 4px;
+    }
 
-.time-unit {
-  background: #faf7f2;
-  padding: 15px 5px;
-  border-radius: 12px;
-  border: 1px solid var(--gold-border);
-}
+    .time-box span {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--maroon);
+    }
 
-.time-unit span {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
-}
+    .time-box label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
 
-.time-unit label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-}
+    /* Story */
+    .story-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      font-style: italic;
+    }
 
-/* --- STORY --- */
-.story-text {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: var(--text-muted);
-  font-style: italic;
-}
+    /* Timeline */
+    .timeline {
+      text-align: left;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
-/* --- EVENTS TIMELINE --- */
-.event-card {
-  background: #faf7f2;
-  border-radius: 16px;
-  padding: 25px 20px;
-  margin-bottom: 20px;
-  text-align: left;
-  border-left: 5px solid var(--primary);
-  transition: transform 0.2s ease;
-}
+    .event-card {
+      background: var(--blush);
+      border-left: 4px solid var(--maroon);
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
 
-.event-card:hover {
-  transform: translateX(4px);
-}
+    .event-time {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
 
-.event-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
+    .event-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--maroon-deep);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
 
-.event-name {
-  font-family: 'Cinzel', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-}
+    .event-loc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
 
-.event-time {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary);
-}
+    .map-link {
+      font-size: 0.8rem;
+      color: var(--maroon);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed var(--maroon);
+    }
 
-.event-loc {
-  font-size: 0.95rem;
-  color: var(--text);
-  margin-bottom: 12px;
-}
+    /* RSVP Form */
+    .rsvp-form {
+      text-align: left;
+      margin-top: 15px;
+    }
 
-.map-btn {
-  display: inline-block;
-  font-size: 0.8rem;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px dashed var(--primary);
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-/* --- RSVP FORM --- */
-.rsvp-form {
-  text-align: left;
-  margin-top: 25px;
-}
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
 
-.form-group {
-  margin-bottom: 20px;
-}
+    .form-control {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--blush);
+    }
 
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text);
-}
+    .form-control:focus {
+      outline: 2px solid var(--maroon);
+      background: #ffffff;
+    }
 
-.form-control {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid var(--gold-border);
-  border-radius: 10px;
-  font-size: 1rem;
-  font-family: inherit;
-  background: #faf7f2;
-}
+    .checkbox-group {
+      background: var(--blush);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.form-control:focus {
-  outline: 2px solid var(--primary);
-  background: #fff;
-}
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
 
-.events-checkbox-group {
-  background: #faf7f2;
-  padding: 15px 20px;
-  border-radius: 12px;
-  border: 1px solid var(--gold-border);
-}
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--maroon);
+      cursor: pointer;
+    }
 
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 0.95rem;
-}
+    .submit-btn {
+      width: 100%;
+      background: var(--maroon);
+      color: #ffffff;
+      padding: 16px;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
 
-.checkbox-item:last-child {
-  margin-bottom: 0;
-}
+    .submit-btn:hover {
+      background: var(--maroon-deep);
+    }
 
-.checkbox-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary);
-  cursor: pointer;
-}
+    #form-status {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
-.submit-btn {
-  width: 100%;
-  background: var(--primary);
-  color: #fff;
-  padding: 16px;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 15px;
-}
-
-.submit-btn:hover {
-  background: var(--primary-dark);
-}
-
-#form-status {
-  margin-top: 15px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* --- BACKGROUND MUSIC TOGGLE --- */
-.mute-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-  font-size: 1.1rem;
-  cursor: pointer;
-  z-index: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-
-.mute-toggle:hover {
-  transform: scale(1.08);
-}
-</style>
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
-<!-- ================= 1. COVER / OPENING SCREEN ================= -->
-<div id="cover">
-  <video autoplay muted loop playsinline class="cover-video" id="coverVideo">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-bride-and-groom-with-rings-40890-large.mp4" type="video/mp4">
-  </video>
-  <div class="cover-content">
-    <div class="cover-names">Devika &amp; Aravind</div>
-    <p class="cover-tagline">It's time to tie the knot.<br>Our next chapter begins here.</p>
-    <button class="open-btn" onclick="unlockInvite()">Step Into Our Story →</button>
+  <!-- ================= STEP 1: COVER SCREEN ONLY ================= -->
+  <div id="cover">
+    <p class="cover-eyebrow">Wedding Invitation</p>
+    <h1 class="cover-names">Aravind &amp; Devika</h1>
+    <p class="cover-tagline">We are making it official</p>
+    <button class="open-btn" onclick="openWeddingSite()">✉ Open Invitation</button>
   </div>
-</div>
 
-<!-- ================= PAGE 1: VIDEO HERO ================= -->
-<section class="hero-video-container">
-  <!-- Replace src with your MP4 video file or public video URL -->
-  <video autoplay muted loop playsinline class="hero-video" id="bgVideo">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-bride-and-groom-with-rings-40890-large.mp4" type="video/mp4">
-  </video>
-</section>
+  <!-- ================= STEP 2: FULL SITE (REVEALED ON CLICK) ================= -->
+  <div id="main-site">
 
-<!-- ================= MAIN CONTENT WRAPPER ================= -->
-<div class="section-wrap">
-
-  <!-- ================= PAGE 2: OFFICIAL ANNOUNCEMENT & VENUE ================= -->
-  <section class="card">
-    <p class="section-subtitle">Save The Date</p>
-    <h2 class="section-title">Making It Official</h2>
-    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted);">
-      Together with our families, we invite you to join our celebrations as we tie the knot.
-    </p>
-    <div style="margin: 30px 0;">
-      <h3 style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--primary-dark);">Sunday, November 22, 2026</h3>
-      <p style="font-size: 1rem; color: var(--text); margin-top: 5px; font-weight: 500;">
-        The Grand Heritage Auditorium, Ernakulam, Kerala
-      </p>
-    </div>
-
-    <!-- Live Countdown -->
-    <div class="countdown-grid">
-      <div class="time-unit"><span id="days">0</span><label>Days</label></div>
-      <div class="time-unit"><span id="hours">0</span><label>Hours</label></div>
-      <div class="time-unit"><span id="mins">0</span><label>Mins</label></div>
-      <div class="time-unit"><span id="secs">0</span><label>Secs</label></div>
-    </div>
-  </section>
-
-  <!-- ================= PAGE 3: OUR STORY ================= -->
-  <section class="card">
-    <p class="section-subtitle">Our Journey</p>
-    <h2 class="section-title">Our Story</h2>
-    <p class="story-text">
-      "Two souls, one destiny. What started as simple conversations turned into a bond for a lifetime. With blessings from our parents and love in our hearts, we are thrilled to begin our greatest chapter together surrounded by the people we cherish the most."
-    </p>
-  </section>
-
-  <!-- ================= PAGE 4: WEDDING EVENTS ================= -->
-  <section class="card">
-    <p class="section-subtitle">Schedule & Timeline</p>
-    <h2 class="section-title">The Events</h2>
-
-    <!-- Event 1: Thali Kettu -->
-    <div class="event-card">
-      <div class="event-header">
-        <div class="event-name">Thali Kettu (Muhurtham)</div>
-        <div class="event-time">09:30 AM – 10:30 AM</div>
+    <!-- Hero Video Background -->
+    <header class="hero-video-wrap">
+      <video autoplay muted loop playsinline class="hero-video" id="heroVid">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-bride-and-groom-with-rings-40890-large.mp4" type="video/mp4">
+      </video>
+      <div class="hero-text">
+        <h1>Aravind &amp; Devika</h1>
+        <p class="hero-date">Sunday, November 22, 2026</p>
+        <p class="hero-venue">The Grand Heritage Auditorium, Ernakulam</p>
       </div>
-      <div class="event-loc">📍 Temple Sannidhi / Main Mandapam</div>
-      <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions →</a>
-    </div>
+    </header>
 
-    <!-- Event 2: Mandapam Chadang -->
-    <div class="event-card">
-      <div class="event-header">
-        <div class="event-name">Mandapam Chadang & Sadhya</div>
-        <div class="event-time">11:00 AM – 02:00 PM</div>
-      </div>
-      <div class="event-loc">📍 The Grand Auditorium Banquet Hall</div>
-      <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions →</a>
-    </div>
+    <main class="container">
 
-    <!-- Event 3: Reception -->
-    <div class="event-card">
-      <div class="event-header">
-        <div class="event-name">Wedding Reception</div>
-        <div class="event-time">06:30 PM Onwards</div>
-      </div>
-      <div class="event-loc">📍 Grand Ballroom, Palace Grounds</div>
-      <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions →</a>
-    </div>
-  </section>
-
-  <!-- ================= PAGE 5: RSVP FORM ================= -->
-  <section class="card">
-    <p class="section-subtitle">Kindly Respond</p>
-    <h2 class="section-title">RSVP</h2>
-    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-      Please confirm your presence so we can plan the arrangements and sadhya accordingly.
-    </p>
-
-    <form id="rsvpForm" class="rsvp-form">
-      <div class="form-group">
-        <label for="name">Your Full Name *</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Rahul Sharma" required />
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number / WhatsApp</label>
-        <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. +91 98765 43210" />
-      </div>
-
-      <div class="form-group">
-        <label for="guests">Number of Guests Attending *</label>
-        <input type="number" id="guests" name="guests" min="1" max="10" value="1" class="form-control" required />
-      </div>
-
-      <!-- Event Selection Checkboxes -->
-      <div class="form-group">
-        <label>Which events will you be attending? *</label>
-        <div class="events-checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox" name="events" value="Thali Kettu" />
-            <span>Thali Kettu (09:30 AM)</span>
-          </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="events" value="Mandapam Chadang & Sadhya" />
-            <span>Mandapam Chadang & Sadhya (11:00 AM)</span>
-          </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="events" value="Wedding Reception" />
-            <span>Wedding Reception (06:30 PM)</span>
-          </label>
+      <!-- Countdown -->
+      <section class="card">
+        <p class="eyebrow">The Celebration</p>
+        <h2 class="title">Counting Down</h2>
+        <div class="countdown-grid">
+          <div class="time-box"><span id="days">0</span><label>Days</label></div>
+          <div class="time-box"><span id="hours">0</span><label>Hours</label></div>
+          <div class="time-box"><span id="mins">0</span><label>Mins</label></div>
+          <div class="time-box"><span id="secs">0</span><label>Secs</label></div>
         </div>
-      </div>
+      </section>
 
-      <button type="submit" class="submit-btn" id="submitBtn">Submit RSVP</button>
-      <div id="form-status"></div>
-    </form>
-  </section>
+      <!-- Our Story -->
+      <section class="card">
+        <p class="eyebrow">Two Hearts</p>
+        <h2 class="title">Our Story</h2>
+        <p class="story-body">
+          "What started with simple conversations turned into a lifetime of friendship and love. 
+          With the blessings of our parents and warmth in our hearts, we invite you to join us 
+          as we step into this beautiful new chapter together."
+        </p>
+      </section>
 
-</div>
+      <!-- Schedule Timeline -->
+      <section class="card">
+        <p class="eyebrow">Celebrations</p>
+        <h2 class="title">Events &amp; Timings</h2>
+        
+        <div class="timeline">
+          <!-- Event 1 -->
+          <div class="event-card">
+            <div class="event-time">09:30 AM – 10:30 AM</div>
+            <h3 class="event-name">Thali Kettu (Muhurtham)</h3>
+            <p class="event-loc">📍 Temple Sannidhi / Main Mandapam</p>
+            <a href="https://maps.google.com" target="_blank" class="map-link">View Location on Map →</a>
+          </div>
 
-<!-- ================= BACKGROUND MUSIC =================
-     Add your own audio file at audio/background-music.mp3
-     (an instrumental track works best, kept under ~4MB).
-     It starts the moment the guest taps "Step Into Our Story",
-     which satisfies browsers' autoplay-with-sound rules. -->
-<audio id="bgMusic" loop preload="auto">
-  <source src="audio/background-music.mp3" type="audio/mpeg">
-</audio>
+          <!-- Event 2 -->
+          <div class="event-card">
+            <div class="event-time">11:00 AM – 02:00 PM</div>
+            <h3 class="event-name">Mandapam Chadang &amp; Sadhya</h3>
+            <p class="event-loc">📍 Auditorium Banquet Hall</p>
+            <a href="https://maps.google.com" target="_blank" class="map-link">View Location on Map →</a>
+          </div>
 
-<button id="muteToggle" class="mute-toggle" aria-label="Mute background music" title="Mute music">🔊</button>
+          <!-- Event 3 -->
+          <div class="event-card">
+            <div class="event-time">06:30 PM Onwards</div>
+            <h3 class="event-name">Wedding Reception</h3>
+            <p class="event-loc">📍 The Grand Ballroom</p>
+            <a href="https://maps.google.com" target="_blank" class="map-link">View Location on Map →</a>
+          </div>
+        </div>
+      </section>
 
-<script>
-// --- OPEN INVITATION ---
-function unlockInvite() {
-  const coverVideo = document.getElementById('coverVideo');
-  const heroVideo = document.getElementById('bgVideo');
-  const music = document.getElementById('bgMusic');
+      <!-- RSVP Form -->
+      <section class="card">
+        <p class="eyebrow">Kindly Confirm</p>
+        <h2 class="title">RSVP</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+          Please let us know if you will be joining our celebrations.
+        </p>
 
-  document.getElementById('cover').classList.add('opened');
+        <form id="rsvpForm" class="rsvp-form">
+          <div class="form-group">
+            <label for="name">Your Full Name *</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Rahul Sharma" required />
+          </div>
 
-  // Hand off playback from the cover's blurred video to the crisp
-  // hero video at the same timestamp, so it feels like one continuous
-  // clip coming into focus rather than a restart.
-  if (heroVideo && coverVideo) {
-    heroVideo.currentTime = coverVideo.currentTime;
-  }
-  if (heroVideo) heroVideo.play();
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. +91 98765 43210" />
+          </div>
 
-  // Start background music. This only works reliably because it's
-  // triggered by the guest's own click — browsers block audio
-  // autoplay before any user interaction.
-  if (music) {
-    music.volume = 0.5;
-    music.play().catch(() => {
-      // If it's still blocked for some reason, fail quietly rather
-      // than showing an error — the invite still works fine without it.
+          <div class="form-group">
+            <label for="guests">Total Guests Attending *</label>
+            <input type="number" id="guests" name="guests" min="1" max="10" value="1" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Which events will you be attending? *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="events" value="Thali Kettu" />
+                <span>Thali Kettu (09:30 AM)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="events" value="Mandapam Chadang & Sadhya" />
+                <span>Mandapam Chadang &amp; Sadhya (11:00 AM)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="events" value="Wedding Reception" />
+                <span>Wedding Reception (06:30 PM)</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Submit RSVP</button>
+          <div id="form-status"></div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>#AravindAndDevika • November 2026</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Reveal Website Function
+    function openWeddingSite() {
+      const cover = document.getElementById('cover');
+      const mainSite = document.getElementById('mainSite') || document.getElementById('main-site');
+      const heroVideo = document.getElementById('heroVid');
+
+      // Make site layout visible, then slide the cover away
+      mainSite.classList.add('visible');
+      cover.classList.add('opened');
+
+      if (heroVideo) {
+        heroVideo.play().catch(() => {});
+      }
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Countdown Timer
+    const weddingDate = new Date("2026-11-22T09:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Google Sheets RSVP Integration
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBa8cbTQCcIkoSG-h5YnNgUWyNPuvdg-WGRU6ACQ7sbgETOQs5xt-qd7b3NPeJaaXy/exec";
+
+    const form = document.getElementById('rsvpForm');
+    const statusDiv = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const selectedEvents = Array.from(document.querySelectorAll('input[name="events"]:checked'))
+        .map(el => el.value)
+        .join(', ');
+
+      if (!selectedEvents) {
+        statusDiv.innerText = "⚠️ Please select at least one event.";
+        statusDiv.style.color = "#c0392b";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+      statusDiv.innerText = "";
+
+      const formData = new FormData();
+      formData.append("Name", document.getElementById('name').value);
+      formData.append("Phone", document.getElementById('phone').value);
+      formData.append("Guests", document.getElementById('guests').value);
+      formData.append("Events", selectedEvents);
+      formData.append("Timestamp", new Date().toLocaleString());
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      })
+      .then(() => {
+        statusDiv.innerText = "✨ Thank you! Your RSVP has been recorded.";
+        statusDiv.style.color = "#27ae60";
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submitted Successfully";
+      })
+      .catch(error => {
+        statusDiv.innerText = "⚠️ Something went wrong. Please try again.";
+        statusDiv.style.color = "#c0392b";
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit RSVP";
+      });
     });
-  }
-}
-
-// --- MUTE / UNMUTE MUSIC ---
-const muteBtn = document.getElementById('muteToggle');
-if (muteBtn) {
-  muteBtn.addEventListener('click', () => {
-    const music = document.getElementById('bgMusic');
-    if (!music) return;
-    music.muted = !music.muted;
-    muteBtn.textContent = music.muted ? '🔇' : '🔊';
-  });
-}
-
-// --- COUNTDOWN TIMER ---
-// Change this to your exact wedding date/time
-const targetDate = new Date("2026-11-22T09:30:00").getTime();
-
-function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = targetDate - now;
-
-  if (diff > 0) {
-    document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-  }
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// --- RSVP FORM TO GOOGLE SHEETS SCRIPT ---
-// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBa8cbTQCcIkoSG-h5YnNgUWyNPuvdg-WGRU6ACQ7sbgETOQs5xt-qd7b3NPeJaaXy/exec";
-
-const form = document.getElementById('rsvpForm');
-const statusDiv = document.getElementById('form-status');
-const submitBtn = document.getElementById('submitBtn');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // Collect checked events
-  const selectedEvents = Array.from(document.querySelectorAll('input[name="events"]:checked'))
-    .map(el => el.value)
-    .join(', ');
-
-  if (!selectedEvents) {
-    statusDiv.innerText = "⚠️ Please select at least one event you are attending.";
-    statusDiv.style.color = "#c0392b";
-    return;
-  }
-
-  submitBtn.disabled = true;
-  submitBtn.innerText = "Submitting...";
-  statusDiv.innerText = "";
-
-  const formData = new FormData();
-  formData.append("Name", document.getElementById('name').value);
-  formData.append("Phone", document.getElementById('phone').value);
-  formData.append("Guests", document.getElementById('guests').value);
-  formData.append("Events", selectedEvents);
-  formData.append("Timestamp", new Date().toLocaleString());
-
-  fetch(GOOGLE_SCRIPT_URL, {
-    method: "POST",
-    body: formData
-  })
-  .then(response => {
-    statusDiv.innerText = "✨ Thank you! Your RSVP has been recorded.";
-    statusDiv.style.color = "#27ae60";
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Submitted Successfully";
-  })
-  .catch(error => {
-    statusDiv.innerText = "✨ RSVP submitted successfully!";
-    statusDiv.style.color = "#27ae60";
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Submit RSVP";
-  });
-});
-</script>
+  </script>
 </body>
 </html>
