@@ -38,6 +38,8 @@
       line-height: 1.6;
     }
 
+    a { color: inherit; }
+
     /* ================= 1. COVER OVERLAY ================= */
     #cover {
       position: fixed;
@@ -118,8 +120,9 @@
       justify-content: center;
       text-align: center;
       padding: 60px 20px;
-      background: linear-gradient(rgba(253, 250, 247, 0.75), rgba(251, 240, 236, 0.85)),
-                  url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      /* Attached generated background */
+      background: linear-gradient(rgba(253, 250, 247, 0.72), rgba(251, 240, 236, 0.82)),
+                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
     }
 
     .save-the-date-tag {
@@ -312,7 +315,41 @@
       z-index: 5;
     }
 
-    /* ================= SECTION 3: OUR STORY (ENVELOPE) ================= */
+    /* ================= SECTION 3: OUR STORY (VIDEO + ENVELOPE) ================= */
+    .story-section {
+      background: var(--bg-blush);
+      border-radius: 30px;
+      margin-bottom: 80px;
+      padding: 70px 20px;
+    }
+
+    /* Vertical Mobile Frame for igexport Video */
+    .story-video-wrapper {
+      max-width: 320px;
+      margin: 0 auto 50px;
+      border-radius: 28px;
+      padding: 10px;
+      background: linear-gradient(145deg, #ffffff, #f7ebe8);
+      border: 2px solid var(--gold);
+      box-shadow: 0 20px 45px rgba(117, 28, 39, 0.18);
+    }
+
+    .story-video-container {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 9 / 16;
+      background: #000;
+    }
+
+    .story-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .envelope-container {
       position: relative;
       width: min(460px, 92vw);
@@ -382,7 +419,7 @@
     /* ================= SECTION 4: LOCATION / QR BANNER ================= */
     .location-banner {
       background: linear-gradient(rgba(253, 250, 247, 0.8), rgba(251, 240, 236, 0.85)),
-                  url('https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=1200&q=80') center/cover;
+                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover;
       border-radius: 20px;
       border: 1px solid var(--gold-border);
       padding: 40px 25px;
@@ -450,7 +487,7 @@
       color: #fff;
     }
 
-    /* ================= SECTION 5: ALTERNATING ZIG-ZAG TIMELINE ================= */
+    /* ================= SECTION 5: ALTERNATING TIMELINE ================= */
     .timeline {
       position: relative;
       max-width: 680px;
@@ -667,7 +704,8 @@
         <div class="polaroid-card">
           <div class="tape"></div>
           <div class="polaroid-photo">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Devika & Aravind" />
+            <!-- Uses your uploaded DSC01595.JPG -->
+            <img src="DSC01595.JPG" alt="Devika & Aravind" />
           </div>
         </div>
 
@@ -675,7 +713,7 @@
         <div class="polaroid-card">
           <div class="tape"></div>
           <div class="polaroid-photo">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Moments" />
+            <img src="DSC01595.JPG" alt="Moments" />
           </div>
           <div class="overlap-heart">♥</div>
         </div>
@@ -684,21 +722,33 @@
         <div class="polaroid-card">
           <div class="tape"></div>
           <div class="polaroid-photo">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Forever" />
+            <img src="DSC01595.JPG" alt="Forever" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= PAGE 3: OUR STORY (ENVELOPE) ================= -->
-    <section class="section-wrap" style="background: var(--bg-blush); border-radius: 30px; margin-bottom: 80px;">
+    <!-- ================= PAGE 3: OUR STORY (ATTACHED VIDEO + ENVELOPE) ================= -->
+    <section class="section-wrap story-section">
       <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 5px;">
         Our story, our journey,
       </div>
-      <div style="font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: var(--maroon); margin-bottom: 40px;">
+      <div style="font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: var(--maroon); margin-bottom: 35px;">
         ours forever
       </div>
 
+      <!-- Video Player for your uploaded animation -->
+      <div class="story-video-wrapper">
+        <div class="story-video-container">
+          <!-- Uses your exact video file name -->
+          <video controls playsinline preload="metadata">
+            <source src="igexport-DNK5Xyuoo7A.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <!-- Envelope Letter & Wax Seal -->
       <div class="envelope-container">
         <div class="envelope-pocket">
           <div class="letter-paper">
@@ -740,7 +790,6 @@
       </p>
 
       <div class="timeline">
-        <!-- Node 1: Right -->
         <div class="timeline-node right">
           <div class="schedule-card">
             <div class="schedule-time">09:30 AM – 10:30 AM</div>
@@ -749,7 +798,6 @@
           </div>
         </div>
 
-        <!-- Node 2: Left -->
         <div class="timeline-node left">
           <div class="schedule-card">
             <div class="schedule-time">11:00 AM – 02:00 PM</div>
@@ -758,7 +806,6 @@
           </div>
         </div>
 
-        <!-- Node 3: Right -->
         <div class="timeline-node right">
           <div class="schedule-card">
             <div class="schedule-time">06:30 PM Onwards</div>
@@ -769,7 +816,7 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 6: ROYAL ARCH COUNTDOWN (FINALE) ================= -->
+    <!-- ================= PAGE 6: ROYAL ARCH COUNTDOWN ================= -->
     <section class="section-wrap" style="padding-bottom: 30px;">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
         Forever
