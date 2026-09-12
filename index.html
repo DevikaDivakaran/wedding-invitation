@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aravind &amp; Devika | Wedding Invitation</title>
+  <title>Devika &amp; Aravind | Wedding Invitation</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* ================= 1. COVER / WELCOME SCREEN ================= */
+    /* ================= 1. COVER / FIRST PAGE ONLY ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -58,29 +58,20 @@
       pointer-events: none;
     }
 
-    .cover-eyebrow {
-      font-size: 0.85rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
     .cover-names {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(3.2rem, 10vw, 5rem);
+      font-size: clamp(3.2rem, 10vw, 5.2rem);
       color: var(--maroon);
-      line-height: 1.1;
-      margin-bottom: 15px;
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
 
     .cover-tagline {
       font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       letter-spacing: 2px;
       color: var(--text);
-      margin-bottom: 35px;
+      margin-bottom: 40px;
     }
 
     .open-btn {
@@ -88,7 +79,7 @@
       color: #ffffff;
       font-size: 0.95rem;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       padding: 16px 42px;
       border: none;
       border-radius: 40px;
@@ -103,7 +94,7 @@
     }
 
     /* ================= 2. MAIN SITE CONTENT ================= */
-    /* Hidden until user clicks the button */
+    /* Hidden until [ Be There With Us → ] is clicked */
     #main-site {
       display: none;
       opacity: 0;
@@ -379,15 +370,14 @@
 </head>
 <body>
 
-  <!-- ================= STEP 1: COVER SCREEN ONLY ================= -->
+  <!-- ================= 1. FIRST PAGE ONLY ================= -->
   <div id="cover">
-    <p class="cover-eyebrow">Wedding Invitation</p>
-    <h1 class="cover-names">Aravind &amp; Devika</h1>
-    <p class="cover-tagline">We are making it official</p>
-    <button class="open-btn" onclick="openWeddingSite()">✉ Open Invitation</button>
+    <h1 class="cover-names">Devika &amp; Aravind</h1>
+    <p class="cover-tagline">And so, our forever begins.</p>
+    <button class="open-btn" onclick="openWeddingSite()">Be There With Us →</button>
   </div>
 
-  <!-- ================= STEP 2: FULL SITE (REVEALED ON CLICK) ================= -->
+  <!-- ================= 2. FULL SITE (REVEALED ON CLICK) ================= -->
   <div id="main-site">
 
     <!-- Hero Video Background -->
@@ -396,7 +386,7 @@
         <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-bride-and-groom-with-rings-40890-large.mp4" type="video/mp4">
       </video>
       <div class="hero-text">
-        <h1>Aravind &amp; Devika</h1>
+        <h1>Devika &amp; Aravind</h1>
         <p class="hero-date">Sunday, November 22, 2026</p>
         <p class="hero-venue">The Grand Heritage Auditorium, Ernakulam</p>
       </div>
@@ -509,7 +499,7 @@
     </main>
 
     <footer class="footer">
-      <p>#AravindAndDevika • November 2026</p>
+      <p>#DevikaAndAravind • November 2026</p>
     </footer>
 
   </div>
@@ -518,7 +508,7 @@
     // Reveal Website Function
     function openWeddingSite() {
       const cover = document.getElementById('cover');
-      const mainSite = document.getElementById('mainSite') || document.getElementById('main-site');
+      const mainSite = document.getElementById('main-site');
       const heroVideo = document.getElementById('heroVid');
 
       // Make site layout visible, then slide the cover away
