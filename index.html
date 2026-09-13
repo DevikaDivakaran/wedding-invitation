@@ -8,20 +8,20 @@
   <!-- Google Fonts: Luxury Serif & Script -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-cream: #fdfaf7;
+      --bg-cream: #fbf6f0;
       --bg-blush: #fbf0ec;
       --card-white: #ffffff;
-      --maroon: #751c27;
-      --maroon-dark: #501019;
-      --gold: #c59b58;
-      --gold-border: rgba(197, 155, 88, 0.4);
-      --gold-soft: #f4e8d3;
+      --maroon: #681826;
+      --maroon-dark: #4a0f19;
+      --gold: #b58d4a;
+      --gold-light: #d8b775;
+      --gold-border: rgba(181, 141, 74, 0.4);
       --text: #3c2a2b;
-      --text-muted: #8b6d70;
+      --text-muted: #7d6567;
     }
 
     * {
@@ -95,16 +95,16 @@
       border: none;
       border-radius: 40px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(117, 28, 39, 0.35);
+      box-shadow: 0 10px 25px rgba(104, 24, 38, 0.35);
       transition: all 0.3s ease;
     }
 
     .open-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 14px 30px rgba(117, 28, 39, 0.45);
+      box-shadow: 0 14px 30px rgba(104, 24, 38, 0.45);
     }
 
-    /* Falling Petals Animation on Cover */
+    /* Falling Petals */
     .petal {
       position: absolute;
       top: -40px;
@@ -144,106 +144,240 @@
       opacity: 1;
     }
 
-    /* ================= SECTION 1: HERO / SAVE THE DATE ================= */
-    .hero-section {
-      position: relative;
+    /* ================= ROYAL TRADITIONAL INVITATION CARD (MATCHING REFERENCE) ================= */
+    .invite-screen-wrap {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(rgba(253, 250, 247, 0.72), rgba(251, 240, 236, 0.82)),
-                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
+      padding: 40px 15px;
+      background: radial-gradient(circle at center, #fffbf7 0%, #f4eae1 100%);
     }
 
-    .save-the-date-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: var(--text);
-      font-weight: 600;
+    .royal-invite-card {
+      background: #fdfaf6;
+      max-width: 480px;
+      width: 100%;
+      padding: 50px 30px 45px;
+      border: 1px solid var(--gold-border);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.08);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Decorative Arch Outline */
+    .royal-invite-card::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(181, 141, 74, 0.25);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    /* Top Monogram */
+    .monogram-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 25px;
     }
 
-    .hero-couple-names {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(4.5rem, 12vw, 6.5rem);
-      color: var(--maroon);
-      line-height: 0.9;
-    }
-
-    .hero-ampersand {
-      font-family: 'Alex Brush', cursive;
-      font-size: 3rem;
-      color: var(--gold);
-      margin: 10px 0;
-    }
-
-    .getting-married-text {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--text);
-      margin: 30px 0 15px;
+    .monogram-initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
       font-weight: 600;
-    }
-
-    .hero-time {
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .date-lockup {
-      display: inline-flex;
+      color: var(--maroon);
+      letter-spacing: 6px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
-      margin: 10px 0;
-    }
-
-    .date-lockup .month,
-    .date-lockup .year {
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
-      letter-spacing: 3px;
-      color: var(--text);
-    }
-
-    .date-lockup .day {
-      font-family: 'Cinzel', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--maroon);
-      padding: 0 18px;
-      border-left: 2px solid var(--gold-border);
-      border-right: 2px solid var(--gold-border);
       line-height: 1;
     }
 
-    .hero-day-name {
-      font-family: 'Alex Brush', cursive;
-      font-size: 2.2rem;
-      color: var(--maroon);
-      margin-top: 5px;
+    .monogram-divider {
+      color: var(--gold);
+      font-weight: 300;
+      margin: 0 4px;
     }
 
-    .hero-venue-text {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
+    .monogram-flourish {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-top: 4px;
       letter-spacing: 2px;
-      color: var(--text);
-      margin-top: 25px;
-      max-width: 480px;
-      line-height: 1.7;
     }
 
-    /* ================= SECTION 2: OUR MOMENTS (FLY-IN / POP-IN ANIMATION) ================= */
+    /* Invite Invitation Intro */
+    .invite-intro {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      line-height: 1.8;
+      color: var(--text);
+      text-transform: uppercase;
+      font-weight: 600;
+      max-width: 320px;
+      margin: 0 auto 28px;
+    }
+
+    /* Names */
+    .royal-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 3.6rem);
+      font-weight: 700;
+      color: var(--maroon);
+      letter-spacing: 6px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    /* Connector: ✦ — and — ✦ */
+    .connector-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+
+    .connector-line {
+      height: 1px;
+      width: 45px;
+      background: var(--gold);
+      position: relative;
+    }
+
+    .connector-line.left::before {
+      content: '✦';
+      position: absolute;
+      left: -8px;
+      top: -7px;
+      font-size: 0.55rem;
+      color: var(--gold);
+    }
+
+    .connector-line.right::after {
+      content: '✦';
+      position: absolute;
+      right: -8px;
+      top: -7px;
+      font-size: 0.55rem;
+      color: var(--gold);
+    }
+
+    .connector-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    /* Tagline */
+    .tagline-caps {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 28px;
+    }
+
+    .tagline-script {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      color: var(--gold);
+      margin: 4px 0 16px;
+    }
+
+    /* Divider Heart */
+    .heart-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 14px auto 22px;
+      max-width: 140px;
+    }
+
+    .heart-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .heart-icon {
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    /* Save The Date & Date Lockup */
+    .save-the-date-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .date-row-classic {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 2px;
+    }
+
+    .date-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .date-day-large {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: var(--maroon);
+      line-height: 1;
+    }
+
+    .year-spaced {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 6px;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .lotus-icon {
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+      display: block;
+      line-height: 1;
+    }
+
+    .venue-info {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--maroon-dark);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* ================= SECTION 2: OUR MOMENTS ================= */
     .section-wrap {
       max-width: 950px;
       margin: 0 auto;
@@ -288,7 +422,7 @@
       background: #ffffff;
       padding: 14px 14px 40px;
       border-radius: 4px;
-      box-shadow: 0 12px 30px rgba(80, 16, 25, 0.12);
+      box-shadow: 0 12px 30px rgba(104, 24, 38, 0.12);
       width: 240px;
       position: relative;
       opacity: 0;
@@ -296,7 +430,6 @@
       will-change: transform, opacity;
     }
 
-    /* Initial Offscreen Positions for Scroll-Triggered Fly-in */
     .polaroid-card.fly-left {
       transform: translateX(-120px) rotate(-18deg) scale(0.9);
     }
@@ -309,7 +442,6 @@
       transform: translateX(120px) rotate(18deg) scale(0.9);
     }
 
-    /* When scrolled into view: smooth spring into place */
     .polaroid-card.animate-in.fly-left {
       opacity: 1;
       transform: translateX(0) rotate(-5deg) scale(1);
@@ -330,7 +462,7 @@
     .polaroid-card:hover {
       transform: scale(1.06) rotate(0deg) !important;
       z-index: 10;
-      box-shadow: 0 16px 36px rgba(80, 16, 25, 0.22);
+      box-shadow: 0 16px 36px rgba(104, 24, 38, 0.22);
     }
 
     .polaroid-photo {
@@ -397,7 +529,7 @@
       padding: 10px;
       background: linear-gradient(145deg, #ffffff, #f7ebe8);
       border: 2px solid var(--gold);
-      box-shadow: 0 20px 45px rgba(117, 28, 39, 0.18);
+      box-shadow: 0 20px 45px rgba(104, 24, 38, 0.18);
     }
 
     .story-video-container {
@@ -428,7 +560,7 @@
       border-radius: 12px;
       padding: 30px 20px 50px;
       position: relative;
-      box-shadow: 0 15px 35px rgba(117, 28, 39, 0.15);
+      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.15);
       border: 1px solid var(--gold-border);
     }
 
@@ -614,7 +746,7 @@
       border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 18px 22px;
-      box-shadow: 0 6px 18px rgba(117, 28, 39, 0.05);
+      box-shadow: 0 6px 18px rgba(104, 24, 38, 0.05);
       display: inline-block;
       width: 100%;
     }
@@ -657,7 +789,7 @@
       border: 1px solid var(--gold);
       border-radius: 35px 35px 16px 16px;
       position: relative;
-      box-shadow: 0 15px 35px rgba(197, 155, 88, 0.15);
+      box-shadow: 0 15px 35px rgba(181, 141, 74, 0.15);
     }
 
     .arch-flourish {
@@ -713,7 +845,7 @@
       margin-top: 8px;
     }
 
-    /* Floating Audio Mute Toggle */
+    /* Floating Music Toggle */
     .music-toggle-btn {
       position: fixed;
       bottom: 24px;
@@ -751,7 +883,6 @@
 
   <!-- ================= 1. OPENING COVER WITH FALLING ROSE PETALS ================= -->
   <div id="cover">
-    <!-- Container where petals are generated dynamically via JavaScript -->
     <div id="petals-container"></div>
 
     <div class="cover-content">
@@ -761,9 +892,9 @@
     </div>
   </div>
 
-  <!-- Background Music Element -->
+  <!-- Background Music Player -->
   <audio id="bgMusic" loop preload="auto">
-    <source src="bgm.mp3" type="audio/mpeg">
+    <source src="Thattathin Marayathu BGM Bass Boosted Beauty & Beholder Shan Rahman Nivin CHI BASS RECORDS.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Floating Audio Mute / Unmute Button -->
@@ -774,30 +905,69 @@
   <!-- ================= 2. MAIN WEBSITE ================= -->
   <div id="main-site">
 
-    <!-- ================= PAGE 1: HERO / SAVE THE DATE ================= -->
-    <header class="hero-section">
-      <p class="save-the-date-tag">Save The Date</p>
-      
-      <div class="hero-couple-names">Devika</div>
-      <div class="hero-ampersand">&amp;</div>
-      <div class="hero-couple-names">Aravind</div>
+    <!-- ================= PAGE 1: ROYAL INVITATION (MATCHING REFERENCE IMAGE) ================= -->
+    <section class="invite-screen-wrap">
+      <div class="royal-invite-card">
+        
+        <!-- Royal Monogram -->
+        <div class="monogram-wrap">
+          <div class="monogram-initials">
+            D<span class="monogram-divider">|</span>A
+          </div>
+          <div class="monogram-flourish">❦ ❧</div>
+        </div>
 
-      <p class="getting-married-text">Are Getting Married</p>
-      <p class="hero-time">09:30 AM – 10:30 AM</p>
+        <!-- Invitation Intro -->
+        <p class="invite-intro">
+          Together with our families<br>
+          we joyfully invite you to<br>
+          celebrate the wedding of
+        </p>
 
-      <!-- Date Lockup -->
-      <div class="date-lockup">
-        <span class="month">DEC</span>
-        <span class="day">12</span>
-        <span class="year">2026</span>
+        <!-- Names -->
+        <h1 class="royal-name">DEVIKA</h1>
+
+        <div class="connector-row">
+          <span class="connector-line left"></span>
+          <span class="connector-text">and</span>
+          <span class="connector-line right"></span>
+        </div>
+
+        <h1 class="royal-name">ARAVIND</h1>
+
+        <!-- Tagline -->
+        <p class="tagline-caps">Two Souls. One Promise.</p>
+        <p class="tagline-script">a lifetime together.</p>
+
+        <!-- Heart Divider -->
+        <div class="heart-divider">
+          <span class="heart-line"></span>
+          <span class="heart-icon">♥</span>
+          <span class="heart-line"></span>
+        </div>
+
+        <!-- Date & Venue -->
+        <p class="save-the-date-heading">SAVE THE DATE</p>
+
+        <div class="date-row-classic">
+          <span class="date-sub">Saturday</span>
+          <span class="date-day-large">12</span>
+          <span class="date-sub">December</span>
+        </div>
+
+        <p class="year-spaced">2 0 2 6</p>
+
+        <!-- Golden Lotus -->
+        <span class="lotus-icon">🪷</span>
+
+        <!-- Venue -->
+        <p class="venue-info">
+          SREE SHANKARA AUDITORIUM<br>
+          ALUVA, KERALA
+        </p>
+
       </div>
-
-      <div class="hero-day-name">Saturday</div>
-
-      <p class="hero-venue-text">
-        📍 SREE SHANKARA AUDITORIUM, ALUVA, KERALA
-      </p>
-    </header>
+    </section>
 
     <!-- ================= PAGE 2: OUR MOMENTS (FLY-IN / POP-IN) ================= -->
     <section class="section-wrap" id="moments-section">
@@ -859,15 +1029,7 @@
             <div class="letter-flourish">❦ ❧</div>
             <h3 class="letter-title">DEAR FAMILY &amp; FRIENDS</h3>
             <p class="letter-body">
-              "What destiny quietly set in motion in a shared 
-              classroom slowly bloomed into our sweetest reality. 
-              Two strangers became friends, friends fell hopelessly in love, 
-              and today, that journey brings us to the threshold of our forever.
-              With the sacred blessings of our parents lighting our path, 
-              we take our step toward the divine thread—our māngalyaṁ 
-              tantunānena—promising a lifetime of dreams built together.
-              This celebration is a reflection of everyone who has ever loved and guided us. 
-              Come witness our beginning, share in the magic, and bless us as two souls softly become one."
+              "What destiny quietly set in motion in a shared classroom slowly bloomed into our sweetest reality. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever. With the sacred blessings of our parents lighting our path, we take our step toward the divine thread—our māngalyaṁ tantunānena—promising a lifetime of dreams built together. Come witness our beginning, share in the magic, and bless us as two souls softly become one."
             </p>
           </div>
           <div class="wax-seal">♥</div>
@@ -989,10 +1151,16 @@
       const mainSite = document.getElementById('main-site');
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
+      const petals = document.getElementById('petals-container');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Clean up petals after transition to save mobile battery
+      setTimeout(() => {
+        if (petals) petals.innerHTML = '';
+      }, 1100);
 
       // Start background music
       if (music) {
@@ -1000,7 +1168,6 @@
         music.play().then(() => {
           musicBtn.style.display = 'flex';
         }).catch(err => {
-          console.log("Audio waiting for user gesture or audio asset:", err);
           musicBtn.style.display = 'flex';
         });
       }
@@ -1034,13 +1201,12 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
       if (momentsSection) {
         observer.observe(momentsSection);
       }
     } else {
-      // Fallback for older browsers
       polaroids.forEach(card => card.classList.add('animate-in'));
     }
 
