@@ -32,17 +32,15 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-cream);
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      /* Background for whole site set to your attached picture */
-      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-                  url('download (4).jpeg') center/cover fixed no-repeat;
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (CLEAN - NO PETALS) ================= */
+    /* ================= 1. COVER OVERLAY WITH FALLING PETALS ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -106,6 +104,34 @@
       box-shadow: 0 14px 30px rgba(104, 24, 38, 0.45);
     }
 
+    /* Falling Petals */
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 16px;
+      height: 22px;
+      background: radial-gradient(circle, #f9cbd3 30%, #e07a8b 100%);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 5;
+      animation: fallPetal linear infinite;
+    }
+
+    @keyframes fallPetal {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(30px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-20px);
+        opacity: 0.2;
+      }
+    }
+
     /* ================= 2. MAIN SITE CONTENT ================= */
     #main-site {
       display: none;
@@ -118,110 +144,55 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: INVITE SCREEN WITH FALLING PETALS ================= */
+    /* ================= ROYAL TRADITIONAL INVITATION CARD (MATCHING REFERENCE) ================= */
     .invite-screen-wrap {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 50px 15px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Falling Rose Petals Container (Active only on invite screen) */
-    #invite-petals {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 5;
-    }
-
-    .petal {
-      position: absolute;
-      top: -40px;
-      width: 15px;
-      height: 22px;
-      background: radial-gradient(circle, #f9cbd3 30%, #df788a 100%);
-      border-radius: 50% 0 50% 50%;
-      opacity: 0.85;
-      pointer-events: none;
-      animation: fallPetal linear infinite;
-    }
-
-    @keyframes fallPetal {
-      0% {
-        transform: translateY(0) rotate(0deg) translateX(0);
-        opacity: 0.9;
-      }
-      50% {
-        transform: translateY(50vh) rotate(180deg) translateX(35px);
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg) translateX(-25px);
-        opacity: 0.15;
-      }
+      padding: 40px 15px;
+      background: radial-gradient(circle at center, #fffbf7 0%, #f4eae1 100%);
     }
 
     .royal-invite-card {
-      background: rgba(253, 250, 246, 0.94);
-      backdrop-filter: blur(8px);
+      background: #fdfaf6;
       max-width: 480px;
       width: 100%;
-      padding: 45px 30px 40px;
+      padding: 50px 30px 45px;
       border: 1px solid var(--gold-border);
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.12);
+      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.08);
       text-align: center;
       position: relative;
-      z-index: 10;
     }
 
+    /* Decorative Arch Outline */
     .royal-invite-card::before {
       content: '';
       position: absolute;
       inset: 8px;
-      border: 1px solid rgba(181, 141, 74, 0.3);
+      border: 1px solid rgba(181, 141, 74, 0.25);
       border-radius: 14px;
       pointer-events: none;
     }
 
-    /* Caricature Couple Illustration on Invite Card */
-    .invite-caricature-wrap {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      padding: 4px;
-      background: #ffffff;
-      box-shadow: 0 6px 18px rgba(104, 24, 38, 0.12);
-      overflow: hidden;
-    }
-
-    .invite-caricature-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-    }
-
-    /* Monogram */
+    /* Top Monogram */
     .monogram-wrap {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .monogram-initials {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
+      font-size: 2.2rem;
       font-weight: 600;
       color: var(--maroon);
-      letter-spacing: 5px;
+      letter-spacing: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1;
     }
 
@@ -233,10 +204,12 @@
 
     .monogram-flourish {
       color: var(--gold);
-      font-size: 1rem;
-      margin-top: 3px;
+      font-size: 1.1rem;
+      margin-top: 4px;
+      letter-spacing: 2px;
     }
 
+    /* Invite Invitation Intro */
     .invite-intro {
       font-family: 'Cinzel', serif;
       font-size: 0.78rem;
@@ -246,25 +219,27 @@
       text-transform: uppercase;
       font-weight: 600;
       max-width: 320px;
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
     }
 
+    /* Names */
     .royal-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.6rem, 8vw, 3.4rem);
+      font-size: clamp(2.8rem, 8vw, 3.6rem);
       font-weight: 700;
       color: var(--maroon);
-      letter-spacing: 5px;
+      letter-spacing: 6px;
       line-height: 1;
       text-transform: uppercase;
     }
 
+    /* Connector: ✦ — and — ✦ */
     .connector-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin: 10px 0 14px;
+      margin: 12px 0 16px;
     }
 
     .connector-line {
@@ -295,35 +270,37 @@
     .connector-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: var(--gold);
       line-height: 1;
     }
 
+    /* Tagline */
     .tagline-caps {
       font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
+      font-size: 0.8rem;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--text);
       font-weight: 600;
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
     .tagline-script {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       color: var(--gold);
-      margin: 4px 0 14px;
+      margin: 4px 0 16px;
     }
 
+    /* Divider Heart */
     .heart-divider {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 15px;
-      margin: 12px auto 20px;
+      margin: 14px auto 22px;
       max-width: 140px;
     }
 
@@ -338,6 +315,7 @@
       font-size: 0.95rem;
     }
 
+    /* Save The Date & Date Lockup */
     .save-the-date-heading {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
@@ -345,7 +323,7 @@
       text-transform: uppercase;
       color: var(--text);
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .date-row-classic {
@@ -367,7 +345,7 @@
 
     .date-day-large {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.4rem;
+      font-size: 3.6rem;
       font-weight: 700;
       color: var(--maroon);
       line-height: 1;
@@ -379,13 +357,13 @@
       letter-spacing: 6px;
       color: var(--text);
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .lotus-icon {
       font-size: 1.6rem;
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       display: block;
       line-height: 1;
     }
@@ -538,12 +516,10 @@
 
     /* ================= SECTION 3: OUR STORY ================= */
     .story-section {
-      background: rgba(251, 240, 236, 0.92);
-      backdrop-filter: blur(6px);
+      background: var(--bg-blush);
       border-radius: 30px;
       margin-bottom: 80px;
       padding: 70px 20px;
-      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.08);
     }
 
     .story-video-wrapper {
@@ -640,8 +616,8 @@
 
     /* ================= SECTION 4: LOCATION / QR BANNER ================= */
     .location-banner {
-      background: rgba(253, 250, 247, 0.92);
-      backdrop-filter: blur(6px);
+      background: linear-gradient(rgba(253, 250, 247, 0.8), rgba(251, 240, 236, 0.85)),
+                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover;
       border-radius: 20px;
       border: 1px solid var(--gold-border);
       padding: 40px 25px;
@@ -766,8 +742,7 @@
     }
 
     .schedule-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(4px);
+      background: #ffffff;
       border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 18px 22px;
@@ -810,8 +785,7 @@
       max-width: 550px;
       margin: 40px auto 0;
       padding: 50px 30px;
-      background: rgba(255, 255, 255, 0.93);
-      backdrop-filter: blur(6px);
+      background: linear-gradient(145deg, #ffffff, var(--bg-blush));
       border: 1px solid var(--gold);
       border-radius: 35px 35px 16px 16px;
       position: relative;
@@ -907,8 +881,10 @@
 </head>
 <body>
 
-  <!-- ================= 1. OPENING COVER (CLEAN - NO PETALS) ================= -->
+  <!-- ================= 1. OPENING COVER WITH FALLING ROSE PETALS ================= -->
   <div id="cover">
+    <div id="petals-container"></div>
+
     <div class="cover-content">
       <div class="cover-names">Devika &amp; Aravind</div>
       <p class="cover-tagline">And so, our forever begins.</p>
@@ -929,19 +905,10 @@
   <!-- ================= 2. MAIN WEBSITE ================= -->
   <div id="main-site">
 
-    <!-- ================= PAGE 1: ROYAL INVITATION (FALLING PETALS HERE ONLY) ================= -->
-    <section class="invite-screen-wrap" id="invite-screen">
-      <!-- Petals appear only in this screen -->
-      <div id="invite-petals"></div>
-
+    <!-- ================= PAGE 1: ROYAL INVITATION (MATCHING REFERENCE IMAGE) ================= -->
+    <section class="invite-screen-wrap">
       <div class="royal-invite-card">
         
-        <!-- Couple Caricature Illustration -->
-        <div class="invite-caricature-wrap">
-          <!-- Uses your uploaded couple portrait -->
-          <img src="DSC01595.JPG" alt="Devika & Aravind" />
-        </div>
-
         <!-- Royal Monogram -->
         <div class="monogram-wrap">
           <div class="monogram-initials">
@@ -1159,25 +1126,24 @@
   </div>
 
   <script>
-    // 1. Generate Falling Rose Petals ONLY on the Invite Page
-    function createInvitePetals() {
-      const container = document.getElementById('invite-petals');
-      if (!container) return;
-      container.innerHTML = '';
-      const petalCount = 24;
+    // 1. Generate Falling Rose Petals on Cover
+    function createPetals() {
+      const container = document.getElementById('petals-container');
+      const petalCount = 28;
 
       for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal');
-        petal.style.left = Math.random() * 100 + '%';
+        petal.style.left = Math.random() * 100 + 'vw';
         petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        petal.style.animationDelay = (Math.random() * 4) + 's';
+        petal.style.animationDelay = (Math.random() * 5) + 's';
         petal.style.width = (Math.random() * 8 + 12) + 'px';
         petal.style.height = (Math.random() * 10 + 16) + 'px';
         petal.style.opacity = Math.random() * 0.6 + 0.4;
         container.appendChild(petal);
       }
     }
+    createPetals();
 
     // 2. Open Invitation & Trigger Background Music
     function openWeddingSite() {
@@ -1185,13 +1151,16 @@
       const mainSite = document.getElementById('main-site');
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
+      const petals = document.getElementById('petals-container');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Start falling petals on the invite card
-      createInvitePetals();
+      // Clean up petals after transition to save mobile battery
+      setTimeout(() => {
+        if (petals) petals.innerHTML = '';
+      }, 1100);
 
       // Start background music
       if (music) {
