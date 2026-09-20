@@ -41,7 +41,7 @@
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (WITH YOUR IMAGE BACKGROUND) ================= */
+    /* ================= 1. COVER OVERLAY (WITH FALLING PETALS) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -54,8 +54,7 @@
       text-align: center;
       padding: 24px;
       z-index: 9999;
-      /* Background Image: Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg with warm vignette */
-      background: linear-gradient(rgba(35, 12, 18, 0.48), rgba(35, 12, 18, 0.62)),
+      background: linear-gradient(rgba(35, 12, 18, 0.45), rgba(35, 12, 18, 0.6)),
                   url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
       transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       overflow: hidden;
@@ -65,6 +64,41 @@
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
+    }
+
+    /* Falling Petals Container on Cover Only */
+    #cover-petals {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 15px;
+      height: 22px;
+      background: radial-gradient(circle, #fcd5dc 30%, #df788a 100%);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.85;
+      pointer-events: none;
+      animation: fallPetal linear infinite;
+    }
+
+    @keyframes fallPetal {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(35px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-25px);
+        opacity: 0.15;
+      }
     }
 
     .cover-content {
@@ -132,44 +166,7 @@
       opacity: 1;
     }
 
-    /* ================= CONTINUOUS WHOLE-SITE FALLING PETALS ================= */
-    #site-petals {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 998;
-    }
-
-    .petal {
-      position: absolute;
-      top: -40px;
-      width: 15px;
-      height: 22px;
-      background: radial-gradient(circle, #fcd5dc 30%, #df788a 100%);
-      border-radius: 50% 0 50% 50%;
-      opacity: 0.85;
-      pointer-events: none;
-      animation: fallPetal linear infinite;
-    }
-
-    @keyframes fallPetal {
-      0% {
-        transform: translateY(0) rotate(0deg) translateX(0);
-        opacity: 0.9;
-      }
-      50% {
-        transform: translateY(50vh) rotate(180deg) translateX(35px);
-      }
-      100% {
-        transform: translateY(105vh) rotate(360deg) translateX(-25px);
-        opacity: 0.15;
-      }
-    }
-
-    /* ================= PAGE 1: INVITE SCREEN ================= */
+    /* ================= PAGE 1: ROYAL INVITATION ================= */
     .invite-screen-wrap {
       min-height: 100vh;
       display: flex;
@@ -202,7 +199,6 @@
       pointer-events: none;
     }
 
-    /* Caricature Couple Illustration */
     .invite-caricature-wrap {
       width: 130px;
       height: 130px;
@@ -223,7 +219,6 @@
       display: block;
     }
 
-    /* Monogram */
     .monogram-wrap {
       display: inline-flex;
       flex-direction: column;
@@ -414,9 +409,9 @@
       line-height: 1.6;
     }
 
-    /* ================= SECTION 2: OUR MOMENTS ================= */
+    /* ================= SECTION 2: OUR MOMENTS (HORIZONTAL SCROLLING 20 IMAGES) ================= */
     .section-wrap {
-      max-width: 950px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 90px 20px;
       text-align: center;
@@ -442,115 +437,88 @@
     .section-subtitle {
       color: var(--text-muted);
       font-size: 0.95rem;
-      max-width: 420px;
-      margin: 0 auto 50px;
+      max-width: 450px;
+      margin: 0 auto 35px;
     }
 
-    .moments-grid {
+    /* Horizontal Scrollable Filmstrip Container */
+    .gallery-container {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
-      padding: 20px 10px;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px 10px 40px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--bg-blush);
     }
 
-    .polaroid-card {
+    .gallery-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-container::-webkit-scrollbar-track {
+      background: rgba(251, 240, 236, 0.6);
+      border-radius: 10px;
+    }
+
+    .gallery-container::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    .gallery-polaroid {
       background: #ffffff;
-      padding: 14px 14px 40px;
-      border-radius: 4px;
-      box-shadow: 0 12px 30px rgba(104, 24, 38, 0.12);
-      width: 240px;
+      padding: 12px 12px 35px 12px;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(104, 24, 38, 0.12);
+      min-width: 230px;
+      max-width: 230px;
+      scroll-snap-align: center;
       position: relative;
-      opacity: 0;
-      transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease;
-      will-change: transform, opacity;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
-    .polaroid-card.fly-left {
-      transform: translateX(-120px) rotate(-18deg) scale(0.9);
+    .gallery-polaroid:hover {
+      transform: translateY(-8px);
     }
 
-    .polaroid-card.fly-center {
-      transform: translateY(80px) scale(0.85);
+    .gallery-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65px;
+      height: 22px;
+      background: rgba(246, 237, 222, 0.88);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      border-radius: 2px;
+      z-index: 2;
     }
 
-    .polaroid-card.fly-right {
-      transform: translateX(120px) rotate(18deg) scale(0.9);
-    }
-
-    .polaroid-card.animate-in.fly-left {
-      opacity: 1;
-      transform: translateX(0) rotate(-5deg) scale(1);
-    }
-
-    .polaroid-card.animate-in.fly-center {
-      opacity: 1;
-      transform: translateY(-15px) rotate(0deg) scale(1);
-      transition-delay: 0.15s;
-    }
-
-    .polaroid-card.animate-in.fly-right {
-      opacity: 1;
-      transform: translateX(0) rotate(5deg) scale(1);
-      transition-delay: 0.3s;
-    }
-
-    .polaroid-card:hover {
-      transform: scale(1.06) rotate(0deg) !important;
-      z-index: 15;
-      box-shadow: 0 16px 36px rgba(104, 24, 38, 0.22);
-    }
-
-    .polaroid-photo {
+    .gallery-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
       background: #f7e6e3;
       border-radius: 2px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
-    .polaroid-photo img {
+    .gallery-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .tape {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      height: 24px;
-      background: rgba(246, 237, 222, 0.85);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-      border-radius: 2px;
-      z-index: 2;
-    }
-
-    .overlap-heart {
-      position: absolute;
-      right: 25%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      background: #cc5a6e;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      z-index: 5;
+    .gallery-caption {
+      font-family: 'Alex Brush', cursive;
+      font-size: 1.3rem;
+      color: var(--maroon);
+      margin-top: 10px;
     }
 
     /* ================= SECTION 3: OUR STORY ================= */
@@ -926,8 +894,11 @@
 </head>
 <body>
 
-  <!-- ================= 1. OPENING COVER WITH YOUR BACKGROUND IMAGE ================= -->
+  <!-- ================= 1. OPENING COVER (WITH FALLING PETALS) ================= -->
   <div id="cover">
+    <!-- Falling Petals on Cover Only -->
+    <div id="cover-petals"></div>
+
     <div class="cover-content">
       <div class="cover-names">Devika &amp; Aravind</div>
       <p class="cover-tagline">And so, our forever begins.</p>
@@ -947,9 +918,6 @@
 
   <!-- ================= 2. MAIN WEBSITE ================= -->
   <div id="main-site">
-
-    <!-- CONTINUOUS FULL-SITE FALLING PETALS CONTAINER -->
-    <div id="site-petals"></div>
 
     <!-- ================= PAGE 1: ROYAL INVITATION ================= -->
     <section class="invite-screen-wrap" id="invite-screen">
@@ -1017,40 +985,6 @@
           ALUVA, KERALA
         </p>
 
-      </div>
-    </section>
-
-    <!-- ================= PAGE 2: OUR MOMENTS (FLY-IN / POP-IN) ================= -->
-    <section class="section-wrap" id="moments-section">
-      <h2 class="section-title">Our Moments</h2>
-      <div class="section-heart">♥</div>
-      <p class="section-subtitle">A few clicks that hold a lifetime of love and memories.</p>
-
-      <div class="moments-grid">
-        <!-- Photo 1 (Flies in from Left) -->
-        <div class="polaroid-card fly-left">
-          <div class="tape"></div>
-          <div class="polaroid-photo">
-            <img src="20221223_124502~2.jpg" alt="Devika & Aravind" />
-          </div>
-        </div>
-
-        <!-- Photo 2 (Center - Pops in from Bottom) -->
-        <div class="polaroid-card fly-center">
-          <div class="tape"></div>
-          <div class="polaroid-photo">
-            <img src="IMG_20180129_163916-02 (1).jpeg" alt="Devika & Aravind Moments" />
-          </div>
-          <div class="overlap-heart">♥</div>
-        </div>
-
-        <!-- Photo 3 (Flies in from Right) -->
-        <div class="polaroid-card fly-right">
-          <div class="tape"></div>
-          <div class="polaroid-photo">
-            <img src="PXL_20260425_082148613.PORTRAIT.jpg" alt="Devika & Aravind Forever" />
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1138,7 +1072,16 @@
         </div>
       </div>
     </section>
+ <!-- ================= PAGE 2: OUR MOMENTS (20 HORIZONTAL SCROLLABLE IMAGES) ================= -->
+    <section class="section-wrap">
+      <h2 class="section-title">Our Moments</h2>
+      <div class="section-heart">♥</div>
+      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
 
+      <div class="gallery-container">
+        <!-- JavaScript will automatically generate all 20 polaroids from 1.jpg to 20.jpg -->
+      </div>
+    </section>
     <!-- ================= PAGE 6: ROYAL ARCH COUNTDOWN ================= -->
     <section class="section-wrap" style="padding-bottom: 30px;">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
@@ -1177,9 +1120,9 @@
   </div>
 
   <script>
-    // 1. Generate Continuous Falling Rose Petals for the entire website
-    function startSitePetals() {
-      const container = document.getElementById('site-petals');
+    // 1. Generate Falling Rose Petals on Cover Only
+    function createCoverPetals() {
+      const container = document.getElementById('cover-petals');
       if (!container) return;
       container.innerHTML = '';
       const petalCount = 28;
@@ -1196,20 +1139,47 @@
         container.appendChild(petal);
       }
     }
+    createCoverPetals();
 
-    // 2. Open Invitation & Trigger Background Music
+    // 2. Populate 20 Gallery Images Dynamically into "Our Moments"
+    function loadGalleryImages() {
+      const galleryContainer = document.querySelector('.gallery-container');
+      if (!galleryContainer) return;
+
+      for (let i = 1; i <= 20; i++) {
+        // Supports both .jpg and .jpeg extensions (defaulting to .jpg, fallback handled by browser)
+        const filename = `${i}.jpg`; 
+
+        const polaroid = document.createElement('div');
+        polaroid.className = 'gallery-polaroid';
+        polaroid.innerHTML = `
+          <div class="gallery-tape"></div>
+          <div class="gallery-photo">
+            <img src="${filename}" alt="Moment ${i}" loading="lazy" onerror="this.src='${i}.jpeg'; onerror=this.src='${i}.JPG';" />
+          </div>
+          <div class="gallery-caption">Memory #${i}</div>
+        `;
+        galleryContainer.appendChild(polaroid);
+      }
+    }
+    loadGalleryImages();
+
+    // 3. Open Invitation & Trigger Background Music
     function openWeddingSite() {
       const cover = document.getElementById('cover');
       const mainSite = document.getElementById('main-site');
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
+      const coverPetals = document.getElementById('cover-petals');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Start falling petals across the entire website
-      startSitePetals();
+      // Stop cover petals to save resources
+      setTimeout(() => {
+        if (coverPetals) coverPetals.innerHTML = '';
+      }, 1000);
 
       // Start background music
       if (music) {
@@ -1222,19 +1192,17 @@
       }
     }
 
-    // 3. Audio Toggle & Video Playback Coordination
+    // 4. Audio Toggle & Video Playback Coordination
     const musicBtn = document.getElementById('musicToggle');
     const music = document.getElementById('bgMusic');
     const storyVideo = document.querySelector('.story-video-container video');
 
     if (music) {
-      // Keep background music looping continuously
       music.addEventListener('ended', function() {
         this.currentTime = 0;
         this.play().catch(() => {});
       });
 
-      // Pause BGM if user watches the video, resume BGM when video pauses/finishes
       if (storyVideo) {
         storyVideo.addEventListener('play', () => {
           music.pause();
@@ -1261,27 +1229,6 @@
           musicBtn.textContent = '🔇';
         }
       });
-    }
-
-    // 4. Scroll-Triggered Fly-in for Photos
-    const momentsSection = document.getElementById('moments-section');
-    const polaroids = document.querySelectorAll('.polaroid-card');
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            polaroids.forEach(card => card.classList.add('animate-in'));
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      if (momentsSection) {
-        observer.observe(momentsSection);
-      }
-    } else {
-      polaroids.forEach(card => card.classList.add('animate-in'));
     }
 
     // 5. Countdown Timer to 12 December 2026
