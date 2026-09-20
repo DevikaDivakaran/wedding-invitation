@@ -66,7 +66,6 @@
       pointer-events: none;
     }
 
-    /* Falling Petals Container on Cover Only */
     #cover-petals {
       position: absolute;
       inset: 0;
@@ -409,7 +408,7 @@
       line-height: 1.6;
     }
 
-    /* ================= SECTION 2: OUR MOMENTS (HORIZONTAL SCROLLING 20 IMAGES) ================= */
+    /* ================= SECTION 2: OUR MOMENTS (23 HORIZONTAL SCROLLABLE IMAGES) ================= */
     .section-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -441,7 +440,6 @@
       margin: 0 auto 35px;
     }
 
-    /* Horizontal Scrollable Filmstrip Container */
     .gallery-container {
       display: flex;
       gap: 20px;
@@ -623,78 +621,7 @@
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* ================= SECTION 4: LOCATION / QR BANNER ================= */
-    .location-banner {
-      background: rgba(253, 250, 247, 0.92);
-      backdrop-filter: blur(6px);
-      border-radius: 20px;
-      border: 1px solid var(--gold-border);
-      padding: 40px 25px;
-      max-width: 650px;
-      margin: 0 auto;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .qr-card {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      max-width: 440px;
-      width: 100%;
-    }
-
-    .qr-box {
-      width: 90px;
-      height: 90px;
-      border: 2px dashed var(--gold);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-align: center;
-      padding: 4px;
-    }
-
-    .qr-info {
-      text-align: left;
-    }
-
-    .qr-info p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .map-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--bg-blush);
-      border: 1px solid var(--gold-border);
-      color: var(--maroon);
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .map-btn:hover {
-      background: var(--maroon);
-      color: #fff;
-    }
-
-    /* ================= SECTION 5: ALTERNATING TIMELINE ================= */
+    /* ================= SECTION 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= */
     .timeline {
       position: relative;
       max-width: 680px;
@@ -759,6 +686,7 @@
       box-shadow: 0 6px 18px rgba(104, 24, 38, 0.05);
       display: inline-block;
       width: 100%;
+      position: relative;
     }
 
     .schedule-time {
@@ -781,6 +709,28 @@
     .schedule-loc {
       font-size: 0.85rem;
       color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    /* Circular Map Button on each Event Card */
+    .event-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-blush);
+      border: 1px solid var(--gold-border);
+      color: var(--maroon);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .event-map-btn:hover {
+      background: var(--maroon);
+      color: #fff;
     }
 
     @media (max-width: 600px) {
@@ -788,9 +738,10 @@
       .timeline-node { width: 100%; padding-left: 60px; padding-right: 15px; }
       .timeline-node.left, .timeline-node.right { left: 0; text-align: left; }
       .timeline-node.left::after, .timeline-node.right::after { left: 16px; }
+      .timeline-node.left .schedule-card { text-align: left; }
     }
 
-    /* ================= SECTION 6: ROYAL ARCH COUNTDOWN ================= */
+    /* ================= SECTION 5: ROYAL ARCH COUNTDOWN ================= */
     .countdown-arch-frame {
       max-width: 550px;
       margin: 40px auto 0;
@@ -896,7 +847,6 @@
 
   <!-- ================= 1. OPENING COVER (WITH FALLING PETALS) ================= -->
   <div id="cover">
-    <!-- Falling Petals on Cover Only -->
     <div id="cover-petals"></div>
 
     <div class="cover-content">
@@ -908,7 +858,7 @@
 
   <!-- Background Music Player -->
   <audio id="bgMusic" loop preload="auto">
-    <source src="bgm.mp3" type="audio/mpeg">
+    <source src="Thattathin Marayathu BGM Bass Boosted Beauty & Beholder Shan Rahman Nivin CHI BASS RECORDS.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Floating Audio Mute / Unmute Button -->
@@ -988,6 +938,17 @@
       </div>
     </section>
 
+    <!-- ================= PAGE 2: OUR MOMENTS (23 HORIZONTAL SCROLLABLE IMAGES) ================= -->
+    <section class="section-wrap">
+      <h2 class="section-title">Our Moments</h2>
+      <div class="section-heart">♥</div>
+      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
+
+      <div class="gallery-container">
+        <!-- JavaScript will automatically generate all 23 polaroids from 1.jpg to 23.jpg -->
+      </div>
+    </section>
+
     <!-- ================= PAGE 3: OUR STORY (VIDEO + ENVELOPE) ================= -->
     <section class="section-wrap story-section">
       <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 5px;">
@@ -1022,24 +983,7 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 4: LOCATION / QR BANNER ================= -->
-    <section class="section-wrap" style="padding-top: 0;">
-      <div class="location-banner">
-        <div class="qr-card">
-          <div class="qr-box">
-            Scan to locate
-          </div>
-          <div class="qr-info">
-            <p>Scan to locate venue or</p>
-            <a href="https://maps.google.com" target="_blank" class="map-btn">
-              📍 Open in Maps
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PAGE 5: WEDDING SCHEDULE (ZIG-ZAG) ================= -->
+    <!-- ================= PAGE 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= -->
     <section class="section-wrap" style="padding-top: 20px;">
       <h2 class="section-title">Wedding Schedule</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
@@ -1047,42 +991,39 @@
       </p>
 
       <div class="timeline">
+        <!-- Event 1 -->
         <div class="timeline-node right">
           <div class="schedule-card">
             <div class="schedule-time">09:30 AM – 10:30 AM</div>
             <div class="schedule-name">Thali Kettu (Muhurtham)</div>
-            <div class="schedule-loc">Sree Shankara Auditorium</div>
+            <div class="schedule-loc">Sree Shankara Auditorium, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
 
+        <!-- Event 2 -->
         <div class="timeline-node left">
           <div class="schedule-card">
             <div class="schedule-time">11:00 AM – 02:00 PM</div>
             <div class="schedule-name">Mandapam Chadangu &amp; Sadhya</div>
-            <div class="schedule-loc">Auditorium Banquet Hall</div>
+            <div class="schedule-loc">Auditorium Banquet Hall, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
 
+        <!-- Event 3 -->
         <div class="timeline-node right">
           <div class="schedule-card">
             <div class="schedule-time">06:30 PM Onwards</div>
             <div class="schedule-name">Grand Reception</div>
-            <div class="schedule-loc">Main Ballroom</div>
+            <div class="schedule-loc">Main Ballroom, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
       </div>
     </section>
- <!-- ================= PAGE 2: OUR MOMENTS (20 HORIZONTAL SCROLLABLE IMAGES) ================= -->
-    <section class="section-wrap">
-      <h2 class="section-title">Our Moments</h2>
-      <div class="section-heart">♥</div>
-      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
 
-      <div class="gallery-container">
-        <!-- JavaScript will automatically generate all 20 polaroids from 1.jpg to 20.jpg -->
-      </div>
-    </section>
-    <!-- ================= PAGE 6: ROYAL ARCH COUNTDOWN ================= -->
+    <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN ================= -->
     <section class="section-wrap" style="padding-bottom: 30px;">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
         Forever
@@ -1141,13 +1082,12 @@
     }
     createCoverPetals();
 
-    // 2. Populate 20 Gallery Images Dynamically into "Our Moments"
+    // 2. Populate 23 Gallery Images Dynamically into "Our Moments"
     function loadGalleryImages() {
       const galleryContainer = document.querySelector('.gallery-container');
       if (!galleryContainer) return;
 
-      for (let i = 1; i <= 20; i++) {
-        // Supports both .jpg and .jpeg extensions (defaulting to .jpg, fallback handled by browser)
+      for (let i = 1; i <= 23; i++) {
         const filename = `${i}.jpg`; 
 
         const polaroid = document.createElement('div');
