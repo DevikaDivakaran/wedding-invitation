@@ -742,6 +742,17 @@
     }
 
     /* ================= SECTION 5: ROYAL ARCH COUNTDOWN ================= */
+    .countdown-section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(rgba(185, 179, 213, 0.85), rgba(185, 179, 213, 0.85)),
+                  url('countdown.jpg') center/cover fixed no-repeat;
+      border-radius: 30px;
+    }
     .countdown-arch-frame {
       max-width: 550px;
       margin: 40px auto 0;
@@ -938,17 +949,6 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 2: OUR MOMENTS (35 HORIZONTAL SCROLLABLE IMAGES) ================= -->
-    <section class="section-wrap">
-      <h2 class="section-title">Our Moments</h2>
-      <div class="section-heart">♥</div>
-      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
-
-      <div class="gallery-container">
-        <!-- JavaScript will automatically generate all 35 polaroids from 1.jpg to 35.jpg -->
-      </div>
-    </section>
-
     <!-- ================= PAGE 3: OUR STORY (VIDEO + ENVELOPE) ================= -->
     <section class="section-wrap story-section">
       <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 5px;">
@@ -1022,9 +1022,19 @@
         </div>
       </div>
     </section>
+      <!-- ================= PAGE 2: OUR MOMENTS (35 HORIZONTAL SCROLLABLE IMAGES) ================= -->
+    <section class="section-wrap">
+      <h2 class="section-title">Memories We Made</h2>
+      <div class="section-heart">♥</div>
+      <p class="section-subtitle">A little glimpse into the moments that brought us here.
+                                  Swipe or scroll to explore our story..</p>
 
+      <div class="gallery-container">
+        <!-- JavaScript will automatically generate all 35 polaroids from 1.jpg to 35.jpg -->
+      </div>
+    </section>
     <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN ================= -->
-    <section class="section-wrap" style="padding-bottom: 30px;">
+    <section class="countdown-section-wrap">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
         Forever
       </div>
