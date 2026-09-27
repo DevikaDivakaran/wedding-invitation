@@ -36,8 +36,7 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-                  url('download (4).jpeg') center/cover no-repeat;
+      
     }
 
     a { color: inherit; }
@@ -193,181 +192,151 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: ROYAL INVITATION (26.jpg Background) ================= */
-    .invite-screen-wrap {
+    /* ================= PAGE 1: ROYAL INVITATION (IMAGE) ================= */
+    .invite-image-wrap {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 50px 15px;
-      position: relative;
-      /* Specific background applied directly to this section */
-      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
+      padding: 30px 15px;
+      background: var(--bg-cream);
     }
 
-    .royal-invite-card {
-      background: rgba(253, 250, 246, 0.94);
-      backdrop-filter: blur(8px);
+    .invite-image {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.15);
+    }
+
+    /* ================= PAGE 1b: CALENDAR SAVE-THE-DATE ================= */
+    .date-calendar-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(251, 246, 240, 0.55), rgba(251, 246, 240, 0.55)),
+                  url('calendar-bg.jpg') center/cover no-repeat;
+    }
+
+    .calendar-card {
       max-width: 480px;
       width: 100%;
-      padding: 45px 30px 40px;
-      border: 1px solid var(--gold-border);
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.12);
       text-align: center;
-      position: relative;
-      z-index: 10;
     }
 
-    .royal-invite-card::before {
-      content: '';
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(181, 141, 74, 0.3);
-      border-radius: 14px;
-      pointer-events: none;
-    }
-
-    .invite-caricature-wrap {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      padding: 4px;
-      background: #ffffff;
-      box-shadow: 0 6px 18px rgba(104, 24, 38, 0.12);
-      overflow: hidden;
-    }
-
-    .invite-caricature-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .monogram-wrap {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .monogram-initials {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
-      font-weight: 600;
-      color: var(--maroon);
-      letter-spacing: 5px;
-      line-height: 1;
-    }
-
-    .monogram-divider {
-      color: var(--gold);
-      font-weight: 300;
-      margin: 0 4px;
-    }
-
-    .invite-intro {
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
-      line-height: 1.8;
-      color: var(--text);
-      text-transform: uppercase;
-      font-weight: 600;
-      max-width: 320px;
-      margin: 0 auto 24px;
-    }
-
-    .royal-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.6rem, 8vw, 3.4rem);
-      font-weight: 700;
-      color: var(--maroon);
-      letter-spacing: 5px;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .connector-row {
+    .calendar-topline {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin: 10px 0 14px;
+      gap: 16px;
+      margin-bottom: 30px;
     }
 
-    .connector-line {
+    .calendar-line {
+      width: 40px;
       height: 1px;
-      width: 45px;
       background: var(--gold);
-      position: relative;
     }
 
-    .connector-line.left::before { content: '✦'; position: absolute; left: -8px; top: -7px; font-size: 0.55rem; color: var(--gold); }
-    .connector-line.right::after { content: '✦'; position: absolute; right: -8px; top: -7px; font-size: 0.55rem; color: var(--gold); }
-
-    .connector-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.7rem; color: var(--gold); line-height: 1; }
-
-    .tagline-caps {
+    .calendar-topdate {
       font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
+      font-size: 0.95rem;
       letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text);
-      font-weight: 600;
-      margin-top: 24px;
+      color: var(--maroon-dark);
     }
 
-    .tagline-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--gold); margin: 4px 0 14px; }
+    .calendar-month {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 6vw, 2.6rem);
+      color: var(--maroon-dark);
+      margin-bottom: 35px;
+    }
 
-    .heart-divider {
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: 22px;
+      column-gap: 6px;
+    }
+
+    .calendar-dow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: #a89a9b;
+      font-weight: 500;
+    }
+
+    .calendar-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      margin: 12px auto 20px;
-      max-width: 140px;
     }
 
-    .heart-line { flex: 1; height: 1px; background: var(--gold); }
-    .heart-icon { color: var(--gold); font-size: 0.95rem; }
+    .calendar-day.empty { visibility: hidden; }
 
-    .save-the-date-heading {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--text);
-      font-weight: 600;
-      margin-bottom: 10px;
+    .calendar-day.highlighted {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      margin: 0 auto;
     }
 
-    .date-row-classic {
+    .heart-shape {
+      position: absolute;
+      inset: 0;
+      filter: drop-shadow(0 6px 10px rgba(104, 24, 38, 0.4));
+      animation: heartbeat 1.1s ease-in-out infinite;
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 38px;
+      background: var(--maroon);
+      border-radius: 40px 40px 0 0;
+    }
+
+    .heart-shape::before {
+      left: 23px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart-shape::after {
+      left: -1px;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    .day-num {
+      position: relative;
+      z-index: 2;
+      height: 100%;
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: center;
-      gap: 18px;
-      margin-bottom: 2px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transform: translateY(-5px);
     }
 
-    .date-sub { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text); font-weight: 600; }
-    .date-day-large { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 700; color: var(--maroon); line-height: 1; }
-    .year-spaced { font-family: 'Cinzel', serif; font-size: 0.95rem; letter-spacing: 6px; color: var(--text); font-weight: 600; margin-bottom: 12px; }
-
-    .lotus-icon { font-size: 1.6rem; color: var(--gold); margin-bottom: 12px; display: block; line-height: 1; }
-
-    .venue-info {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      color: var(--maroon-dark);
-      font-weight: 600;
-      line-height: 1.6;
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+      60% { transform: scale(1); }
     }
 
     /* ================= COMMON SECTION STYLES ================= */
@@ -757,57 +726,72 @@
   <!-- ================= MAIN WEBSITE CONTENT ================= -->
   <div id="main-site">
 
-    <!-- ================= 1. ROYAL INVITATION (26.jpg Background) ================= -->
-    <section class="invite-screen-wrap" id="invite-screen">
-      <div class="royal-invite-card">
-        
-        <div class="invite-caricature-wrap">
-          <img src="DSC01595.JPG" alt="Devika & Aravind" />
+    <!-- ================= 1. ROYAL INVITATION (IMAGE) ================= -->
+    <section class="invite-image-wrap" id="invite-screen">
+      <img src="invitefile.jpg" alt="Devika & Aravind Wedding Invitation" class="invite-image">
+    </section>
+
+    <!-- ================= 1b. CALENDAR SAVE-THE-DATE ================= -->
+    <section class="date-calendar-wrap">
+      <div class="calendar-card">
+        <div class="calendar-topline">
+          <span class="calendar-line"></span>
+          <span class="calendar-topdate">12.12.2026</span>
+          <span class="calendar-line"></span>
         </div>
 
-        <div class="monogram-wrap">
-          <div class="monogram-initials">D<span class="monogram-divider">|</span>A</div>
-          <div class="monogram-flourish">❦ ❧</div>
+        <h2 class="calendar-month">December 2026</h2>
+
+        <div class="calendar-grid">
+          <div class="calendar-dow">S</div>
+          <div class="calendar-dow">M</div>
+          <div class="calendar-dow">T</div>
+          <div class="calendar-dow">W</div>
+          <div class="calendar-dow">T</div>
+          <div class="calendar-dow">F</div>
+          <div class="calendar-dow">S</div>
+
+          <div class="calendar-day empty"></div>
+          <div class="calendar-day empty"></div>
+          <div class="calendar-day">1</div>
+          <div class="calendar-day">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+
+          <div class="calendar-day">6</div>
+          <div class="calendar-day">7</div>
+          <div class="calendar-day">8</div>
+          <div class="calendar-day">9</div>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day highlighted">
+            <span class="heart-shape"></span>
+            <span class="day-num">12</span>
+          </div>
+
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+          <div class="calendar-day">31</div>
         </div>
-
-        <p class="invite-intro">
-          Together with our families<br>
-          we joyfully invite you to<br>
-          celebrate the wedding of
-        </p>
-
-        <h1 class="royal-name">DEVIKA</h1>
-        <div class="connector-row">
-          <span class="connector-line left"></span>
-          <span class="connector-text">and</span>
-          <span class="connector-line right"></span>
-        </div>
-        <h1 class="royal-name">ARAVIND</h1>
-
-        <p class="tagline-caps">Two Souls. One Promise.</p>
-        <p class="tagline-script">a lifetime together.</p>
-
-        <div class="heart-divider">
-          <span class="heart-line"></span>
-          <span class="heart-icon">♥</span>
-          <span class="heart-line"></span>
-        </div>
-
-        <p class="save-the-date-heading">SAVE THE DATE</p>
-        <div class="date-row-classic">
-          <span class="date-sub">Saturday</span>
-          <span class="date-day-large">12</span>
-          <span class="date-sub">December</span>
-        </div>
-        <p class="year-spaced">2 0 2 6</p>
-
-        <span class="lotus-icon">🪷</span>
-
-        <p class="venue-info">
-          SREE SHANKARA AUDITORIUM<br>
-          ALUVA, KERALA
-        </p>
-
       </div>
     </section>
 
@@ -1004,6 +988,31 @@
     }
 
     loadGalleryImages();
+
+    // 3b. Auto-scroll the "Our Moments" gallery
+    function autoScrollGallery() {
+      const container = document.querySelector('.gallery-container');
+      if (!container) return;
+      let paused = false;
+
+      container.addEventListener('mouseenter', () => paused = true);
+      container.addEventListener('mouseleave', () => paused = false);
+      container.addEventListener('touchstart', () => paused = true, { passive: true });
+      container.addEventListener('touchend', () => setTimeout(() => paused = false, 2500));
+
+      setInterval(() => {
+        if (paused) return;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 0) return;
+        if (container.scrollLeft >= maxScroll - 2) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollLeft += 1;
+        }
+      }, 20);
+    }
+
+    autoScrollGallery();
 
     // 4. Open Invitation & Trigger Background Music
     function openWeddingSite() {
