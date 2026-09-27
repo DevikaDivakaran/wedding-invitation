@@ -118,13 +118,17 @@
     .cover-content {
       position: relative;
       z-index: 10;
+      width: 100%;
       max-width: 650px;
-      padding: 20px;
-      text-align: center;
-      background: none;        /* Removes the background box color */
-      backdrop-filter: none;   /* Removes the blur box effect */
-      border: none;            /* Removes the border */
-      box-shadow: none;        /* Removes the box shadow */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      background: none;
+      backdrop-filter: none;
+      border: none;
+      box-shadow: none;
+      padding: 10px 0;
     }
 
     .cover-names {
@@ -713,16 +717,22 @@
 <body>
 
   <!-- ================= 0. OPENING COVER ================= -->
+  <!-- ================= 1. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Star Glitters -->
-    <div id="cover-stars"></div>
-    <!-- Falling Petals -->
     <div id="cover-petals"></div>
+    <div id="cover-stars"></div>
 
     <div class="cover-content">
-      <div class="cover-names">Devika &amp; Aravind</div>
-      <p class="cover-tagline">And so, our forever begins.</p>
-      <button class="open-btn" onclick="openWeddingSite()">Be There With Us →</button>
+      <!-- Top section for names & tagline -->
+      <div class="cover-top-group">
+        <div class="cover-names">Devika &amp; Aravind</div>
+        <p class="cover-tagline">And so, our forever begins.</p>
+      </div>
+
+      <!-- Bottom section for button -->
+      <div class="cover-bottom-group">
+        <button class="open-btn" onclick="openWeddingSite()">Be There With Us →</button>
+      </div>
     </div>
   </div>
 
