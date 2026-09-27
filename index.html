@@ -35,13 +35,13 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-                  url('download (4).jpeg') center/cover fixed no-repeat;
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                  url('images_for_ourmemory/5.jpg') center/cover fixed no-repeat;
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (WITH FALLING PETALS) ================= */
+    /* ================= 1. COVER OVERLAY (1ST PAGE BACKGROUND IMAGE) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -54,8 +54,9 @@
       text-align: center;
       padding: 24px;
       z-index: 9999;
-      background: linear-gradient(rgba(35, 12, 18, 0.45), rgba(35, 12, 18, 0.6)),
-                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
+      /* Uses 1.jpg from your folder as the 1st page background */
+      background: linear-gradient(rgba(35, 12, 18, 0.5), rgba(35, 12, 18, 0.65)),
+                  url('images_for_ourmemory/1.jpg') center/cover no-repeat;
       transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       overflow: hidden;
     }
@@ -165,7 +166,7 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: ROYAL INVITATION ================= */
+    /* ================= PAGE 1: ROYAL INVITATION (Background Image: 2.jpg) ================= */
     .invite-screen-wrap {
       min-height: 100vh;
       display: flex;
@@ -173,10 +174,12 @@
       justify-content: center;
       padding: 50px 15px;
       position: relative;
+      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                  url('images_for_ourmemory/2.jpg') center/cover no-repeat;
     }
 
     .royal-invite-card {
-      background: rgba(253, 250, 246, 0.94);
+      background: rgba(253, 250, 246, 0.95);
       backdrop-filter: blur(8px);
       max-width: 480px;
       width: 100%;
@@ -408,14 +411,18 @@
       line-height: 1.6;
     }
 
-    /* ================= SECTION 2: OUR MOMENTS (AUTOMATIC SLIDESHOW) ================= */
-    .section-wrap {
+    /* ================= PAGE 2: OUR MOMENTS (Background Image: 3.jpg) ================= */
+    .section-wrap-moments {
       max-width: 1100px;
       margin: 0 auto;
       padding: 90px 20px;
       text-align: center;
       position: relative;
       z-index: 10;
+      background: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
+                  url('images_for_ourmemory/3.jpg') center/cover fixed no-repeat;
+      border-radius: 30px;
+      margin-bottom: 40px;
     }
 
     .section-title {
@@ -548,14 +555,19 @@
       transform: scale(1.25);
     }
 
-    /* ================= SECTION 3: OUR STORY ================= */
+    /* ================= PAGE 3: OUR STORY (Background Image: 4.jpg) ================= -->
     .story-section {
-      background: rgba(251, 240, 236, 0.92);
+      background: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
+                  url('images_for_ourmemory/4.jpg') center/cover fixed no-repeat;
       backdrop-filter: blur(6px);
       border-radius: 30px;
-      margin-bottom: 80px;
+      margin: 0 auto 40px;
+      max-width: 1100px;
       padding: 70px 20px;
       box-shadow: 0 15px 35px rgba(104, 24, 38, 0.08);
+      text-align: center;
+      position: relative;
+      z-index: 10;
     }
 
     .story-video-wrapper {
@@ -650,7 +662,19 @@
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* ================= SECTION 4: WEDDING SCHEDULE ================= */
+    /* ================= PAGE 4: WEDDING SCHEDULE (Background Image: 6.jpg) ================= -->
+    .schedule-section-wrap {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 70px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
+                  url('images_for_ourmemory/6.jpg') center/cover fixed no-repeat;
+      border-radius: 30px;
+    }
+
     .timeline {
       position: relative;
       max-width: 680px;
@@ -769,7 +793,19 @@
       .timeline-node.left .schedule-card { text-align: left; }
     }
 
-    /* ================= SECTION 5: ROYAL ARCH COUNTDOWN ================= */
+    /* ================= PAGE 5: ROYAL ARCH COUNTDOWN (Background Image: 7.jpg) ================= -->
+    .countdown-section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
+                  url('images_for_ourmemory/7.jpg') center/cover fixed no-repeat;
+      border-radius: 30px;
+    }
+
     .countdown-arch-frame {
       max-width: 550px;
       margin: 40px auto 0;
@@ -873,7 +909,7 @@
 </head>
 <body>
 
-  <!-- ================= 1. OPENING COVER (WITH FALLING PETALS) ================= -->
+  <!-- ================= 1. OPENING COVER (Background: 1.jpg) ================= -->
   <div id="cover">
     <div id="cover-petals"></div>
 
@@ -897,7 +933,7 @@
   <!-- ================= 2. MAIN WEBSITE ================= -->
   <div id="main-site">
 
-    <!-- ================= PAGE 1: ROYAL INVITATION ================= -->
+    <!-- ================= PAGE 1: ROYAL INVITATION (Background: 2.jpg) ================= -->
     <section class="invite-screen-wrap" id="invite-screen">
       <div class="royal-invite-card">
         
@@ -966,15 +1002,15 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 2: OUR MOMENTS (AUTOMATIC SLIDESHOW) ================= -->
-    <section class="section-wrap">
+    <!-- ================= PAGE 2: OUR MOMENTS (Background: 3.jpg) ================= -->
+    <section class="section-wrap-moments">
       <h2 class="section-title">Our Moments</h2>
       <div class="section-heart">♥</div>
       <p class="section-subtitle">A glimpse into our journey of love and laughter.</p>
 
       <div class="slideshow-wrapper">
         <div class="slideshow-container" id="slideshowContainer">
-          <!-- Slides will be injected dynamically by JavaScript (1.jpg to 23.jpg) -->
+          <!-- Slides will be injected dynamically by JavaScript (1.jpg to 35.jpg) -->
         </div>
 
         <!-- Navigation Controls -->
@@ -986,8 +1022,8 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 3: OUR STORY (VIDEO + ENVELOPE) ================= -->
-    <section class="section-wrap story-section">
+    <!-- ================= PAGE 3: OUR STORY (Background: 4.jpg) ================= -->
+    <section class="story-section">
       <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 5px;">
         Our story, our journey,
       </div>
@@ -1020,8 +1056,8 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 4: WEDDING SCHEDULE ================= -->
-    <section class="section-wrap" style="padding-top: 20px;">
+    <!-- ================= PAGE 4: WEDDING SCHEDULE (Background: 6.jpg) ================= -->
+    <section class="schedule-section-wrap">
       <h2 class="section-title">Wedding Schedule</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
@@ -1060,8 +1096,8 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN ================= -->
-    <section class="section-wrap" style="padding-bottom: 30px;">
+    <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN (Background: 7.jpg) ================= -->
+    <section class="countdown-section-wrap">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
         Forever
       </div>
@@ -1119,7 +1155,7 @@
     }
     createCoverPetals();
 
-    // 2. Initialize Slideshow for 23 Images (1.jpg to 23.jpg)
+    // 2. Initialize Slideshow for 35 Images (1.jpg to 35.jpg)
     let slideIndex = 0;
     let slideTimer = null;
 
@@ -1131,8 +1167,7 @@
       container.innerHTML = '';
       dotsContainer.innerHTML = '';
 
-      for (let i = 1; i <= 23; i++) {
-        // Pointing to your folder name: images_for_ourmemory
+      for (let i = 1; i <= 35; i++) {
         const filename = `images_for_ourmemory/${i}.jpg`; 
 
         const slideDiv = document.createElement('div');
