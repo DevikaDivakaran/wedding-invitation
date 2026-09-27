@@ -12,14 +12,16 @@
 
   <style>
     :root {
-      --lavender-dark: #6a5a8a;
-      --periwinkle: #99C3EE;
-      --lilac: #A293BD;
-      --soft-purple: #B9B3D5;
-      --gold: #d4af37;
-      --gold-border: rgba(212, 175, 55, 0.4);
-      --text: #2c243b;
-      --text-muted: #6b627a;
+      --bg-cream: #fbf6f0;
+      --bg-blush: #fbf0ec;
+      --card-white: #ffffff;
+      --maroon: #681826;
+      --maroon-dark: #4a0f19;
+      --gold: #b58d4a;
+      --gold-light: #d8b775;
+      --gold-border: rgba(181, 141, 74, 0.4);
+      --text: #3c2a2b;
+      --text-muted: #7d6567;
     }
 
     * {
@@ -33,11 +35,13 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+                  url('download (4).jpeg') center/cover fixed no-repeat;
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (LAVENDER PALETTE + PETALS + STARS) ================= */
+    /* ================= 1. COVER OVERLAY (WITH FALLING PETALS) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -50,8 +54,8 @@
       text-align: center;
       padding: 24px;
       z-index: 9999;
-      background: linear-gradient(rgba(44, 33, 63, 0.65), rgba(74, 60, 102, 0.8)),
-                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q/1.jpeg') center/cover no-repeat;
+      background: linear-gradient(rgba(35, 12, 18, 0.45), rgba(35, 12, 18, 0.6)),
+                  url('Gemini_Generated_Image_wy8qbcwy8qbcwy8q.jpeg') center/cover no-repeat;
       transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       overflow: hidden;
     }
@@ -62,8 +66,7 @@
       pointer-events: none;
     }
 
-    /* Falling Petals & Glitter Containers */
-    #cover-petals, #cover-stars {
+    #cover-petals {
       position: absolute;
       inset: 0;
       pointer-events: none;
@@ -74,126 +77,79 @@
     .petal {
       position: absolute;
       top: -40px;
-      width: 14px;
-      height: 20px;
-      background: radial-gradient(circle, #fcd5dc 30%, #b9b3d5 100%);
+      width: 15px;
+      height: 22px;
+      background: radial-gradient(circle, #fcd5dc 30%, #df788a 100%);
       border-radius: 50% 0 50% 50%;
-      opacity: 0.8;
+      opacity: 0.85;
+      pointer-events: none;
       animation: fallPetal linear infinite;
     }
 
     @keyframes fallPetal {
-      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.9; }
-      50% { transform: translateY(50vh) rotate(180deg) translateX(30px); }
-      100% { transform: translateY(105vh) rotate(360deg) translateX(-20px); opacity: 0.1; }
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(35px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-25px);
+        opacity: 0.15;
+      }
     }
 
-    .star {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #ffffff, 0 0 15px var(--periwinkle);
-      animation: twinkle_star ease-in-out infinite;
-    }
-
-    @keyframes twinkle_star {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.4); }
-    }
-
-    /* Frosted Glass Invitation Card on Cover */
-    .cover-glass-card {
+    .cover-content {
       position: relative;
       z-index: 10;
-      max-width: 420px;
-      width: 100%;
-      padding: 45px 30px;
-      background: rgba(162, 147, 189, 0.25);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      max-width: 580px;
+      padding: 40px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(216, 183, 117, 0.4);
       border-radius: 24px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-      text-align: center;
-    }
-
-    .cover-save-date {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      letter-spacing: 5px;
-      color: #ffffff;
-      text-transform: uppercase;
-      margin-bottom: 25px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
     }
 
     .cover-names {
       font-family: 'Alex Brush', cursive;
-      font-size: clamp(3.2rem, 8vw, 4.5rem);
+      font-size: clamp(3.6rem, 10vw, 5.8rem);
       color: #ffffff;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      line-height: 1.1;
-      margin-bottom: 25px;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
 
-    .cover-wedding-info {
+    .cover-tagline {
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
+      font-size: 1.25rem;
       letter-spacing: 3px;
-      color: #e6e1f2;
-      text-transform: uppercase;
-      margin-bottom: 25px;
-    }
-
-    .cover-details-box {
-      background: rgba(44, 33, 63, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 15px;
-      margin-bottom: 25px;
-      display: flex;
-      justify-content: space-around;
-      color: #ffffff;
-      font-size: 0.8rem;
-    }
-
-    .cover-details-box div span {
-      display: block;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      color: var(--periwinkle);
-      margin-bottom: 4px;
-      text-transform: uppercase;
+      color: #f7e8d0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      margin-bottom: 35px;
     }
 
     .open-btn {
-      background: linear-gradient(135deg, var(--lilac), var(--lavender-dark));
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.85rem;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #2b1419;
+      font-weight: 700;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 2.5px;
-      padding: 15px 35px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 16px 44px;
+      border: none;
       border-radius: 40px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
-      width: 100%;
     }
 
     .open-btn:hover {
-      transform: scale(1.03);
+      transform: scale(1.06);
       background: #ffffff;
-      color: var(--lavender-dark);
-    }
-
-    .cover-footer-note {
-      font-size: 0.7rem;
-      letter-spacing: 1.5px;
-      color: #dcd6eb;
-      margin-top: 15px;
+      color: var(--maroon);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
 
     /* ================= 2. MAIN SITE CONTENT ================= */
@@ -209,7 +165,7 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: ROYAL INVITATION (Background: 2.jpg) ================= */
+    /* ================= PAGE 1: ROYAL INVITATION ================= */
     .invite-screen-wrap {
       min-height: 100vh;
       display: flex;
@@ -217,12 +173,10 @@
       justify-content: center;
       padding: 50px 15px;
       position: relative;
-      background: linear-gradient(rgba(185, 179, 213, 0.75), rgba(185, 179, 213, 0.75)),
-                  url('images_for_ourmemory/2.jpg') center/cover fixed no-repeat;
     }
 
     .royal-invite-card {
-      background: rgba(253, 250, 246, 0.95);
+      background: rgba(253, 250, 246, 0.94);
       backdrop-filter: blur(8px);
       max-width: 480px;
       width: 100%;
@@ -275,7 +229,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.9rem;
       font-weight: 600;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       letter-spacing: 5px;
       line-height: 1;
     }
@@ -308,7 +262,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.6rem, 8vw, 3.4rem);
       font-weight: 700;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       letter-spacing: 5px;
       line-height: 1;
       text-transform: uppercase;
@@ -424,7 +378,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 3.4rem;
       font-weight: 700;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       line-height: 1;
     }
 
@@ -449,23 +403,19 @@
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 2px;
-      color: var(--lavender-dark);
+      color: var(--maroon-dark);
       font-weight: 600;
       line-height: 1.6;
     }
 
-    /* ================= PAGE 2: OUR MOMENTS (Background: 3.jpg) ================= -->
-    .section-wrap-moments {
+    /* ================= SECTION 2: OUR MOMENTS (35 HORIZONTAL SCROLLABLE IMAGES) ================= */
+    .section-wrap {
       max-width: 1100px;
       margin: 0 auto;
       padding: 90px 20px;
       text-align: center;
       position: relative;
       z-index: 10;
-      background: linear-gradient(rgba(185, 179, 213, 0.82), rgba(185, 179, 213, 0.82)),
-                  url('images_for_ourmemory/3.jpg') center/cover fixed no-repeat;
-      border-radius: 30px;
-      margin-bottom: 40px;
     }
 
     .section-title {
@@ -473,12 +423,12 @@
       font-size: 2rem;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       margin-bottom: 6px;
     }
 
     .section-heart {
-      color: var(--lavender-dark);
+      color: var(--maroon);
       font-size: 1rem;
       margin-bottom: 15px;
     }
@@ -490,36 +440,61 @@
       margin: 0 auto 35px;
     }
 
-    .slideshow-wrapper {
-      max-width: 340px;
-      margin: 0 auto;
-      position: relative;
+    .gallery-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px 10px 40px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--bg-blush);
     }
 
-    .slideshow-container {
-      position: relative;
-      width: 100%;
+    .gallery-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-container::-webkit-scrollbar-track {
+      background: rgba(251, 240, 356, 0.6);
+      border-radius: 10px;
+    }
+
+    .gallery-container::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    .gallery-polaroid {
       background: #ffffff;
-      padding: 14px 14px 45px 14px;
+      padding: 12px 12px 35px 12px;
       border-radius: 6px;
-      box-shadow: 0 15px 35px rgba(106, 90, 138, 0.2);
+      box-shadow: 0 10px 25px rgba(104, 24, 38, 0.12);
+      min-width: 350px;
+      max-width: 350px;
+      scroll-snap-align: center;
+      position: relative;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
-    .slide {
-      display: none;
-      animation: fadeSlide 0.8s ease-in-out;
+    .gallery-polaroid:hover {
+      transform: translateY(-8px);
     }
 
-    .slide.active {
-      display: block;
+    .gallery-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65px;
+      height: 22px;
+      background: rgba(246, 357, 222, 0.88);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      border-radius: 2px;
+      z-index: 2;
     }
 
-    @keyframes fadeSlide {
-      from { opacity: 0.4; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .slide-photo {
+    .gallery-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
       background: #f7e6e3;
@@ -530,87 +505,28 @@
       justify-content: center;
     }
 
-    .slide-photo img {
+    .gallery-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .slide-caption {
+    .gallery-caption {
       font-family: 'Alex Brush', cursive;
-      font-size: 1.4rem;
-      color: var(--lavender-dark);
-      margin-top: 12px;
-      text-align: center;
+      font-size: 1.3rem;
+      color: var(--maroon);
+      margin-top: 10px;
     }
 
-    .slide-btn {
-      position: absolute;
-      top: 42%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--gold-border);
-      color: var(--lavender-dark);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: all 0.2s ease;
-      z-index: 20;
-    }
-
-    .slide-btn:hover {
-      background: var(--lavender-dark);
-      color: #fff;
-    }
-
-    .prev-btn { left: -22px; }
-    .next-btn { right: -22px; }
-
-    .slide-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      max-width: 320px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(181, 141, 74, 0.4);
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .dot.active {
-      background: var(--lavender-dark);
-      transform: scale(1.25);
-    }
-
-    /* ================= PAGE 3: OUR STORY (Background: 4.jpg) ================= -->
+    /* ================= SECTION 3: OUR STORY ================= */
     .story-section {
-      background: linear-gradient(rgba(185, 179, 213, 0.82), rgba(185, 179, 213, 0.82)),
-                  url('images_for_ourmemory/4.jpg') center/cover fixed no-repeat;
+      background: rgba(251, 240, 356, 0.92);
       backdrop-filter: blur(6px);
       border-radius: 30px;
-      margin: 0 auto 40px;
-      max-width: 1100px;
+      margin-bottom: 80px;
       padding: 70px 20px;
-      box-shadow: 0 15px 35px rgba(106, 90, 138, 0.15);
-      text-align: center;
-      position: relative;
-      z-index: 10;
+      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.08);
     }
 
     .story-video-wrapper {
@@ -620,7 +536,7 @@
       padding: 10px;
       background: linear-gradient(145deg, #ffffff, #f7ebe8);
       border: 2px solid var(--gold);
-      box-shadow: 0 20px 45px rgba(106, 90, 138, 0.2);
+      box-shadow: 0 20px 45px rgba(104, 24, 38, 0.18);
     }
 
     .story-video-container {
@@ -647,11 +563,11 @@
     }
 
     .envelope-pocket {
-      background: linear-gradient(145deg, #e0d8ef, #c8bcdb);
+      background: linear-gradient(145deg, #f7dcd9, #f2c7c5);
       border-radius: 12px;
       padding: 30px 20px 50px;
       position: relative;
-      box-shadow: 0 15px 35px rgba(106, 90, 138, 0.2);
+      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.15);
       border: 1px solid var(--gold-border);
     }
 
@@ -675,7 +591,7 @@
       font-family: 'Cinzel', serif;
       font-size: 1.15rem;
       letter-spacing: 3px;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       margin-bottom: 15px;
       font-weight: 600;
     }
@@ -695,29 +611,17 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #826eab, var(--lavender-dark));
+      background: radial-gradient(circle at 35% 30%, #a82435, var(--maroon-dark));
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffe6eb;
       font-size: 1.2rem;
-      box-shadow: 0 8px 18px rgba(106, 90, 138, 0.4);
+      box-shadow: 0 8px 18px rgba(80, 16, 25, 0.35);
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* ================= PAGE 4: WEDDING SCHEDULE (Background: 6.jpg) ================= -->
-    .schedule-section-wrap {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      padding: 70px 20px;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      background: linear-gradient(rgba(185, 179, 213, 0.82), rgba(185, 179, 213, 0.82)),
-                  url('images_for_ourmemory/6.jpg') center/cover fixed no-repeat;
-      border-radius: 30px;
-    }
-
+    /* ================= SECTION 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= */
     .timeline {
       position: relative;
       max-width: 680px;
@@ -760,7 +664,7 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #fbf6f0;
+      background: var(--bg-cream);
       border: 3px solid var(--gold);
       z-index: 2;
     }
@@ -779,7 +683,7 @@
       border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 18px 22px;
-      box-shadow: 0 6px 18px rgba(106, 90, 138, 0.1);
+      box-shadow: 0 6px 18px rgba(104, 24, 38, 0.05);
       display: inline-block;
       width: 100%;
       position: relative;
@@ -797,7 +701,7 @@
     .schedule-name {
       font-family: 'Cinzel', serif;
       font-size: 1.1rem;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       font-weight: 600;
       margin-bottom: 4px;
     }
@@ -808,13 +712,14 @@
       margin-bottom: 10px;
     }
 
+    /* Circular Map Button on each Event Card */
     .event-map-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #f4f0fa;
+      background: var(--bg-blush);
       border: 1px solid var(--gold-border);
-      color: var(--lavender-dark);
+      color: var(--maroon);
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.75rem;
@@ -824,7 +729,7 @@
     }
 
     .event-map-btn:hover {
-      background: var(--lavender-dark);
+      background: var(--maroon);
       color: #fff;
     }
 
@@ -836,19 +741,7 @@
       .timeline-node.left .schedule-card { text-align: left; }
     }
 
-    /* ================= PAGE 5: ROYAL ARCH COUNTDOWN (Background: 7.jpg) ================= -->
-    .countdown-section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 70px 20px 40px;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      background: linear-gradient(rgba(185, 179, 213, 0.82), rgba(185, 179, 213, 0.82)),
-                  url('images_for_ourmemory/7.jpg') center/cover fixed no-repeat;
-      border-radius: 30px;
-    }
-
+    /* ================= SECTION 5: ROYAL ARCH COUNTDOWN ================= */
     .countdown-arch-frame {
       max-width: 550px;
       margin: 40px auto 0;
@@ -872,7 +765,7 @@
       font-size: 0.85rem;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       font-weight: 600;
       margin-bottom: 25px;
     }
@@ -902,7 +795,7 @@
       font-family: 'Cinzel', serif;
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--lavender-dark);
+      color: var(--maroon);
       line-height: 1;
     }
 
@@ -936,7 +829,7 @@
 
     .music-toggle-btn:hover {
       transform: scale(1.1);
-      background: var(--periwinkle);
+      background: var(--bg-blush);
     }
 
     .footer {
@@ -952,29 +845,14 @@
 </head>
 <body>
 
-  <!-- ================= 1. OPENING COVER (PETALS + GLITTERING STARS + LAVENDER PALETTE) ================= -->
+  <!-- ================= 1. OPENING COVER (WITH FALLING PETALS) ================= -->
   <div id="cover">
     <div id="cover-petals"></div>
-    <div id="cover-stars"></div>
 
-    <div class="cover-glass-card">
-      <div class="cover-save-date">Save the Date</div>
+    <div class="cover-content">
       <div class="cover-names">Devika &amp; Aravind</div>
-      <div class="cover-wedding-info">Wedding Celebration</div>
-
-      <div class="cover-details-box">
-        <div>
-          <span>Time</span>
-          09:30 AM
-        </div>
-        <div>
-          <span>Venue</span>
-          Sree Shankara Auditorium
-        </div>
-      </div>
-
-      <button class="open-btn" onclick="openWeddingSite()">View Invitation ♥</button>
-      <div class="cover-footer-note">A love story worth celebrating — your invitation is inside ✨</div>
+      <p class="cover-tagline">And so, our forever begins.</p>
+      <button class="open-btn" onclick="openWeddingSite()">Be There With Us →</button>
     </div>
   </div>
 
@@ -991,7 +869,7 @@
   <!-- ================= 2. MAIN WEBSITE ================= -->
   <div id="main-site">
 
-    <!-- ================= PAGE 1: ROYAL INVITATION (Background: 2.jpg) ================= -->
+    <!-- ================= PAGE 1: ROYAL INVITATION ================= -->
     <section class="invite-screen-wrap" id="invite-screen">
       <div class="royal-invite-card">
         
@@ -1060,36 +938,27 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 2: OUR MOMENTS (Background: 3.jpg) ================= -->
-    <section class="section-wrap-moments">
+    <!-- ================= PAGE 2: OUR MOMENTS (35 HORIZONTAL SCROLLABLE IMAGES) ================= -->
+    <section class="section-wrap">
       <h2 class="section-title">Our Moments</h2>
       <div class="section-heart">♥</div>
-      <p class="section-subtitle">A glimpse into our journey of love and laughter.</p>
+      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
 
-      <div class="slideshow-wrapper">
-        <div class="slideshow-container" id="slideshowContainer">
-          <!-- Slides injected by JS (1.jpg to 23.jpg) -->
-        </div>
-
-        <!-- Navigation Controls -->
-        <button class="slide-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="slide-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
-
-        <!-- Slide Indicators / Dots -->
-        <div class="slide-dots" id="slideDots"></div>
+      <div class="gallery-container">
+        <!-- JavaScript will automatically generate all 35 polaroids from 1.jpg to 35.jpg -->
       </div>
     </section>
 
-    <!-- ================= PAGE 3: OUR STORY (Background: 4.jpg) ================= -->
-    <section class="story-section">
-      <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--lavender-dark); margin-bottom: 5px;">
+    <!-- ================= PAGE 3: OUR STORY (VIDEO + ENVELOPE) ================= -->
+    <section class="section-wrap story-section">
+      <div style="font-family: 'Alex Brush', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 5px;">
         Our story, our journey,
       </div>
-      <div style="font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: var(--lavender-dark); margin-bottom: 35px;">
+      <div style="font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: var(--maroon); margin-bottom: 35px;">
         ours forever
       </div>
 
-      <!-- Video Player -->
+      <!-- Video Player for your uploaded animation -->
       <div class="story-video-wrapper">
         <div class="story-video-container">
           <video controls playsinline preload="metadata">
@@ -1114,8 +983,8 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 4: WEDDING SCHEDULE (Background: 6.jpg) ================= -->
-    <section class="schedule-section-wrap">
+    <!-- ================= PAGE 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= -->
+    <section class="section-wrap" style="padding-top: 20px;">
       <h2 class="section-title">Wedding Schedule</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
@@ -1154,9 +1023,9 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN (Background: 7.jpg) ================= -->
-    <section class="countdown-section-wrap">
-      <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--lavender-dark); margin-bottom: -15px;">
+    <!-- ================= PAGE 5: ROYAL ARCH COUNTDOWN ================= -->
+    <section class="section-wrap" style="padding-bottom: 30px;">
+      <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
         Forever
       </div>
 
@@ -1192,115 +1061,58 @@
   </div>
 
   <script>
-    // 1. Generate Falling Rose Petals & Glittering Stars on Cover Only
-    function createCoverFX() {
-      const petalContainer = document.getElementById('cover-petals');
-      const starContainer = document.getElementById('cover-stars');
-      if (!petalContainer || !starContainer) return;
+    // 1. Generate Falling Rose Petals on Cover Only
+    function createCoverPetals() {
+      const container = document.getElementById('cover-petals');
+      if (!container) return;
+      container.innerHTML = '';
+      const petalCount = 28;
 
-      petalContainer.innerHTML = '';
-      starContainer.innerHTML = '';
-
-      // Petals
-      for (let i = 0; i < 24; i++) {
+      for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.style.left = Math.random() * 100 + 'vw';
         petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
         petal.style.animationDelay = (Math.random() * 5) + 's';
-        petalContainer.appendChild(petal);
-      }
-
-      // Glittering Stars
-      for (let i = 0; i < 35; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-        star.style.animationDelay = (Math.random() * 3) + 's';
-        starContainer.appendChild(star);
+        petal.style.width = (Math.random() * 8 + 12) + 'px';
+        petal.style.height = (Math.random() * 10 + 16) + 'px';
+        petal.style.opacity = Math.random() * 0.6 + 0.4;
+        container.appendChild(petal);
       }
     }
-    createCoverFX();
+    createCoverPetals();
 
-    // 2. Initialize Slideshow for 23 Images (1.jpg to 23.jpg)
-    let slideIndex = 0;
-    let slideTimer = null;
+    // 2. Populate 35 Gallery Images Dynamically into "Our Moments"
+    function loadGalleryImages() {
+      const galleryContainer = document.querySelector('.gallery-container');
+      if (!galleryContainer) return;
 
-    function initSlideshow() {
-      const container = document.getElementById('slideshowContainer');
-      const dotsContainer = document.getElementById('slideDots');
-      if (!container || !dotsContainer) return;
+      for (let i = 1; i <= 35; i++) {
+        const filename = `images_for_ourmemory/${i}.jpg`;
 
-      container.innerHTML = '';
-      dotsContainer.innerHTML = '';
+        const polaroid = document.createElement('div');
+        polaroid.className = 'gallery-polaroid';
 
-      for (let i = 1; i <= 23; i++) {
-        const filename = `images_for_ourmemory/${i}.jpg`; 
-
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'slide';
-        slideDiv.innerHTML = `
+        polaroid.innerHTML = `
           <div class="gallery-tape"></div>
-          <div class="slide-photo">
-            <img src="${filename}" alt="Memory #${i}" loading="lazy" onerror="this.src='images_for_ourmemory/${i}.jpeg'; onerror=this.src='images_for_ourmemory/${i}.JPG';" />
+
+          <div class="gallery-photo">
+            <img 
+              src="${filename}" 
+              alt="Moment ${i}" 
+              loading="lazy"
+              onerror="this.onerror=null; this.src='images_for_ourmemory/${i}.jpeg';"
+            />
           </div>
-          <div class="slide-caption">Memory #${i}</div>
+
+          <div class="gallery-caption">Memory #${i}</div>
         `;
-        container.appendChild(slideDiv);
 
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        dot.addEventListener('click', () => currentSlide(i - 1));
-        dotsContainer.appendChild(dot);
+        galleryContainer.appendChild(polaroid);
       }
-
-      showSlide(slideIndex);
-      startAutoplay();
     }
 
-    function showSlide(n) {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
-      if (!slides.length) return;
-
-      if (n >= slides.length) slideIndex = 0;
-      if (n < 0) slideIndex = slides.length - 1;
-
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-
-      slides[slideIndex].classList.add('active');
-      dots[slideIndex].classList.add('active');
-    }
-
-    function changeSlide(n) {
-      stopAutoplay();
-      slideIndex += n;
-      showSlide(slideIndex);
-      startAutoplay();
-    }
-
-    function currentSlide(n) {
-      stopAutoplay();
-      slideIndex = n;
-      showSlide(slideIndex);
-      startAutoplay();
-    }
-
-    function startAutoplay() {
-      slideTimer = setInterval(() => {
-        slideIndex++;
-        showSlide(slideIndex);
-      }, 3500);
-    }
-
-    function stopAutoplay() {
-      clearInterval(slideTimer);
-    }
-
-    initSlideshow();
+    loadGalleryImages();
 
     // 3. Open Invitation & Trigger Background Music
     function openWeddingSite() {
@@ -1309,16 +1121,14 @@
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
       const coverPetals = document.getElementById('cover-petals');
-      const coverStars = document.getElementById('cover-stars');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Clean up cover FX
+      // Stop cover petals to save resources
       setTimeout(() => {
         if (coverPetals) coverPetals.innerHTML = '';
-        if (coverStars) coverStars.innerHTML = '';
       }, 1000);
 
       // Start background music
