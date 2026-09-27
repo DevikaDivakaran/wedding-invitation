@@ -565,7 +565,7 @@
       display: flex;
       gap: 20px;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
       padding: 20px 10px 40px 10px;
       scrollbar-width: thin;
       scrollbar-color: var(--gold) var(--bg-blush);
@@ -994,25 +994,29 @@
       const container = document.querySelector('.gallery-container');
       if (!container) return;
       let paused = false;
-
+ 
       container.addEventListener('mouseenter', () => paused = true);
       container.addEventListener('mouseleave', () => paused = false);
       container.addEventListener('touchstart', () => paused = true, { passive: true });
       container.addEventListener('touchend', () => setTimeout(() => paused = false, 2500));
-
-      setInterval(() => {
-        if (paused) return;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        if (maxScroll <= 0) return;
-        if (container.scrollLeft >= maxScroll - 2) {
-          container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          container.scrollLeft += 1;
+ 
+      function step() {
+        if (!paused) {
+          const maxScroll = container.scrollWidth - container.clientWidth;
+          if (maxScroll > 0) {
+            if (container.scrollLeft >= maxScroll - 1) {
+              container.scrollLeft = 0;
+            } else {
+              container.scrollLeft += 0.6;
+            }
+          }
         }
-      }, 20);
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
-
-    autoScrollGallery();
+ 
+    window.addEventListener('load', () => setTimeout(autoScrollGallery, 300));
 
     // 4. Open Invitation & Trigger Background Music
     function openWeddingSite() {
