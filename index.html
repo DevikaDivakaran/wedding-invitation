@@ -408,7 +408,7 @@
       line-height: 1.6;
     }
 
-    /* ================= SECTION 2: OUR MOMENTS (23 HORIZONTAL SCROLLABLE IMAGES) ================= */
+    /* ================= SECTION 2: OUR MOMENTS (AUTOMATIC SLIDESHOW) ================= */
     .section-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -440,61 +440,36 @@
       margin: 0 auto 35px;
     }
 
-    .gallery-container {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 20px 10px 40px 10px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold) var(--bg-blush);
-    }
-
-    .gallery-container::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .gallery-container::-webkit-scrollbar-track {
-      background: rgba(251, 240, 236, 0.6);
-      border-radius: 10px;
-    }
-
-    .gallery-container::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 10px;
-    }
-
-    .gallery-polaroid {
-      background: #ffffff;
-      padding: 12px 12px 35px 12px;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(104, 24, 38, 0.12);
-      min-width: 230px;
-      max-width: 230px;
-      scroll-snap-align: center;
+    .slideshow-wrapper {
+      max-width: 340px;
+      margin: 0 auto;
       position: relative;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
     }
 
-    .gallery-polaroid:hover {
-      transform: translateY(-8px);
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      background: #ffffff;
+      padding: 14px 14px 45px 14px;
+      border-radius: 6px;
+      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.15);
     }
 
-    .gallery-tape {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 65px;
-      height: 22px;
-      background: rgba(246, 237, 222, 0.88);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-      border-radius: 2px;
-      z-index: 2;
+    .slide {
+      display: none;
+      animation: fadeSlide 0.8s ease-in-out;
     }
 
-    .gallery-photo {
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0.4; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .slide-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
       background: #f7e6e3;
@@ -505,18 +480,72 @@
       justify-content: center;
     }
 
-    .gallery-photo img {
+    .slide-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .gallery-caption {
+    .slide-caption {
       font-family: 'Alex Brush', cursive;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--maroon);
-      margin-top: 10px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--gold-border);
+      color: var(--maroon);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 20;
+    }
+
+    .slide-btn:hover {
+      background: var(--maroon);
+      color: #fff;
+    }
+
+    .prev-btn { left: -22px; }
+    .next-btn { right: -22px; }
+
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(181, 141, 74, 0.3);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--maroon);
+      transform: scale(1.25);
     }
 
     /* ================= SECTION 3: OUR STORY ================= */
@@ -621,7 +650,7 @@
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* ================= SECTION 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= */
+    /* ================= SECTION 4: WEDDING SCHEDULE ================= */
     .timeline {
       position: relative;
       max-width: 680px;
@@ -712,7 +741,6 @@
       margin-bottom: 10px;
     }
 
-    /* Circular Map Button on each Event Card */
     .event-map-btn {
       display: inline-flex;
       align-items: center;
@@ -938,14 +966,23 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 2: OUR MOMENTS (23 HORIZONTAL SCROLLABLE IMAGES) ================= -->
+    <!-- ================= PAGE 2: OUR MOMENTS (AUTOMATIC SLIDESHOW) ================= -->
     <section class="section-wrap">
       <h2 class="section-title">Our Moments</h2>
       <div class="section-heart">♥</div>
-      <p class="section-subtitle">A glimpse into our journey of love and laughter. Swipe or scroll horizontally to explore.</p>
+      <p class="section-subtitle">A glimpse into our journey of love and laughter.</p>
 
-      <div class="gallery-container">
-        <!-- JavaScript will automatically generate all 23 polaroids from 1.jpg to 23.jpg -->
+      <div class="slideshow-wrapper">
+        <div class="slideshow-container" id="slideshowContainer">
+          <!-- Slides will be injected dynamically by JavaScript (1.jpg to 23.jpg) -->
+        </div>
+
+        <!-- Navigation Controls -->
+        <button class="slide-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slide-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- Slide Indicators / Dots -->
+        <div class="slide-dots" id="slideDots"></div>
       </div>
     </section>
 
@@ -983,7 +1020,7 @@
       </div>
     </section>
 
-    <!-- ================= PAGE 4: WEDDING SCHEDULE (WITH MAP BUTTONS) ================= -->
+    <!-- ================= PAGE 4: WEDDING SCHEDULE ================= -->
     <section class="section-wrap" style="padding-top: 20px;">
       <h2 class="section-title">Wedding Schedule</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
@@ -1082,27 +1119,84 @@
     }
     createCoverPetals();
 
-    // 2. Populate 23 Gallery Images Dynamically into "Our Moments"
-    function loadGalleryImages() {
-      const galleryContainer = document.querySelector('.gallery-container');
-      if (!galleryContainer) return;
+    // 2. Initialize Slideshow for 23 Images (1.jpg to 23.jpg)
+    let slideIndex = 0;
+    let slideTimer = null;
+
+    function initSlideshow() {
+      const container = document.getElementById('slideshowContainer');
+      const dotsContainer = document.getElementById('slideDots');
+      if (!container || !dotsContainer) return;
+
+      container.innerHTML = '';
+      dotsContainer.innerHTML = '';
 
       for (let i = 1; i <= 23; i++) {
-        const filename = `${i}.jpg`; 
+        // Pointing to your folder name: images_for_ourmemory
+        const filename = `images_for_ourmemory/${i}.jpg`; 
 
-        const polaroid = document.createElement('div');
-        polaroid.className = 'gallery-polaroid';
-        polaroid.innerHTML = `
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'slide';
+        slideDiv.innerHTML = `
           <div class="gallery-tape"></div>
-          <div class="gallery-photo">
-            <img src="${filename}" alt="Moment ${i}" loading="lazy" onerror="this.src='${i}.jpeg'; onerror=this.src='${i}.JPG';" />
+          <div class="slide-photo">
+            <img src="${filename}" alt="Memory #${i}" loading="lazy" onerror="this.src='images_for_ourmemory/${i}.jpeg'; onerror=this.src='images_for_ourmemory/${i}.JPG';" />
           </div>
-          <div class="gallery-caption">Memory #${i}</div>
+          <div class="slide-caption">Memory #${i}</div>
         `;
-        galleryContainer.appendChild(polaroid);
+        container.appendChild(slideDiv);
+
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.addEventListener('click', () => currentSlide(i - 1));
+        dotsContainer.appendChild(dot);
       }
+
+      showSlide(slideIndex);
+      startAutoplay();
     }
-    loadGalleryImages();
+
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      if (!slides.length) return;
+
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+    }
+
+    function changeSlide(n) {
+      stopAutoplay();
+      slideIndex += n;
+      showSlide(slideIndex);
+      startAutoplay();
+    }
+
+    function currentSlide(n) {
+      stopAutoplay();
+      slideIndex = n;
+      showSlide(slideIndex);
+      startAutoplay();
+    }
+
+    function startAutoplay() {
+      slideTimer = setInterval(() => {
+        slideIndex++;
+        showSlide(slideIndex);
+      }, 3500);
+    }
+
+    function stopAutoplay() {
+      clearInterval(slideTimer);
+    }
+
+    initSlideshow();
 
     // 3. Open Invitation & Trigger Background Music
     function openWeddingSite() {
@@ -1116,7 +1210,7 @@
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Stop cover petals to save resources
+      // Stop cover petals once opened
       setTimeout(() => {
         if (coverPetals) coverPetals.innerHTML = '';
       }, 1000);
