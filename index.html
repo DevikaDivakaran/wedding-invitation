@@ -66,8 +66,8 @@
       pointer-events: none;
     }
 
-    /* Falling Petals */
-    #cover-petals {
+    /* Falling Snow */
+    #cover-snow {
       position: absolute;
       inset: 0;
       pointer-events: none;
@@ -75,43 +75,21 @@
       z-index: 1;
     }
 
-    .petal {
+    .snowflake {
       position: absolute;
-      top: -40px;
-      width: 15px;
-      height: 22px;
-      background: radial-gradient(circle, #fcd5dc 30%, #df788a 100%);
-      border-radius: 50% 0 50% 50%;
-      opacity: 0.85;
-      pointer-events: none;
-      animation: fallPetal linear infinite;
-    }
-
-    @keyframes fallPetal {
-      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.9; }
-      50% { transform: translateY(50vh) rotate(180deg) translateX(35px); }
-      100% { transform: translateY(105vh) rotate(360deg) translateX(-25px); opacity: 0.15; }
-    }
-
-    /* Glittering Stars Effect */
-    #cover-stars {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .star {
-      position: absolute;
+      top: -20px;
       background: #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.8);
-      animation: twinkle ease-in-out infinite alternate;
+      opacity: 0.85;
+      box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+      animation: fallSnow linear infinite;
     }
 
-    @keyframes twinkle {
-      0% { transform: scale(0.5); opacity: 0.2; }
-      100% { transform: scale(1.3); opacity: 1; }
+    @keyframes fallSnow {
+      0% { transform: translateY(0) translateX(0); opacity: 0.9; }
+      50% { transform: translateY(50vh) translateX(20px); }
+      100% { transform: translateY(105vh) translateX(-15px); opacity: 0.3; }
     }
 
     /* Top block: names stacked in 3 lines */
@@ -696,10 +674,8 @@
 
   <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Star Glitters -->
-    <div id="cover-stars"></div>
-    <!-- Falling Petals -->
-    <div id="cover-petals"></div>
+    <!-- Falling Snow -->
+    <div id="cover-snow"></div>
 
     <div class="cover-top">
       <div class="cover-names">
@@ -736,7 +712,10 @@
       <div class="calendar-card">
         <div class="calendar-topline">
           <span class="calendar-line"></span>
-          <span class="calendar-topdate">12.12.2026</span>
+          <div class="calendar-title-wrap">
+            <h1 class="calendar-save-date">Mark Your Calendar</h1>
+            <span class="calendar-topdate">12.12.2026</span>
+          </div>
           <span class="calendar-line"></span>
         </div>
 
@@ -770,7 +749,10 @@
             <span class="day-num">12</span>
           </div>
 
-          <div class="calendar-day">13</div>
+          <div class="calendar-day highlighted">
+            <span class="heart-shape"></span>
+            <span class="day-num">13</span>
+          </div>
           <div class="calendar-day">14</div>
           <div class="calendar-day">15</div>
           <div class="calendar-day">16</div>
@@ -915,50 +897,30 @@
   </div>
 
   <script>
-    // 1. Generate Glittering Stars on Cover
-    function createCoverStars() {
-      const container = document.getElementById('cover-stars');
+    // 1. Generate Falling Snow on Cover
+    function createSnowfall() {
+      const container = document.getElementById('cover-snow');
       if (!container) return;
-      const starCount = 65; // Adjust amount of glitter
+      const flakeCount = 60;
 
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        
-        const size = Math.random() * 2.5 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        
-        star.style.animationDuration = (Math.random() * 1.5 + 0.8) + 's';
-        star.style.animationDelay = (Math.random() * 2) + 's';
-        
-        container.appendChild(star);
-      }
-    }
-    
-    // 2. Generate Falling Rose Petals on Cover
-    function createCoverPetals() {
-      const container = document.getElementById('cover-petals');
-      if (!container) return;
-      const petalCount = 28;
+      for (let i = 0; i < flakeCount; i++) {
+        const flake = document.createElement('div');
+        flake.classList.add('snowflake');
+        flake.style.left = Math.random() * 100 + 'vw';
 
-      for (let i = 0; i < petalCount; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        petal.style.animationDelay = (Math.random() * 5) + 's';
-        petal.style.width = (Math.random() * 8 + 12) + 'px';
-        petal.style.height = (Math.random() * 10 + 16) + 'px';
-        petal.style.opacity = Math.random() * 0.6 + 0.4;
-        container.appendChild(petal);
+        const size = Math.random() * 4 + 3;
+        flake.style.width = size + 'px';
+        flake.style.height = size + 'px';
+
+        flake.style.animationDuration = (Math.random() * 6 + 6) + 's';
+        flake.style.animationDelay = (Math.random() * 8) + 's';
+        flake.style.opacity = Math.random() * 0.5 + 0.4;
+
+        container.appendChild(flake);
       }
     }
 
-    createCoverStars();
-    createCoverPetals();
+    createSnowfall();
 
     // 3. Populate 35 Gallery Images Dynamically into "Our Moments"
     function loadGalleryImages() {
@@ -994,12 +956,12 @@
       const container = document.querySelector('.gallery-container');
       if (!container) return;
       let paused = false;
- 
+
       container.addEventListener('mouseenter', () => paused = true);
       container.addEventListener('mouseleave', () => paused = false);
       container.addEventListener('touchstart', () => paused = true, { passive: true });
       container.addEventListener('touchend', () => setTimeout(() => paused = false, 2500));
- 
+
       function step() {
         if (!paused) {
           const maxScroll = container.scrollWidth - container.clientWidth;
@@ -1015,7 +977,7 @@
       }
       requestAnimationFrame(step);
     }
- 
+
     window.addEventListener('load', () => setTimeout(autoScrollGallery, 300));
 
     // 4. Open Invitation & Trigger Background Music
@@ -1025,8 +987,7 @@
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
       
-      const coverPetals = document.getElementById('cover-petals');
-      const coverStars = document.getElementById('cover-stars');
+      const coverSnow = document.getElementById('cover-snow');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
@@ -1034,8 +995,7 @@
 
       // Stop cover animations to save browser resources
       setTimeout(() => {
-        if (coverPetals) coverPetals.innerHTML = '';
-        if (coverStars) coverStars.innerHTML = '';
+        if (coverSnow) coverSnow.innerHTML = '';
       }, 1000);
 
       // Start background music
