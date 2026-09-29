@@ -747,6 +747,7 @@
     <section class="date-calendar-wrap">
       <div class="calendar-card">
         <div class="calendar-topline">
+        <h1 class="calendar-month">MARK YOUR CALENDAR</h1>
           <span class="calendar-line"></span>
           <span class="calendar-topdate">12.12.2026</span>
           <span class="calendar-line"></span>
@@ -832,23 +833,6 @@
       </div>
     </section>
 
-    <!-- ================= 3. OUR STORY VIDEO ================= -->
-    <section class="section-wrap">
-      <h2 class="section-title">Our Story</h2>
-      <p style="font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: var(--gold); margin-bottom: 40px;">
-        A glimpse into our journey...
-      </p>
-
-      <div class="story-video-wrapper">
-        <div class="story-video-container">
-          <video controls playsinline preload="metadata">
-            <source src="igexport-DNK5Xyuoo7A.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
       <h2 class="section-title">When and Where</h2>
@@ -888,22 +872,38 @@
 
     <!-- ================= 5. OUR MOMENTS (GALLERY) ================= -->
     <section class="section-wrap">
-      <h2 class="section-title">Memories We Made</h2>
+      <h2 class="section-title">Moments Along the Way</h2>
       <div class="section-heart">♥</div>
-      <p class="section-subtitle">A little glimpse into the moments that brought us here.</p>
+      <p class="section-subtitle">From then to now, a few moments we'll always hold close..</p>
 
       <div class="drift" id="drift"></div>
+    </section>
+<!-- ================= 3. OUR STORY VIDEO ================= -->
+    <section class="section-wrap">
+      <h2 class="section-title">Our Highlight</h2>
+      <p style="font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: var(--gold); margin-bottom: 40px;">
+       Save the Date
+      </p>
+
+      <div class="story-video-wrapper">
+        <div class="story-video-container">
+          <video controls playsinline preload="metadata">
+            <source src="igexport-DNK5Xyuoo7A.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </section>
 
     <!-- ================= 6. ROYAL ARCH COUNTDOWN ================= -->
     <section class="countdown-section-wrap">
       <div style="font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: var(--maroon); margin-bottom: -15px;">
-        Forever
+        UNTIL OUR BIG DAY
       </div>
 
       <div class="countdown-arch-frame">
         <div class="arch-flourish">❦ ❧</div>
-        <div class="countdown-label">COUNT DOWN</div>
+        <div class="countdown-label">Counting Down to Our Forever...</div>
         
         <div class="countdown-flex">
           <div class="count-unit">
@@ -938,7 +938,7 @@
       const container = document.getElementById('cover-snow');
       if (!container) return;
       container.innerHTML = '';
-      const flakeCount = 20;
+      const flakeCount = 60;
 
       // Your uploaded snowflake image files
       const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
