@@ -35,7 +35,7 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      background: var(--bg-cream); /* Main body background color */
+      background: var(--bg-cream);
     }
 
     a { color: inherit; }
@@ -159,13 +159,24 @@
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* ================= MAIN SITE CONTAINER ================= */
+    /* ================= MAIN SITE CONTAINER & PARALLAX BACKGROUND ================= */
     #main-site {
       display: none;
       opacity: 0;
       transition: opacity 0.8s ease-in;
       position: relative;
       background: transparent;
+    }
+
+    /* Phone-safe Parallax Background Layer across all pages */
+    #main-site::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(245, 240, 235, 0.88), rgba(245, 240, 235, 0.88)),
+                  url('images_for_ourmemory/34.jpg') center/cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
     }
 
     #main-site.visible {
@@ -180,7 +191,7 @@
       align-items: center;
       justify-content: center;
       padding: 40px 15px;
-      background: transparent; /* Transparent background */
+      background: transparent;
     }
 
     .invite-fade {
@@ -216,7 +227,7 @@
       align-items: center;
       justify-content: center;
       padding: 60px 20px;
-      background: transparent; /* Transparent background */
+      background: transparent;
     }
 
     .calendar-card {
@@ -351,7 +362,7 @@
       text-align: center;
       position: relative;
       z-index: 10;
-      background: transparent; /* Transparent background */
+      background: transparent;
     }
 
     .section-title {
@@ -645,7 +656,7 @@
       text-align: center;
       position: relative;
       z-index: 10;
-      background: transparent; /* Transparent background */
+      background: transparent;
       border-radius: 0;
     }
 
