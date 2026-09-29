@@ -30,17 +30,19 @@
       padding: 0;
     }
 
-    /* Main body background (No Parallax) */
+    /* Main body background with global Parallax image */
     body {
       font-family: 'Montserrat', sans-serif;
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
+      background: linear-gradient(rgba(251, 246, 240, 0.88), rgba(251, 246, 240, 0.88)),
+                  url('images_for_ourmemory/34.jpg') center/cover fixed no-repeat;
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (PETALS + STARS) ================= */
+    /* ================= 1. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -65,7 +67,7 @@
       pointer-events: none;
     }
 
-    /* Falling Snow */
+    /* Realistic Falling Snowflakes */
     #cover-snow {
       position: absolute;
       inset: 0;
@@ -85,21 +87,13 @@
     }
 
     @keyframes fallSnow {
-      0% {
-        transform: translateY(-30px);
-      }
-      100% {
-        transform: translateY(105vh);
-      }
+      0% { transform: translateY(-30px); }
+      100% { transform: translateY(105vh); }
     }
 
     @keyframes swaySnow {
-      0%, 100% {
-        margin-left: 0px;
-      }
-      50% {
-        margin-left: 35px;
-      }
+      0%, 100% { margin-left: 0px; }
+      50% { margin-left: 35px; }
     }
 
     /* Top block: names stacked in 3 lines */
@@ -188,7 +182,7 @@
       align-items: center;
       justify-content: center;
       padding: 40px 15px;
-      background: var(--bg-cream);
+      background: transparent;
     }
 
     .photo-pile-container {
@@ -248,14 +242,19 @@
       align-items: center;
       justify-content: center;
       padding: 60px 20px;
-      background: linear-gradient(rgba(251, 246, 240, 0.55), rgba(251, 246, 240, 0.55)),
-                  url('calendar-bg.jpg') center/cover no-repeat;
+      background: transparent;
     }
 
     .calendar-card {
       max-width: 480px;
       width: 100%;
       text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid var(--gold-border);
+      box-shadow: 0 10px 30px rgba(104, 24, 38, 0.1);
     }
 
     .calendar-topline {
@@ -660,7 +659,7 @@
       .drift-row { animation: none; }
     }
 
-    /* ================= PAGE 6: COUNTDOWN ================= */
+    /* ================= PAGE 6: COUNTDOWN (TRANSPARENT/CLEAN) ================= */
     .countdown-section-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -668,9 +667,8 @@
       text-align: center;
       position: relative;
       z-index: 10;
-      background: linear-gradient(rgba(185, 179, 213, 0.85), rgba(185, 179, 213, 0.85)),
-                  url('countdown.jpg') center/cover no-repeat;
-      border-radius: 30px;
+      background: transparent;
+      border-radius: 0;
     }
 
     .countdown-arch-frame {
@@ -734,9 +732,8 @@
 <body>
 
   <!-- ================= 0. OPENING COVER ================= -->
- <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Falling Snow -->
+    <!-- Realistic Falling Snowflakes -->
     <div id="cover-snow"></div>
 
     <div class="cover-top">
@@ -818,10 +815,7 @@
             <span class="day-num">12</span>
           </div>
 
-          <div class="calendar-day highlighted">
-            <span class="heart-shape"></span>
-            <span class="day-num">13</span>
-          </div>
+          <div class="calendar-day">13</div>
           <div class="calendar-day">14</div>
           <div class="calendar-day">15</div>
           <div class="calendar-day">16</div>
@@ -879,38 +873,39 @@
       </div>
     </section>
 
+    
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
-      <h2 class="section-title">Wedding Schedule</h2>
+      <h2 class="section-title">When and Where</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
       </p>
 
       <div class="timeline">
+        <div class="timeline-node left">
+          <div class="schedule-card">
+            <div class="schedule-time">06:00 AM</div>
+            <div class="schedule-name">Thaali Kettu </div>
+            <div class="schedule-loc">Guruvayur Sree Krishna Temple</div>
+            <a href="https://maps.app.goo.gl/Uz95zYJzsNcd3xWcA" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+          </div>
+        </div>
+
         <div class="timeline-node right">
           <div class="schedule-card">
-            <div class="schedule-time">09:30 AM – 10:30 AM</div>
-            <div class="schedule-name">Thali Kettu (Muhurtham)</div>
-            <div class="schedule-loc">Sree Shankara Auditorium, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">12:00 PM</div>
+            <div class="schedule-name">Wedding Ceremonies</div>
+            <div class="schedule-loc">Sree Sankara Auditorium, West Kadungalloor, Aluva</div>
+            <a href="https://maps.app.goo.gl/QewD76reTaFUdKv69" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
 
         <div class="timeline-node left">
           <div class="schedule-card">
-            <div class="schedule-time">11:00 AM – 02:00 PM</div>
-            <div class="schedule-name">Mandapam Chadangu &amp; Sadhya</div>
-            <div class="schedule-loc">Auditorium Banquet Hall, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
-          </div>
-        </div>
-
-        <div class="timeline-node right">
-          <div class="schedule-card">
-            <div class="schedule-time">06:30 PM Onwards</div>
-            <div class="schedule-name">Grand Reception</div>
-            <div class="schedule-loc">Main Ballroom, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">06:00 PM Onwards</div>
+            <div class="schedule-name">Reception</div>
+            <div class="schedule-loc">Uliyakovil, Kollam</div>
+            <a href="https://maps.app.goo.gl/XBrdU5iqgJtmPzQn8" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
       </div>
@@ -975,22 +970,17 @@
         const flake = document.createElement('div');
         flake.classList.add('snowflake');
         
-        // Random horizontal starting position
         flake.style.left = Math.random() * 100 + 'vw';
 
-        // Varied snowflake sizes (4px to 10px for crystal effect)
         const size = Math.random() * 6 + 4;
         flake.style.width = size + 'px';
         flake.style.height = size + 'px';
 
-        // Varied fall speeds and swaying speeds
-        const fallDuration = Math.random() * 5 + 6; // 6s to 11s
-        const swayDuration = Math.random() * 3 + 2; // 2s to 5s
+        const fallDuration = Math.random() * 5 + 6;
+        const swayDuration = Math.random() * 3 + 2;
         
         flake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
         flake.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 2}s`;
-        
-        // Soft opacity variation
         flake.style.opacity = Math.random() * 0.4 + 0.6;
 
         container.appendChild(flake);
@@ -1039,8 +1029,8 @@
         for (let i = from; i <= to; i++) html += item(i);
         const row = document.createElement('div');
         row.className = 'drift-row ' + direction;
-        row.style.animationDuration = ((to - from + 1) * 4) + 's'; // same speed for both rows
-        row.innerHTML = html + html; // duplicated so the loop is seamless
+        row.style.animationDuration = ((to - from + 1) * 4) + 's';
+        row.innerHTML = html + html;
         drift.appendChild(row);
       };
 
@@ -1056,25 +1046,22 @@
       const mainSite = document.getElementById('main-site');
       const music = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicToggle');
-      
       const coverSnow = document.getElementById('cover-snow');
 
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Stop cover animations to save browser resources
       setTimeout(() => {
         if (coverSnow) coverSnow.innerHTML = '';
       }, 1000);
 
-      // Start background music
       if (music) {
         music.volume = 0.5;
         music.play().then(() => {
           musicBtn.style.display = 'flex';
         }).catch(err => {
-          musicBtn.style.display = 'flex'; // Show button even if auto-play fails
+          musicBtn.style.display = 'flex';
         });
       }
     }
