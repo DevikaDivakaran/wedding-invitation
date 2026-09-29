@@ -42,7 +42,7 @@
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
+    /* ================= 1. COVER OVERLAY (PETALS + GLOWING BOKEH PARTICLES) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -67,7 +67,7 @@
       pointer-events: none;
     }
 
-    /* Realistic Falling Snowflakes */
+    /* Glowing Bokeh Particle Animation */
     #cover-snow {
       position: absolute;
       inset: 0;
@@ -79,11 +79,12 @@
     .snowflake {
       position: absolute;
       top: -30px;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.2) 100%);
+      background: #ffffff;
       border-radius: 50%;
       pointer-events: none;
       animation: fallSnow linear infinite, swaySnow ease-in-out infinite;
-      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.8), 0 0 24px 8px rgba(255, 255, 255, 0.4);
+      opacity: 0.85;
     }
 
     @keyframes fallSnow {
@@ -733,7 +734,7 @@
 
   <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Realistic Falling Snowflakes -->
+    <!-- Glowing Bokeh Particles -->
     <div id="cover-snow"></div>
 
     <div class="cover-top">
@@ -873,39 +874,38 @@
       </div>
     </section>
 
-    
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
-      <h2 class="section-title">When and Where</h2>
+      <h2 class="section-title">Wedding Schedule</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
       </p>
 
       <div class="timeline">
+        <div class="timeline-node right">
+          <div class="schedule-card">
+            <div class="schedule-time">09:30 AM – 10:30 AM</div>
+            <div class="schedule-name">Thali Kettu (Muhurtham)</div>
+            <div class="schedule-loc">Sree Shankara Auditorium, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+          </div>
+        </div>
+
         <div class="timeline-node left">
           <div class="schedule-card">
-            <div class="schedule-time">06:00 AM</div>
-            <div class="schedule-name">Thaali Kettu </div>
-            <div class="schedule-loc">Guruvayur Sree Krishna Temple</div>
-            <a href="https://maps.app.goo.gl/Uz95zYJzsNcd3xWcA" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">11:00 AM – 02:00 PM</div>
+            <div class="schedule-name">Mandapam Chadangu &amp; Sadhya</div>
+            <div class="schedule-loc">Auditorium Banquet Hall, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
 
         <div class="timeline-node right">
           <div class="schedule-card">
-            <div class="schedule-time">12:00 PM</div>
-            <div class="schedule-name">Wedding Ceremonies</div>
-            <div class="schedule-loc">Sree Sankara Auditorium, West Kadungalloor, Aluva</div>
-            <a href="https://maps.app.goo.gl/QewD76reTaFUdKv69" target="_blank" class="event-map-btn">📍 Open in Maps</a>
-          </div>
-        </div>
-
-        <div class="timeline-node left">
-          <div class="schedule-card">
-            <div class="schedule-time">06:00 PM Onwards</div>
-            <div class="schedule-name">Reception</div>
-            <div class="schedule-loc">Uliyakovil, Kollam</div>
-            <a href="https://maps.app.goo.gl/XBrdU5iqgJtmPzQn8" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">06:30 PM Onwards</div>
+            <div class="schedule-name">Grand Reception</div>
+            <div class="schedule-loc">Main Ballroom, Aluva</div>
+            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
       </div>
@@ -960,11 +960,11 @@
   </div>
 
   <script>
-    // 1. Generate Realistic Snowflakes on Cover
+    // 1. Generate Glowing Bokeh Particles on Cover
     function createSnowfall() {
       const container = document.getElementById('cover-snow');
       if (!container) return;
-      const flakeCount = 50;
+      const flakeCount = 40;
 
       for (let i = 0; i < flakeCount; i++) {
         const flake = document.createElement('div');
@@ -972,15 +972,16 @@
         
         flake.style.left = Math.random() * 100 + 'vw';
 
-        const size = Math.random() * 6 + 4;
+        // Varied sizes for bokeh depth
+        const size = Math.random() * 8 + 6;
         flake.style.width = size + 'px';
         flake.style.height = size + 'px';
 
-        const fallDuration = Math.random() * 5 + 6;
-        const swayDuration = Math.random() * 3 + 2;
+        const fallDuration = Math.random() * 6 + 7;
+        const swayDuration = Math.random() * 3 + 3;
         
         flake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
-        flake.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 2}s`;
+        flake.style.animationDelay = `${Math.random() * 6}s, ${Math.random() * 3}s`;
         flake.style.opacity = Math.random() * 0.4 + 0.6;
 
         container.appendChild(flake);
