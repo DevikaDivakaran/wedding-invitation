@@ -35,11 +35,12 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
+      background: var(--bg-cream); /* Main body background color */
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
+    /* ================= 0. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -164,6 +165,7 @@
       opacity: 0;
       transition: opacity 0.8s ease-in;
       position: relative;
+      background: transparent;
     }
 
     #main-site.visible {
@@ -171,14 +173,14 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: ROYAL INVITATION (ONE-TIME FADE) ================= */
+    /* ================= PAGE 1: ROYAL INVITATION ================= */
     .invite-fade-wrap {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 15px;
-      background: var(--bg-cream);
+      background: transparent; /* Transparent background */
     }
 
     .invite-fade {
@@ -214,7 +216,7 @@
       align-items: center;
       justify-content: center;
       padding: 60px 20px;
-      background: transparent;
+      background: transparent; /* Transparent background */
     }
 
     .calendar-card {
@@ -349,6 +351,7 @@
       text-align: center;
       position: relative;
       z-index: 10;
+      background: transparent; /* Transparent background */
     }
 
     .section-title {
@@ -432,7 +435,7 @@
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* ================= PAGE 3: VIDEO SECTIOn ================= */
+    /* ================= PAGE 3: VIDEO SECTION ================= */
     .story-video-wrapper {
       max-width: 320px;
       margin: 0 auto;
@@ -585,7 +588,10 @@
     @keyframes driftLeft  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
     @keyframes driftRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-    .drift:hover .drift-row { animation-play-state: paused; }
+    /* Disabled hover pause on mobile touch to fix freezing issue */
+    @media (hover: hover) and (pointer: fine) {
+      .drift:hover .drift-row { animation-play-state: paused; }
+    }
 
     .gallery-polaroid {
       background: #ffffff;
@@ -631,7 +637,7 @@
       .drift-row { animation: none; }
     }
 
-    /* ================= PAGE 6: COUNTDOWN (TRANSPARENT/CLEAN) ================= */
+    /* ================= PAGE 6: COUNTDOWN ================= */
     .countdown-section-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -639,7 +645,7 @@
       text-align: center;
       position: relative;
       z-index: 10;
-      background: transparent;
+      background: transparent; /* Transparent background */
       border-radius: 0;
     }
 
@@ -697,7 +703,7 @@
 
     .music-toggle-btn:hover { transform: scale(1.1); background: var(--bg-blush); }
 
-    .footer { text-align: center; padding: 70px 20px 50px; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 2px; position: relative; z-index: 10; }
+    .footer { text-align: center; padding: 70px 20px 50px; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 2px; position: relative; z-index: 10; background: transparent; }
 
   </style>
 </head>
@@ -733,8 +739,7 @@
   <!-- ================= MAIN WEBSITE CONTENT ================= -->
   <div id="main-site">
 
-    <!-- ================= 1. ROYAL INVITATION (STACKED PHOTO PILE) ================= -->
-    <!-- ================= 1. ROYAL INVITATION (ONE-TIME FADE) ================= -->
+    <!-- ================= 1. ROYAL INVITATION ================= -->
     <section class="invite-fade-wrap" id="invite-screen">
       <div class="invite-fade" id="invite-fade">
         <img src="inviteimageopenings.gif" alt="Devika & Aravind wedding invitation animation" class="on" id="invite-fade-gif">
@@ -848,7 +853,6 @@
       </div>
     </section>
 
-    
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
       <h2 class="section-title">When and Where</h2>
@@ -893,7 +897,7 @@
       <p class="section-subtitle">A little glimpse into the moments that brought us here.</p>
 
       <div class="drift" id="drift">
-        <!-- JavaScript builds two rows: photos 1-18 (left to right), 19-35 (right to left) -->
+        <!-- JavaScript builds two rows -->
       </div>
     </section>
 
@@ -973,12 +977,12 @@
       setTimeout(() => {
         jpg.classList.add('on');
         gif.classList.remove('on');
-      }, 3500); // adjust this delay to roughly match the gif's length
+      }, 3500); 
     }
 
     initInviteFade();
 
-    // 3. Build the two drifting gallery rows (photos 1-18 left to right, 19-35 right to left)
+    // 3. Build the two drifting gallery rows
     function loadGalleryImages() {
       const drift = document.getElementById('drift');
       if (!drift) return;
