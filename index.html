@@ -538,43 +538,49 @@
       .timeline-node.left .schedule-card { text-align: left; }
     }
 
-    /* ================= PAGE 5: OUR MOMENTS (GALLERY) ================= */
-    .gallery-container {
+    /* ================= PAGE 5: OUR MOMENTS (TWO-ROW DRIFT) ================= */
+    .drift {
       display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x proximity;
-      padding: 20px 10px 40px 10px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold) var(--bg-blush);
+      flex-direction: column;
+      gap: 24px;
+      overflow: hidden;
+      margin: 0 -20px;
+      padding: 20px 0 30px;
     }
 
-    .gallery-container::-webkit-scrollbar { height: 8px; }
-    .gallery-container::-webkit-scrollbar-track { background: rgba(251, 240, 246, 0.6); border-radius: 10px; }
-    .gallery-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    .drift-row {
+      display: flex;
+      width: max-content;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .drift-row.ltr { animation-name: driftRight; }  /* first half: left to right */
+    .drift-row.rtl { animation-name: driftLeft; }   /* second half: right to left */
+
+    @keyframes driftLeft  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+    @keyframes driftRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    .drift:hover .drift-row { animation-play-state: paused; }
 
     .gallery-polaroid {
       background: #ffffff;
-      padding: 12px 12px 35px 12px;
+      padding: 10px 10px 30px 10px;
       border-radius: 6px;
       box-shadow: 0 10px 25px rgba(104, 24, 38, 0.12);
-      min-width: 350px;
-      max-width: 350px;
-      scroll-snap-align: center;
+      width: 170px;
+      flex: none;
+      margin-right: 18px;
       position: relative;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
     }
-
-    .gallery-polaroid:hover { transform: translateY(-8px); }
 
     .gallery-tape {
       position: absolute;
       top: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 65px;
-      height: 22px;
+      width: 55px;
+      height: 20px;
       background: rgba(246, 237, 222, 0.88);
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
       border-radius: 2px;
@@ -587,9 +593,6 @@
       background: #f7e6e3;
       border-radius: 2px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .gallery-photo img {
@@ -597,6 +600,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .drift { overflow-x: auto; }
+      .drift-row { animation: none; }
     }
 
     /* ================= PAGE 6: COUNTDOWN ================= */
@@ -712,10 +720,7 @@
       <div class="calendar-card">
         <div class="calendar-topline">
           <span class="calendar-line"></span>
-          <div class="calendar-title-wrap">
-            <h1 class="calendar-save-date">Mark Your Calendar</h1>
-            <span class="calendar-topdate">12.12.2026</span>
-          </div>
+          <span class="calendar-topdate">12.12.2026</span>
           <span class="calendar-line"></span>
         </div>
 
@@ -749,10 +754,7 @@
             <span class="day-num">12</span>
           </div>
 
-          <div class="calendar-day highlighted">
-            <span class="heart-shape"></span>
-            <span class="day-num">13</span>
-          </div>
+          <div class="calendar-day">13</div>
           <div class="calendar-day">14</div>
           <div class="calendar-day">15</div>
           <div class="calendar-day">16</div>
@@ -851,11 +853,10 @@
     <section class="section-wrap">
       <h2 class="section-title">Memories We Made</h2>
       <div class="section-heart">♥</div>
-      <p class="section-subtitle">A little glimpse into the moments that brought us here.
-                                  Swipe or scroll to explore our story..</p>
+      <p class="section-subtitle">A little glimpse into the moments that brought us here.</p>
 
-      <div class="gallery-container">
-        <!-- JavaScript dynamically generates polaroids 1.jpg to 35.jpg -->
+      <div class="drift" id="drift">
+        <!-- JavaScript builds two rows: photos 1-18 (left to right), 19-35 (right to left) -->
       </div>
     </section>
 
@@ -922,63 +923,42 @@
 
     createSnowfall();
 
-    // 3. Populate 35 Gallery Images Dynamically into "Our Moments"
+    // 3. Build the two drifting gallery rows (photos 1-18 left to right, 19-35 right to left)
     function loadGalleryImages() {
-      const galleryContainer = document.querySelector('.gallery-container');
-      if (!galleryContainer) return;
+      const drift = document.getElementById('drift');
+      if (!drift) return;
 
-      for (let i = 1; i <= 35; i++) {
-        const filename = `images_for_ourmemory/${i}.jpg`;
+      const total = 35;
+      const half = Math.ceil(total / 2);
 
-        const polaroid = document.createElement('div');
-        polaroid.className = 'gallery-polaroid';
-
-        polaroid.innerHTML = `
+      const item = (i) => `
+        <div class="gallery-polaroid">
           <div class="gallery-tape"></div>
           <div class="gallery-photo">
-            <img 
-              src="${filename}" 
-              alt="Moment ${i}" 
+            <img
+              src="images_for_ourmemory/${i}.jpg"
+              alt="Moment ${i}"
               loading="lazy"
               onerror="this.onerror=null; this.src='images_for_ourmemory/${i}.jpeg';"
             />
           </div>
-        `;
+        </div>`;
 
-        galleryContainer.appendChild(polaroid);
-      }
+      const buildRow = (from, to, direction) => {
+        let html = '';
+        for (let i = from; i <= to; i++) html += item(i);
+        const row = document.createElement('div');
+        row.className = 'drift-row ' + direction;
+        row.style.animationDuration = ((to - from + 1) * 4) + 's'; // same speed for both rows
+        row.innerHTML = html + html; // duplicated so the loop is seamless
+        drift.appendChild(row);
+      };
+
+      buildRow(1, half, 'ltr');
+      buildRow(half + 1, total, 'rtl');
     }
 
     loadGalleryImages();
-
-    // 3b. Auto-scroll the "Our Moments" gallery
-    function autoScrollGallery() {
-      const container = document.querySelector('.gallery-container');
-      if (!container) return;
-      let paused = false;
-
-      container.addEventListener('mouseenter', () => paused = true);
-      container.addEventListener('mouseleave', () => paused = false);
-      container.addEventListener('touchstart', () => paused = true, { passive: true });
-      container.addEventListener('touchend', () => setTimeout(() => paused = false, 2500));
-
-      function step() {
-        if (!paused) {
-          const maxScroll = container.scrollWidth - container.clientWidth;
-          if (maxScroll > 0) {
-            if (container.scrollLeft >= maxScroll - 1) {
-              container.scrollLeft = 0;
-            } else {
-              container.scrollLeft += 0.6;
-            }
-          }
-        }
-        requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-
-    window.addEventListener('load', () => setTimeout(autoScrollGallery, 300));
 
     // 4. Open Invitation & Trigger Background Music
     function openWeddingSite() {
