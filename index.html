@@ -15,8 +15,8 @@
       --bg-cream: #f5f0eb;       /* Soft warm ecru / oatmeal */
       --bg-blush: #eae1d7;       /* Warm sand / taupe */
       --card-white: #fffdfa;     /* Soft warm white */
-      --maroon: #4e3324;         /* Rich coffee / deep brown (replaces maroon) */
-      --maroon-dark: #332117;    /* Deep espresso brown (replaces dark maroon) */
+      --maroon: #4e3324;         /* Rich coffee / deep brown */
+      --maroon-dark: #332117;    /* Deep espresso brown */
       --gold: #a47248;           /* Warm bronze / amber */
       --gold-light: #c79d73;     /* Soft caramel / ochre */
       --gold-border: rgba(164, 114, 72, 0.35); /* Soft bronze border */
@@ -40,7 +40,7 @@
 
     a { color: inherit; }
 
-    /* ================= 0. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
+    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -51,9 +51,9 @@
       align-items: center;
       justify-content: space-between;
       text-align: center;
-      padding: 12vh 24px;
+      padding: 6vh 24px 40px 24px;
       z-index: 9999;
-      background: linear-gradient(rgba(35, 12, 18, 0.45), rgba(35, 12, 18, 0.6)),
+      background: linear-gradient(rgba(35, 12, 18, 0.35), rgba(35, 12, 18, 0.55)),
                   url('Untitled design.jpg') center/cover no-repeat;
       transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       overflow: hidden;
@@ -65,7 +65,7 @@
       pointer-events: none;
     }
 
-    /* Realistic Falling Snowflakes */
+    /* Falling Snowflake Image Container */
     #cover-snow {
       position: absolute;
       inset: 0;
@@ -74,49 +74,53 @@
       z-index: 1;
     }
 
-    .snowflake {
+    .snowflake-img {
       position: absolute;
-      top: -30px;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.2) 100%);
-      border-radius: 50%;
+      top: -50px;
       pointer-events: none;
-      animation: fallSnow linear infinite, swaySnow ease-in-out infinite;
-      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+      animation: fallSnowflake linear infinite;
     }
 
-    @keyframes fallSnow {
-      0% { transform: translateY(-30px); }
-      100% { transform: translateY(105vh); }
-    }
-
-    @keyframes swaySnow {
-      0%, 100% { margin-left: 0px; }
-      50% { margin-left: 35px; }
+    @keyframes fallSnowflake {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(25px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-25px);
+        opacity: 0.2;
+      }
     }
 
     /* Top block: names stacked in 3 lines */
     .cover-top {
       position: relative;
       z-index: 10;
+      padding-top: 10px;
     }
 
     .cover-names {
       font-family: 'Alex Brush', cursive;
       color: #ffffff;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
-      line-height: 1.15;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      line-height: 0.95;
     }
 
     .cover-names .line {
       display: block;
-      font-size: clamp(3.2rem, 9vw, 5.4rem);
+      font-size: clamp(3.5rem, 9vw, 5.2rem);
     }
 
     .cover-names .amp-line {
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      margin: 4px 0;
+      color: var(--gold-light);
+      margin: 2px 0;
+      display: block;
     }
 
     /* Bottom block: tagline + button */
@@ -126,15 +130,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-bottom: 20px;
     }
 
     .cover-tagline {
       font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       letter-spacing: 3px;
       color: #f7e8d0;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-      margin-bottom: 35px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
     }
 
     .open-btn {
@@ -168,7 +174,6 @@
       background: transparent;
     }
 
-    /* Phone-safe Parallax Background Layer across all pages */
     #main-site::before {
       content: '';
       position: fixed;
@@ -428,24 +433,6 @@
       font-style: italic;
     }
 
-    .wax-seal {
-      position: absolute;
-      bottom: -22px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #a82435, var(--maroon-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffe6eb;
-      font-size: 1.2rem;
-      box-shadow: 0 8px 18px rgba(80, 16, 25, 0.35);
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-
     /* ================= PAGE 3: VIDEO SECTION ================= */
     .story-video-wrapper {
       max-width: 320px;
@@ -593,13 +580,12 @@
       animation-iteration-count: infinite;
     }
 
-    .drift-row.ltr { animation-name: driftRight; }  /* first half: left to right */
-    .drift-row.rtl { animation-name: driftLeft; }   /* second half: right to left */
+    .drift-row.ltr { animation-name: driftRight; }
+    .drift-row.rtl { animation-name: driftLeft; }
 
     @keyframes driftLeft  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
     @keyframes driftRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-    /* Disabled hover pause on mobile touch to fix freezing issue */
     @media (hover: hover) and (pointer: fine) {
       .drift:hover .drift-row { animation-play-state: paused; }
     }
@@ -722,7 +708,6 @@
 
   <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Realistic Falling Snowflakes -->
     <div id="cover-snow"></div>
 
     <div class="cover-top">
@@ -835,11 +820,11 @@
               It began with a glance across a classroom, a brief, ordinary moment that quietly set our destiny in motion. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever.
             </p>
 
-            <p class="letter-body">
+            <p class="letter-body" style="margin-top: 15px;">
               Surrounded by the sacred blessings of our parents, we are ready to tie the knot and make it official while promising a lifetime of dreams built hand in hand.
             </p>
 
-            <p class="letter-body">
+            <p class="letter-body" style="margin-top: 15px;">
               Our journey would never be complete without the people who have loved, supported, and cheered for us along the way. You have each played a special part in our lives, and it is with immense joy that we invite you to celebrate our beginning. Come share in the magic, witness our vows, and bless us as two souls softly become one.
             </p>
           </div>
@@ -875,7 +860,7 @@
         <div class="timeline-node left">
           <div class="schedule-card">
             <div class="schedule-time">06:00 AM</div>
-            <div class="schedule-name">Thaali Kettu </div>
+            <div class="schedule-name">Thaali Kettu</div>
             <div class="schedule-loc">Guruvayur Sree Krishna Temple</div>
             <a href="https://maps.app.goo.gl/Uz95zYJzsNcd3xWcA" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
@@ -907,9 +892,7 @@
       <div class="section-heart">♥</div>
       <p class="section-subtitle">A little glimpse into the moments that brought us here.</p>
 
-      <div class="drift" id="drift">
-        <!-- JavaScript builds two rows -->
-      </div>
+      <div class="drift" id="drift"></div>
     </section>
 
     <!-- ================= 6. ROYAL ARCH COUNTDOWN ================= -->
@@ -950,34 +933,39 @@
   </div>
 
   <script>
-    // 1. Generate Realistic Snowflakes on Cover
-    function createSnowfall() {
+    // 1. Generate Falling Custom Snowflakes on Cover
+    function createCustomSnowfall() {
       const container = document.getElementById('cover-snow');
       if (!container) return;
-      const flakeCount = 50;
+      container.innerHTML = '';
+      const flakeCount = 20;
+
+      // Your uploaded snowflake image files
+      const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.avif'];
 
       for (let i = 0; i < flakeCount; i++) {
-        const flake = document.createElement('div');
-        flake.classList.add('snowflake');
-        
+        const flake = document.createElement('img');
+        flake.classList.add('snowflake-img');
+
+        // Randomly pick one of the custom snowflake images
+        const randomImage = snowflakeFiles[Math.floor(Math.random() * snowflakeFiles.length)];
+        flake.src = randomImage;
+
         flake.style.left = Math.random() * 100 + 'vw';
-
-        const size = Math.random() * 6 + 4;
-        flake.style.width = size + 'px';
-        flake.style.height = size + 'px';
-
-        const fallDuration = Math.random() * 5 + 6;
-        const swayDuration = Math.random() * 3 + 2;
         
-        flake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
-        flake.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 2}s`;
-        flake.style.opacity = Math.random() * 0.4 + 0.6;
+        const fallDuration = Math.random() * 6 + 6; // 6 to 12 seconds
+        flake.style.animationDuration = `${fallDuration}s`;
+        flake.style.animationDelay = `${Math.random() * 6}s`;
+
+        const size = Math.random() * 20 + 25; // Size between 25px and 45px
+        flake.style.width = size + 'px';
+        flake.style.height = 'auto';
 
         container.appendChild(flake);
       }
     }
 
-    createSnowfall();
+    createCustomSnowfall();
 
     // 1b. Invite: fade from gif to jpg once, then stay on the jpg
     function initInviteFade() {
