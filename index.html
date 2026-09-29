@@ -49,17 +49,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 10vh;
+      justify-content: space-between;   
       text-align: center;
-      padding: 6vh 24px;
+      padding: 12vh 24px;              
       z-index: 9999;
       background: linear-gradient(rgba(35, 12, 18, 0.35), rgba(35, 12, 18, 0.55)),
                   url('Untitled design.jpg') center/cover no-repeat;
       transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       overflow: hidden;
     }
-
     #cover.opened {
       transform: translateY(-100%);
       opacity: 0;
