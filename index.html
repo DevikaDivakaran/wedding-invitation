@@ -178,7 +178,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: linear-gradient(rgba(245, 240, 235, 0.2), rgba(245, 240, 235, 0.2)),
+      background: linear-gradient(rgba(245, 240, 235, 0.5), rgba(245, 240, 235, 0.5)),
                   url('images_for_ourmemory/34.jpg') center/cover no-repeat;
       z-index: -1;
       pointer-events: none;
@@ -747,10 +747,11 @@
     <section class="date-calendar-wrap">
       <div class="calendar-card">
         <div class="calendar-topline">
-        <h2 class="calendar-month">MARK YOUR CALENDAR</h2>
           <span class="calendar-line"></span>
-          <span class="calendar-topdate">12.12.2026</span>
-          <span class="calendar-line"></span>
+          <div class="calendar-title-wrap">
+            <h1 class="calendar-save-date">Mark Your Calendar</h1>
+            <span class="calendar-topdate">12.12.2026</span>
+          </div>
         </div>
 
         <h2 class="calendar-month">December 2026</h2>
@@ -936,7 +937,7 @@
       const container = document.getElementById('cover-snow');
       if (!container) return;
       container.innerHTML = '';
-      const flakeCount = 100;
+      const flakeCount = 60;
 
       // Your uploaded snowflake image files
       const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
