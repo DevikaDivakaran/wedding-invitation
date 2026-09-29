@@ -941,7 +941,7 @@
       const flakeCount = 20;
 
       // Your uploaded snowflake image files
-      const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.avif'];
+      const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
 
       for (let i = 0; i < flakeCount; i++) {
         const flake = document.createElement('img');
@@ -957,7 +957,7 @@
         flake.style.animationDuration = `${fallDuration}s`;
         flake.style.animationDelay = `${Math.random() * 6}s`;
 
-        const size = Math.random() * 20 + 25; // Size between 25px and 45px
+        const size = Math.random() * 5 + 20; // Size between 25px and 45px
         flake.style.width = size + 'px';
         flake.style.height = 'auto';
 
