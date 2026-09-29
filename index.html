@@ -36,8 +36,22 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
+      background-color: #fbf6f0;
+      position: relative;
+    }
+
+    /* Reliable Mobile & Desktop Parallax Background Layer */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background: linear-gradient(rgba(251, 246, 240, 0.88), rgba(251, 246, 240, 0.88)),
-                  url('images_for_ourmemory/34.jpg') center/cover fixed no-repeat;
+                  url('images_for_ourmemory/34.jpg') center/cover no-repeat;
+      z-index: -1;
+      pointer-events: none;
     }
 
     a { color: inherit; }
@@ -972,7 +986,6 @@
         
         flake.style.left = Math.random() * 100 + 'vw';
 
-        // Varied sizes for bokeh depth
         const size = Math.random() * 8 + 6;
         flake.style.width = size + 'px';
         flake.style.height = size + 'px';
