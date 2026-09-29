@@ -29,34 +29,17 @@
       margin: 0;
       padding: 0;
     }
-
-    /* Main body background with global Parallax image */
+    
     body {
       font-family: 'Montserrat', sans-serif;
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      background-color: #fbf6f0;
-      position: relative;
-    }
-
-    /* Reliable Mobile & Desktop Parallax Background Layer */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(rgba(251, 246, 240, 0.88), rgba(251, 246, 240, 0.88)),
-                  url('images_for_ourmemory/34.jpg') center/cover no-repeat;
-      z-index: -1;
-      pointer-events: none;
     }
 
     a { color: inherit; }
 
-    /* ================= 1. COVER OVERLAY (PETALS + GLOWING BOKEH PARTICLES) ================= */
+    /* ================= 1. COVER OVERLAY (PETALS + SNOWFLAKES) ================= */
     #cover {
       position: fixed;
       inset: 0;
@@ -81,7 +64,7 @@
       pointer-events: none;
     }
 
-    /* Glowing Bokeh Particle Animation */
+    /* Realistic Falling Snowflakes */
     #cover-snow {
       position: absolute;
       inset: 0;
@@ -93,12 +76,11 @@
     .snowflake {
       position: absolute;
       top: -30px;
-      background: #ffffff;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.2) 100%);
       border-radius: 50%;
       pointer-events: none;
       animation: fallSnow linear infinite, swaySnow ease-in-out infinite;
-      box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.8), 0 0 24px 8px rgba(255, 255, 255, 0.4);
-      opacity: 0.85;
+      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
     }
 
     @keyframes fallSnow {
@@ -189,65 +171,41 @@
       opacity: 1;
     }
 
-    /* ================= PAGE 1: ROYAL INVITATION (STACKED PHOTO PILE) ================= */
-    .invite-image-wrap {
+    /* ================= PAGE 1: ROYAL INVITATION (ONE-TIME FADE) ================= */
+    .invite-fade-wrap {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 40px 15px;
-      background: transparent;
+      background: var(--bg-cream);
     }
 
-    .photo-pile-container {
+    .invite-fade {
       position: relative;
-      max-width: 500px;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    .invite-image {
-      width: 100%;
-      height: auto;
+      width: min(420px, 88vw);
+      aspect-ratio: 3 / 4;
+      margin: 0 auto;
       border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.15);
-      display: block;
+      overflow: hidden;
+      background: #fff;
+      border: 2px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(104, 24, 38, 0.18);
     }
 
-    /* Bottom card (JPG) */
-    .pile-card-back {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Top card (GIF) */
-    .pile-card-front {
+    .invite-fade img {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
-      z-index: 2;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
-      transform-origin: bottom right;
-    }
-
-    /* Flicked away state */
-    .pile-card-front.flicked {
-      transform: translate(120%, -30%) rotate(35deg);
+      height: 100%;
+      object-fit: cover;
+      display: block;
       opacity: 0;
-      pointer-events: none;
+      transition: opacity 1.4s ease;
     }
 
-    .pile-hint {
-      margin-top: 20px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      color: var(--gold);
-      text-transform: uppercase;
-      text-align: center;
-      transition: opacity 0.3s ease;
+    .invite-fade img.on {
+      opacity: 1;
     }
 
     /* ================= PAGE 1b: CALENDAR SAVE-THE-DATE ================= */
@@ -748,7 +706,7 @@
 
   <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
-    <!-- Glowing Bokeh Particles -->
+    <!-- Realistic Falling Snowflakes -->
     <div id="cover-snow"></div>
 
     <div class="cover-top">
@@ -777,18 +735,12 @@
   <div id="main-site">
 
     <!-- ================= 1. ROYAL INVITATION (STACKED PHOTO PILE) ================= -->
-    <section class="invite-image-wrap" id="invite-screen">
-      <div class="photo-pile-container" id="photoPile" onclick="flickPhoto(event)">
-        <!-- Bottom Card (JPG) -->
-        <div class="pile-card-back">
-          <img src="invitefile.jpg" alt="Devika & Aravind Wedding Invitation" class="invite-image">
-        </div>
-        <!-- Top Card (GIF) -->
-        <div class="pile-card-front" id="pileFront">
-          <img src="invitefileopening.gif" alt="Invitation Opening Animation" class="invite-image">
-        </div>
+    <!-- ================= 1. ROYAL INVITATION (ONE-TIME FADE) ================= -->
+    <section class="invite-fade-wrap" id="invite-screen">
+      <div class="invite-fade" id="invite-fade">
+        <img src="invitefileopening.gif" alt="Devika & Aravind wedding invitation animation" class="on" id="invite-fade-gif">
+        <img src="invitefile.jpg" alt="Devika & Aravind wedding invitation" id="invite-fade-jpg">
       </div>
-      <div class="pile-hint" id="pileHint">Tap the top photo to flick it away ↗</div>
     </section>
 
     <!-- ================= 1b. CALENDAR SAVE-THE-DATE ================= -->
@@ -829,8 +781,10 @@
             <span class="heart-shape"></span>
             <span class="day-num">12</span>
           </div>
-
-          <div class="calendar-day">13</div>
+          <div class="calendar-day highlighted">
+            <span class="heart-shape"></span>
+            <span class="day-num">14</span>
+          </div>
           <div class="calendar-day">14</div>
           <div class="calendar-day">15</div>
           <div class="calendar-day">16</div>
@@ -860,10 +814,18 @@
       <div class="envelope-container">
         <div class="envelope-pocket">
           <div class="letter-paper">
-            <div class="letter-flourish">❦ ❧</div>
+            <div class="letter-flourish">♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</div>
             <h3 class="letter-title">DEAR FAMILY &amp; FRIENDS</h3>
             <p class="letter-body">
-              "What destiny quietly set in motion in a shared classroom slowly bloomed into our sweetest reality. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever. With the sacred blessings of our parents lighting our path, we take our step toward the divine thread—our māngalyaṁ tantunānena—promising a lifetime of dreams built together. Come witness our beginning, share in the magic, and bless us as two souls softly become one."
+              It began with a glance across a classroom, a brief, ordinary moment that quietly set our destiny in motion. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever.
+            </p>
+
+            <p class="letter-body">
+              Surrounded by the sacred blessings of our parents, we are ready to tie the knot and make it official, promising a lifetime of dreams built together, hand in hand.
+            </p>
+
+            <p class="letter-body">
+              Our journey would never be complete without the people who have loved, supported, and cheered for us along the way. You have each played a special part in our lives, and it is with immense joy that we invite you to celebrate our beginning. Come share in the magic, witness our vows, and bless us as two souls softly become one.
             </p>
           </div>
           <div class="wax-seal">♥</div>
@@ -888,38 +850,39 @@
       </div>
     </section>
 
+    
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
-      <h2 class="section-title">Wedding Schedule</h2>
+      <h2 class="section-title">When and Where</h2>
       <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
       </p>
 
       <div class="timeline">
+        <div class="timeline-node left">
+          <div class="schedule-card">
+            <div class="schedule-time">06:00 AM</div>
+            <div class="schedule-name">Thaali Kettu </div>
+            <div class="schedule-loc">Guruvayur Sree Krishna Temple</div>
+            <a href="https://maps.app.goo.gl/Uz95zYJzsNcd3xWcA" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+          </div>
+        </div>
+
         <div class="timeline-node right">
           <div class="schedule-card">
-            <div class="schedule-time">09:30 AM – 10:30 AM</div>
-            <div class="schedule-name">Thali Kettu (Muhurtham)</div>
-            <div class="schedule-loc">Sree Shankara Auditorium, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">12:00 PM</div>
+            <div class="schedule-name">Wedding Ceremonies</div>
+            <div class="schedule-loc">Sree Sankara Auditorium, West Kadungalloor, Aluva</div>
+            <a href="https://maps.app.goo.gl/QewD76reTaFUdKv69" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
 
         <div class="timeline-node left">
           <div class="schedule-card">
-            <div class="schedule-time">11:00 AM – 02:00 PM</div>
-            <div class="schedule-name">Mandapam Chadangu &amp; Sadhya</div>
-            <div class="schedule-loc">Auditorium Banquet Hall, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
-          </div>
-        </div>
-
-        <div class="timeline-node right">
-          <div class="schedule-card">
-            <div class="schedule-time">06:30 PM Onwards</div>
-            <div class="schedule-name">Grand Reception</div>
-            <div class="schedule-loc">Main Ballroom, Aluva</div>
-            <a href="https://maps.google.com" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <div class="schedule-time">06:00 PM Onwards</div>
+            <div class="schedule-name">Reception</div>
+            <div class="schedule-loc">Uliyakovil, Kollam</div>
+            <a href="https://maps.app.goo.gl/XBrdU5iqgJtmPzQn8" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
       </div>
@@ -974,11 +937,11 @@
   </div>
 
   <script>
-    // 1. Generate Glowing Bokeh Particles on Cover
+    // 1. Generate Realistic Snowflakes on Cover
     function createSnowfall() {
       const container = document.getElementById('cover-snow');
       if (!container) return;
-      const flakeCount = 40;
+      const flakeCount = 50;
 
       for (let i = 0; i < flakeCount; i++) {
         const flake = document.createElement('div');
@@ -986,15 +949,15 @@
         
         flake.style.left = Math.random() * 100 + 'vw';
 
-        const size = Math.random() * 8 + 6;
+        const size = Math.random() * 6 + 4;
         flake.style.width = size + 'px';
         flake.style.height = size + 'px';
 
-        const fallDuration = Math.random() * 6 + 7;
-        const swayDuration = Math.random() * 3 + 3;
+        const fallDuration = Math.random() * 5 + 6;
+        const swayDuration = Math.random() * 3 + 2;
         
         flake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
-        flake.style.animationDelay = `${Math.random() * 6}s, ${Math.random() * 3}s`;
+        flake.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 2}s`;
         flake.style.opacity = Math.random() * 0.4 + 0.6;
 
         container.appendChild(flake);
@@ -1003,19 +966,19 @@
 
     createSnowfall();
 
-    // Photo Pile Flick Interaction
-    let isFlicked = false;
-    function flickPhoto(event) {
-      const frontCard = document.getElementById('pileFront');
-      const hint = document.getElementById('pileHint');
-      if (!isFlicked && frontCard) {
-        frontCard.classList.add('flicked');
-        isFlicked = true;
-        if (hint) {
-          hint.style.opacity = '0';
-        }
-      }
+    // 1b. Invite: fade from gif to jpg once, then stay on the jpg
+    function initInviteFade() {
+      const gif = document.getElementById('invite-fade-gif');
+      const jpg = document.getElementById('invite-fade-jpg');
+      if (!gif || !jpg) return;
+
+      setTimeout(() => {
+        jpg.classList.add('on');
+        gif.classList.remove('on');
+      }, 3500); // adjust this delay to roughly match the gif's length
     }
+
+    initInviteFade();
 
     // 3. Build the two drifting gallery rows (photos 1-18 left to right, 19-35 right to left)
     function loadGalleryImages() {
