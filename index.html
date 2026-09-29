@@ -76,19 +76,30 @@
 
     .snowflake {
       position: absolute;
-      top: -20px;
-      background: #ffffff;
+      top: -30px;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.2) 100%);
       border-radius: 50%;
-      opacity: 0.85;
-      box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.6);
       pointer-events: none;
-      animation: fallSnow linear infinite;
+      animation: fallSnow linear infinite, swaySnow ease-in-out infinite;
+      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
     }
 
     @keyframes fallSnow {
-      0% { transform: translateY(0) translateX(0); opacity: 0.9; }
-      50% { transform: translateY(50vh) translateX(20px); }
-      100% { transform: translateY(105vh) translateX(-15px); opacity: 0.3; }
+      0% {
+        transform: translateY(-30px);
+      }
+      100% {
+        transform: translateY(105vh);
+      }
+    }
+
+    @keyframes swaySnow {
+      0%, 100% {
+        margin-left: 0px;
+      }
+      50% {
+        margin-left: 35px;
+      }
     }
 
     /* Top block: names stacked in 3 lines */
@@ -723,6 +734,7 @@
 <body>
 
   <!-- ================= 0. OPENING COVER ================= -->
+ <!-- ================= 0. OPENING COVER ================= -->
   <div id="cover">
     <!-- Falling Snow -->
     <div id="cover-snow"></div>
@@ -953,24 +965,33 @@
   </div>
 
   <script>
-    // 1. Generate Falling Snow on Cover
+    // 1. Generate Realistic Snowflakes on Cover
     function createSnowfall() {
       const container = document.getElementById('cover-snow');
       if (!container) return;
-      const flakeCount = 60;
+      const flakeCount = 50;
 
       for (let i = 0; i < flakeCount; i++) {
         const flake = document.createElement('div');
         flake.classList.add('snowflake');
+        
+        // Random horizontal starting position
         flake.style.left = Math.random() * 100 + 'vw';
 
-        const size = Math.random() * 4 + 3;
+        // Varied snowflake sizes (4px to 10px for crystal effect)
+        const size = Math.random() * 6 + 4;
         flake.style.width = size + 'px';
         flake.style.height = size + 'px';
 
-        flake.style.animationDuration = (Math.random() * 6 + 6) + 's';
-        flake.style.animationDelay = (Math.random() * 8) + 's';
-        flake.style.opacity = Math.random() * 0.5 + 0.4;
+        // Varied fall speeds and swaying speeds
+        const fallDuration = Math.random() * 5 + 6; // 6s to 11s
+        const swayDuration = Math.random() * 3 + 2; // 2s to 5s
+        
+        flake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
+        flake.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 2}s`;
+        
+        // Soft opacity variation
+        flake.style.opacity = Math.random() * 0.4 + 0.6;
 
         container.appendChild(flake);
       }
