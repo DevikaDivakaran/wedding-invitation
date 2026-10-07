@@ -40,12 +40,12 @@
 
     a { color: inherit; }
 
-    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= -->
+    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= */
     #cover {
       position: fixed;
       inset: 0;
       width: 100vw;
-      height: 100dvh; /* Fixed mobile jumping with dynamic viewport height */
+      height: 100dvh; /* Dynamic viewport height to fix mobile jumping */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -963,13 +963,13 @@
 
     createCustomSnowfall();
 
-    // 1b. Invite: fade from gif to jpg once, then stay on the jpg (Triggered on site open now)
+    // 1b. Invite: fade from gif to jpg once, then stay on the jpg
     function initInviteFade() {
       const gif = document.getElementById('invite-fade-gif');
       const jpg = document.getElementById('invite-fade-jpg');
       if (!gif || !jpg) return;
 
-      // Reset state just in case
+      // Ensure the gif is active first, jpg hidden
       gif.classList.add('on');
       jpg.classList.remove('on');
 
