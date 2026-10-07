@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Devika &amp; Aravind | Wedding Celebration</title>
 
-  <!-- Link preview (WhatsApp, iMessage, Instagram, Telegram) -->
+  <!-- WhatsApp Link Preview Meta Tags -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devikadivakaran.github.io/wedding-invitation/">
   <meta property="og:title" content="Devika &amp; Aravind | Wedding Celebration">
   <meta property="og:description" content="Join us on 12 December 2026 as our forever begins">
-  <meta property="og:url" content="https://devikadivakaran.github.io/wedding-invitation/">
-  <meta property="og:image" content="https://devikadivakaran.github.io/wedding-invitation/images_for_ourmemory/34.jpg">
+  <meta property="og:image" content="https://devikadivakaran.github.io/wedding-invitation/34.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Google Fonts: Luxury Serif & Script -->
@@ -467,6 +467,30 @@
       height: 100%;
       object-fit: contain;
       display: block;
+    }/* ================= PAGE 3: VIDEO SECTION (BORDERLESS WIDESCREEN) ================= */
+    .story-video-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .story-video-container {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .story-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     /* ================= PAGE 4: WEDDING SCHEDULE ================= */
@@ -897,7 +921,7 @@
 
       <div class="story-video-wrapper">
         <div class="story-video-container">
-          <video controls playsinline preload="metadata">
+          <video controls playsinline preload="metadata" poster="poster.jpg">
             <source src="Video Project.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -935,7 +959,7 @@
     </section>
 
     <footer class="footer">
-      <p>#DevikaAndAravind • December 2026</p>
+      <p>#DevikaAndAravind</p>
     </footer>
 
   </div>
