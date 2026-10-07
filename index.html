@@ -40,12 +40,12 @@
 
     a { color: inherit; }
 
-    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= */
+    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= -->
     #cover {
       position: fixed;
       inset: 0;
       width: 100vw;
-      height: 100vh;
+      height: 100dvh; /* Fixed mobile jumping with dynamic viewport height */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -963,19 +963,21 @@
 
     createCustomSnowfall();
 
-    // 1b. Invite: fade from gif to jpg once, then stay on the jpg
+    // 1b. Invite: fade from gif to jpg once, then stay on the jpg (Triggered on site open now)
     function initInviteFade() {
       const gif = document.getElementById('invite-fade-gif');
       const jpg = document.getElementById('invite-fade-jpg');
       if (!gif || !jpg) return;
+
+      // Reset state just in case
+      gif.classList.add('on');
+      jpg.classList.remove('on');
 
       setTimeout(() => {
         jpg.classList.add('on');
         gif.classList.remove('on');
       }, 3500); 
     }
-
-    initInviteFade();
 
     // 3. Build the two drifting gallery rows
     function loadGalleryImages() {
@@ -1014,7 +1016,7 @@
 
     loadGalleryImages();
 
-    // 4. Open Invitation & Trigger Background Music
+    // 4. Open Invitation & Trigger Background Music & Invite GIF
     function openWeddingSite() {
       const cover = document.getElementById('cover');
       const mainSite = document.getElementById('main-site');
@@ -1025,6 +1027,9 @@
       mainSite.classList.add('visible');
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Trigger the invite GIF sequence fresh when the site opens
+      initInviteFade();
 
       setTimeout(() => {
         if (coverSnow) coverSnow.innerHTML = '';
