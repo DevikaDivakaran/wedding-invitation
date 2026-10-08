@@ -12,10 +12,10 @@
   <meta property="og:image" content="https://devikadivakaran.github.io/wedding-invitation/34.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Fonts: Italiana, Sacramento, Josefin Sans -->
+  <!-- Google Fonts: Spectral, Imperial Script, Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Sacramento&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Imperial+Script&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
    
   <!-- Start fetching the heavy visuals immediately so they're ready when the cover opens -->
   <link rel="preload" as="image" href="inviteimageopenings.gif">
@@ -36,6 +36,7 @@
       --sage: #8a9a86;
       --sage-deep: #2f3e35;
       --text: #2f3e35;            
+      --glow: 0 0 4px rgba(250, 247, 242, 1), 0 0 10px rgba(250, 247, 242, 0.95), 0 0 20px rgba(250, 247, 242, 0.9), 0 0 36px rgba(250, 247, 242, 0.75), 0 0 56px rgba(250, 247, 242, 0.55);
       --text-muted: #55655a;
     }
 
@@ -46,7 +47,9 @@
     }
     
     body {
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
@@ -114,7 +117,7 @@
     }
 
     .cover-names {
-      font-family: 'Sacramento', cursive;
+      font-family: 'Imperial Script', cursive;
       color: #ffffff;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       line-height: 0.95;
@@ -127,7 +130,7 @@
 
     .cover-names .amp-line {
       font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-style: italic;
       color: var(--gold-light);
       margin: 4px 0;
@@ -143,7 +146,7 @@
     }
 
     .cover-tagline {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 1.2rem;
       letter-spacing: 3px;
       color: #f7e8d0;
@@ -153,11 +156,11 @@
     }
 
     .open-btn {
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
       color: #2b1419;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1.09rem;
       text-transform: uppercase;
       letter-spacing: 2.5px;
       padding: 16px 44px;
@@ -281,22 +284,22 @@
     }
 
     .calendar-topdate {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 1.05rem;
       letter-spacing: 3px;
       color: var(--maroon-dark);
     }
 
     .calendar-save-date {
-      font-family: 'Italiana', serif;
-      font-weight: 600;
+      font-family: 'Spectral', serif;
+      font-weight: 500;
       font-size: 1.3rem;
       color: var(--maroon);
     }
 
     .calendar-month {
-      font-family: 'Italiana', serif;
-      font-weight: 600;
+      font-family: 'Spectral', serif;
+      font-weight: 500;
       font-size: clamp(2rem, 6vw, 2.6rem);
       color: var(--maroon-dark);
       margin-bottom: 35px;
@@ -310,15 +313,15 @@
     }
 
     .calendar-dow {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.85rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
       color: #6f7f73;
       font-weight: 600;
     }
 
     .calendar-day {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 1.15rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.32rem;
       color: var(--text);
       display: flex;
       align-items: center;
@@ -363,7 +366,7 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.1rem;
       transform: translateY(-5px);
     }
@@ -388,20 +391,22 @@
     }
 
     .section-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
+      font-weight: 600;
       font-size: 2.2rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--maroon);
       margin-bottom: 6px;
-      text-shadow: 0 1px 10px rgba(250, 247, 242, 0.85);
+      text-shadow: var(--glow);
     }
 
     .section-subtitle {
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       color: var(--sage-deep);
-      text-shadow: 0 1px 8px rgba(250, 247, 242, 0.85);
-      font-size: 1rem;
+      text-shadow: var(--glow);
+      font-weight: 600;
+      font-size: 1.15rem;
       max-width: 450px;
       margin: 0 auto 35px;
     }
@@ -421,18 +426,18 @@
     }
 
     .letter-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 1.5rem;
       letter-spacing: 3px;
       color: var(--maroon);
       margin-bottom: 25px;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .letter-body {
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 1.21rem;
       line-height: 1.8;
       text-align: center;
     }
@@ -519,32 +524,32 @@
     }
 
     .schedule-time {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 0.9rem;
       letter-spacing: 1.5px;
       color: var(--gold);
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 4px;
     }
 
     .schedule-name {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 1.3rem;
       color: var(--maroon);
-      font-weight: 600;
+      font-weight: 500;
       margin-bottom: 4px;
     }
 
     .schedule-loc {
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.95rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.09rem;
       color: var(--text-muted);
       margin-bottom: 10px;
     }
 
     .event-map-btn {
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -553,7 +558,7 @@
       color: var(--maroon);
       padding: 8px 18px;
       border-radius: 25px;
-      font-size: 0.85rem;
+      font-size: 0.98rem;
       font-weight: 600;
       letter-spacing: 1px;
       text-decoration: none;
@@ -671,11 +676,11 @@
     }
 
     .countdown-label {
-      font-family: 'Italiana', serif;
+      font-family: 'Spectral', serif;
       font-size: 0.95rem;
       letter-spacing: 4px;
       color: var(--maroon);
-      font-weight: 600;
+      font-weight: 500;
       margin-bottom: 25px;
     }
 
@@ -684,8 +689,8 @@
     .count-unit:not(:last-child)::after {
       content: ""; position: absolute; right: -25px; top: 15%; height: 70%; width: 1px; background: var(--gold-border);
     }
-    .count-num { font-family: 'Italiana', serif; font-size: 2.8rem; font-weight: 700; color: var(--maroon); line-height: 1; }
-    .count-sub { font-family: 'Josefin Sans', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
+    .count-num { font-family: 'Spectral', serif; font-size: 2.8rem; font-weight: 500; color: var(--maroon); line-height: 1; }
+    .count-sub { font-family: 'Cormorant Garamond', serif; font-size: 0.86rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
 
     /* Audio Mute/Unmute Floating Button */
     .music-toggle-btn {
@@ -861,7 +866,7 @@
     <section class="section-wrap">
       <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">When and Where</h2>
-      <p style="font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; text-shadow: var(--glow); font-weight: 600;">
         ✦ Celebrating Love, Together ✦
       </p>
 
@@ -908,7 +913,7 @@
     <section class="section-wrap">
       <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">Highlights</h2>
-      <p style="font-family: 'Sacramento', cursive; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px;">
+      <p style="font-family: 'Imperial Script', cursive; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px; text-shadow: var(--glow);">
        Our Video
       </p>
 
