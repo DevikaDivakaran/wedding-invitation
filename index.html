@@ -963,13 +963,13 @@
       const container = document.getElementById('cover-snow');
       if (!container) return;
       container.innerHTML = '';
-      const totalFlakes = 75; // Total number of falling elements
+      const totalFlakes = 85; // Total number of falling elements
 
       // Your uploaded custom snowflake image files
       const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
 
       for (let i = 0; i < totalFlakes; i++) {
-        const fallDuration = Math.random() * 10 + 14; // 6 to 12 seconds
+        const fallDuration = Math.random() * 8 + 10; // 6 to 12 seconds
         const animDelay = Math.random() * 6;
         const leftPos = Math.random() * 100;
 
