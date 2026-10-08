@@ -25,7 +25,6 @@
  
   <style>
     :root {
-      /* Palette: Ethereal Sage & Stone with Burgundy accents */
       --bg-cream: #f4f2ec;
       --bg-blush: #e4e8df;        
       --card-white: #faf7f2;      
@@ -193,6 +192,16 @@
       opacity: 1;
     }
 
+    /* ================= GLOBAL SECTION MONOGRAM STYLING ================= */
+    .section-monogram {
+      width: 65px;
+      height: auto;
+      margin: 0 auto 12px auto;
+      display: block;
+      opacity: 0.9;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+    }
+
     /* ================= PAGE 1: ROYAL INVITATION ================= */
     .invite-fade-wrap {
       min-height: 100vh;
@@ -254,7 +263,7 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .calendar-line {
@@ -380,8 +389,6 @@
       text-shadow: 0 1px 10px rgba(250, 247, 242, 0.85);
     }
 
-    .section-heart { color: var(--maroon); font-size: 1rem; margin-bottom: 15px; }
-
     .section-subtitle {
       font-family: 'Josefin Sans', sans-serif;
       color: var(--sage-deep);
@@ -404,8 +411,6 @@
       box-shadow: 0 15px 35px rgba(181, 141, 74, 0.15);
       text-align: center;
     }
-
-    .arch-flourish { color: var(--gold); font-size: 1.5rem; margin-bottom: 12px; }
 
     .letter-title {
       font-family: 'Italiana', serif;
@@ -690,16 +695,22 @@
 
     .music-toggle-btn:hover { transform: scale(1.1); background: var(--bg-blush); }
 
+    /* ================= FOOTER LOGO ================= */
     .footer { 
-      font-family: 'Josefin Sans', sans-serif;
       text-align: center; 
       padding: 70px 20px 50px; 
-      color: var(--text-muted); 
-      font-size: 0.9rem; 
-      letter-spacing: 2px; 
       position: relative; 
       z-index: 10; 
       background: transparent; 
+    }
+
+    .footer-logo {
+      max-width: 280px;
+      width: 80%;
+      height: auto;
+      display: inline-block;
+      opacity: 0.95;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
     }
 
   </style>
@@ -746,6 +757,7 @@
     <!-- ================= 1b. CALENDAR SAVE-THE-DATE ================= -->
     <section class="date-calendar-wrap">
       <div class="calendar-card">
+        <img src="monogram.png" alt="Monogram" class="section-monogram">
         <div class="calendar-topline">
           <span class="calendar-line"></span>
           <div class="calendar-title-wrap">
@@ -815,7 +827,7 @@
     <!-- ================= 2. FAMILY & FRIENDS (ARCH CARD) ================= -->
     <section class="section-wrap">
       <div class="letter-arch-frame">
-        <div class="arch-flourish">❦ ❧</div>
+        <img src="monogram.png" alt="Monogram" class="section-monogram">
         <h3 class="letter-title">Dear Family &amp; Friends</h3>
         <p class="letter-body">
           It began with a glance across a classroom, a brief, ordinary moment that quietly set our destiny in motion. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever.
@@ -833,6 +845,7 @@
 
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
+      <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">When and Where</h2>
       <p style="font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
@@ -870,8 +883,8 @@
 
     <!-- ================= 5. OUR MOMENTS (GALLERY) ================= -->
     <section class="section-wrap">
+      <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">Moments Along the Way</h2>
-      <div class="section-heart">♥</div>
       <p class="section-subtitle">From then to now, a few moments we'll always hold close..</p>
 
       <div class="drift" id="drift"></div>
@@ -879,6 +892,7 @@
 
     <!-- ================= 3. OUR STORY VIDEO ================= -->
     <section class="section-wrap">
+      <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">Our Highlight</h2>
       <p style="font-family: 'Sacramento', cursive; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px;">
        Save the Date
@@ -896,10 +910,10 @@
 
     <!-- ================= 6. ROYAL ARCH COUNTDOWN ================= -->
     <section class="countdown-section-wrap">
+      <img src="monogram.png" alt="Monogram" class="section-monogram">
       <h2 class="section-title">Until Our Big Day</h2>
 
       <div class="countdown-arch-frame">
-        <div class="arch-flourish">❦ ❧</div>
         <div class="countdown-label">Counting Down to Our Forever...</div>
         
         <div class="countdown-flex">
@@ -924,7 +938,7 @@
     </section>
 
     <footer class="footer">
-      <p>#DevikaAndAravind</p>
+      <img src="footer-logo.png" alt="Aravind & Devika 12.12.2026" class="footer-logo">
     </footer>
 
   </div>
