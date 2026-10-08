@@ -193,7 +193,7 @@
 
     /* ================= GLOBAL SECTION MONOGRAM STYLING ================= */
     .section-monogram {
-      width: 120px;
+      width: 100px;
       height: auto;
       margin: 0 auto 16px auto;
       display: block;
@@ -539,19 +539,25 @@
       font-family: 'Josefin Sans', sans-serif;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: var(--bg-blush);
-      border: 1px solid var(--sage);
+      border: 1px solid var(--gold-border);
       color: var(--maroon);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 0.85rem;
       font-weight: 600;
+      letter-spacing: 1px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
-
-    .event-map-btn:hover { background: var(--maroon); color: #faf7f2; border-color: var(--maroon); }
+    .event-map-btn:hover {
+      background: var(--maroon);
+      color: #faf7f2;
+      border-color: var(--maroon);
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 600px) {
       .timeline::before { left: 24px; }
@@ -874,7 +880,7 @@
             <div class="schedule-time">06:00 PM Onwards</div>
             <div class="schedule-name">Reception</div>
             <div class="schedule-loc">Uliyakovil, Kollam</div>
-            <a href="https://maps.app.goo.gl/XBrdU5iqgJtmPzQn8" target="_blank" class="event-map-btn">📍 Open in Maps</a>
+            <a href="https://maps.app.goo.gl/8kN7xtHGJzZqFLas6?g_st=aw" target="_blank" class="event-map-btn">📍 Open in Maps</a>
           </div>
         </div>
       </div>
