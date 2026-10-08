@@ -540,24 +540,25 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: transparent;
-      border: 1px solid var(--gold);
+      background: var(--bg-blush);
+      border: 1px solid var(--gold-border);
       color: var(--maroon);
-      padding: 8px 20px;
-      border-radius: 30px;
+      padding: 8px 18px;
+      border-radius: 25px;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-decoration: none;
-      text-transform: uppercase;
       transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
     .event-map-btn:hover {
-      background: var(--gold);
-      color: #ffffff;
+      background: var(--maroon);
+      color: #faf7f2;
+      border-color: var(--maroon);
       transform: translateY(-2px);
     }
-    
+
     @media (max-width: 600px) {
       .timeline::before { left: 24px; }
       .timeline-node { width: 100%; padding-left: 60px; padding-right: 15px; }
