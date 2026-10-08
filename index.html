@@ -712,7 +712,7 @@
     /* ================= FOOTER LOGO ================= */
     .footer { 
       text-align: center; 
-      padding: 70px 20px 50px; 
+      padding: 120px 20px 80px; /* Increased top padding to push it further down */
       position: relative; 
       z-index: 10; 
       background: transparent; 
@@ -725,6 +725,28 @@
       display: inline-block;
       opacity: 0.95;
       filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+    }
+
+    /* ================= FOOTER LOGO ================= */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 200px;
+      margin: 50px auto;
+      opacity: 0.7;
+    }
+    .gold-divider::before,
+    .gold-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+    }
+    .gold-divider span {
+      padding: 0 12px;
+      color: var(--gold);
+      font-size: 0.8rem;
     }
 
   </style>
@@ -767,7 +789,7 @@
         <img src="invitefile.jpg" alt="Devika & Aravind wedding invitation" id="invite-fade-jpg">
       </div>
     </section>
-
+    <div class="gold-divider"><span>♦</span></div>
     <!-- ================= 1b. CALENDAR SAVE-THE-DATE ================= -->
     <section class="date-calendar-wrap">
       <div class="calendar-card">
@@ -836,6 +858,7 @@
         </div>
       </div>
     </section>
+    <div class="gold-divider"><span>♦</span></div>
 
     <!-- ================= 2. FAMILY & FRIENDS (ARCH CARD) ================= -->
     <section class="section-wrap">
@@ -855,6 +878,7 @@
         </p>
       </div>
     </section>
+    <div class="gold-divider"><span>♦</span></div>
 
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
@@ -893,6 +917,7 @@
         </div>
       </div>
     </section>
+    <div class="gold-divider"><span>♦</span></div>
 
     <!-- ================= 5. OUR MOMENTS (GALLERY) ================= -->
     <section class="section-wrap">
@@ -902,6 +927,7 @@
 
       <div class="drift" id="drift"></div>
     </section>
+    <div class="gold-divider"><span>♦</span></div>
 
     <!-- ================= 3. OUR STORY VIDEO ================= -->
     <section class="section-wrap">
@@ -920,6 +946,7 @@
         </div>
       </div>
     </section>
+    <div class="gold-divider"><span>♦</span></div>
 
     <!-- ================= 6. ROYAL ARCH COUNTDOWN ================= -->
     <section class="countdown-section-wrap">
