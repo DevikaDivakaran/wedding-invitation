@@ -13,10 +13,10 @@
   <meta property="og:image" content="https://devikadivakaran.github.io/wedding-invitation/34.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Fonts: Luxury Serif & Script -->
+  <!-- Google Fonts: Italiana, Sacramento, Josefin Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Sacramento&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
    
   <!-- Start fetching the heavy visuals immediately so they're ready when the cover opens -->
   <link rel="preload" as="image" href="inviteimageopenings.gif">
@@ -25,19 +25,19 @@
  
   <style>
     :root {
-      /* Palette: H (burgundy + copper) leading, G (sage + stone) supporting */
+      /* Palette: Ethereal Sage & Stone with Burgundy accents */
       --bg-cream: #f4f2ec;
-      --bg-blush: #e4e8df;        /* pale sage tint (buttons, hovers, photo frames) */
-      --card-white: #faf7f2;      /* parchment */
-      --maroon: #4a1525;          /* headings (burgundy) */
+      --bg-blush: #e4e8df;        
+      --card-white: #faf7f2;      
+      --maroon: #4a1525;          
       --maroon-dark: #3a0f1c;
-      --wine: #6b1d33;            /* timeline dots */
-      --gold: #a9622a;            /* copper accent, darkened slightly for small text */
+      --wine: #6b1d33;            
+      --gold: #a9622a;            
       --gold-light: #d09a6a;
-      --gold-border: rgba(138, 154, 134, 0.6);  /* sage borders and lines */
+      --gold-border: rgba(138, 154, 134, 0.6);  
       --sage: #8a9a86;
       --sage-deep: #2f3e35;
-      --text: #2f3e35;            /* deep slate-green body text */
+      --text: #2f3e35;            
       --text-muted: #55655a;
     }
 
@@ -48,7 +48,7 @@
     }
     
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Josefin Sans', sans-serif;
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
@@ -57,12 +57,12 @@
 
     a { color: inherit; }
 
-    /* ================= 0. COVER OVERLAY (CUSTOM IMAGE SNOWFLAKES) ================= */
+    /* ================= 0. COVER OVERLAY ================= */
     #cover {
       position: fixed;
       inset: 0;
       width: 100vw;
-      height: 100dvh; /* Dynamic viewport height to fix mobile jumping */
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,7 +81,6 @@
       pointer-events: none;
     }
 
-    /* Falling Snowflake Image Container */
     #cover-snow {
       position: absolute;
       inset: 0;
@@ -98,27 +97,18 @@
     }
 
     @keyframes fallSnowflake {
-      0% {
-        transform: translateY(0) rotate(0deg) translateX(0);
-        opacity: 0.9;
-      }
-      50% {
-        transform: translateY(50vh) rotate(180deg) translateX(25px);
-      }
-      100% {
-        transform: translateY(105vh) rotate(360deg) translateX(-25px);
-        opacity: 0.2;
-      }
+      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.9; }
+      50% { transform: translateY(50vh) rotate(180deg) translateX(25px); }
+      100% { transform: translateY(105vh) rotate(360deg) translateX(-25px); opacity: 0.2; }
     }
 
-    /* Top block: names stacked in 3 lines */
     .cover-top {
       position: relative;
       z-index: 10;
     }
 
     .cover-names {
-      font-family: 'Alex Brush', cursive;
+      font-family: 'Sacramento', cursive;
       color: #ffffff;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       line-height: 0.95;
@@ -126,19 +116,18 @@
 
     .cover-names .line {
       display: block;
-      font-size: clamp(3.5rem, 9vw, 5.2rem);
+      font-size: clamp(4rem, 10vw, 6rem);
     }
 
     .cover-names .amp-line {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-family: 'Italiana', serif;
       font-style: italic;
       color: var(--gold-light);
-      margin: 2px 0;
+      margin: 4px 0;
       display: block;
     }
 
-    /* Bottom block: tagline + button */
     .cover-bottom {
       position: relative;
       z-index: 10;
@@ -148,8 +137,8 @@
     }
 
     .cover-tagline {
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
+      font-family: 'Italiana', serif;
+      font-size: 1.2rem;
       letter-spacing: 3px;
       color: #f7e8d0;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
@@ -158,9 +147,10 @@
     }
 
     .open-btn {
+      font-family: 'Josefin Sans', sans-serif;
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
       color: #2b1419;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 2.5px;
@@ -179,7 +169,7 @@
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* ================= MAIN SITE CONTAINER & PARALLAX BACKGROUND ================= */
+    /* ================= MAIN SITE CONTAINER ================= */
     #main-site {
       display: none;
       opacity: 0;
@@ -235,9 +225,7 @@
       transition: opacity 1.4s ease;
     }
 
-    .invite-fade img.on {
-      opacity: 1;
-    }
+    .invite-fade img.on { opacity: 1; }
 
     /* ================= PAGE 1b: CALENDAR SAVE-THE-DATE ================= */
     .date-calendar-wrap {
@@ -276,14 +264,21 @@
     }
 
     .calendar-topdate {
-      font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
+      font-family: 'Italiana', serif;
+      font-size: 1.05rem;
       letter-spacing: 3px;
       color: var(--maroon-dark);
     }
 
+    .calendar-save-date {
+      font-family: 'Italiana', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--maroon);
+    }
+
     .calendar-month {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Italiana', serif;
       font-weight: 600;
       font-size: clamp(2rem, 6vw, 2.6rem);
       color: var(--maroon-dark);
@@ -298,15 +293,15 @@
     }
 
     .calendar-dow {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Josefin Sans', sans-serif;
       font-size: 0.85rem;
       color: #6f7f73;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .calendar-day {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.15rem;
       color: var(--text);
       display: flex;
       align-items: center;
@@ -340,17 +335,8 @@
       border-radius: 40px 40px 0 0;
     }
 
-    .heart-shape::before {
-      left: 23px;
-      transform: rotate(-45deg);
-      transform-origin: 0 100%;
-    }
-
-    .heart-shape::after {
-      left: -1px;
-      transform: rotate(45deg);
-      transform-origin: 100% 100%;
-    }
+    .heart-shape::before { left: 23px; transform: rotate(-45deg); transform-origin: 0 100%; }
+    .heart-shape::after { left: -1px; transform: rotate(45deg); transform-origin: 100% 100%; }
 
     .day-num {
       position: relative;
@@ -385,9 +371,9 @@
     }
 
     .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      letter-spacing: 5px;
+      font-family: 'Italiana', serif;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--maroon);
       margin-bottom: 6px;
@@ -397,63 +383,20 @@
     .section-heart { color: var(--maroon); font-size: 1rem; margin-bottom: 15px; }
 
     .section-subtitle {
+      font-family: 'Josefin Sans', sans-serif;
       color: var(--sage-deep);
       text-shadow: 0 1px 8px rgba(250, 247, 242, 0.85);
-      font-size: 0.95rem;
+      font-size: 1rem;
       max-width: 450px;
       margin: 0 auto 35px;
     }
 
-    /* ================= PAGE 2: FAMILY & FRIENDS (ENVELOPE) ================= */
-    .envelope-container {
-      position: relative;
-      width: min(460px, 92vw);
-      margin: 0 auto;
-      perspective: 1000px;
-    }
-
-    .envelope-pocket {
-      background: linear-gradient(145deg, #e4e8df, #cfd8ca);
-      border-radius: 12px;
-      padding: 30px 20px 50px;
-      position: relative;
-      box-shadow: 0 15px 35px rgba(104, 24, 38, 0.15);
-      border: 1px solid var(--gold-border);
-    }
-
-    .letter-paper {
-      background: var(--card-white);
-      border-radius: 8px;
-      padding: 35px 25px;
-      border: 1px solid var(--gold-border);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      text-align: center;
-      position: relative;
-    }
-
-    .letter-flourish { color: var(--gold); font-size: 1.2rem; margin-bottom: 8px; }
-
-    .letter-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
-      letter-spacing: 3px;
-      color: var(--maroon);
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .letter-body {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      font-style: italic;
-    }
-    /* ================= LETTER ARCH FRAME (Matches Countdown Style) ================= */
+    /* ================= LETTER ARCH FRAME (Family & Friends) ================= */
     .letter-arch-frame {
       max-width: 650px;
       margin: 0 auto;
       padding: 50px 40px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(250, 247, 242, 0.95);
       backdrop-filter: blur(6px);
       border: 1px solid var(--gold);
       border-radius: 35px 35px 16px 16px;
@@ -462,9 +405,11 @@
       text-align: center;
     }
 
+    .arch-flourish { color: var(--gold); font-size: 1.5rem; margin-bottom: 12px; }
+
     .letter-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
+      font-family: 'Italiana', serif;
+      font-size: 1.5rem;
       letter-spacing: 3px;
       color: var(--maroon);
       margin-bottom: 25px;
@@ -472,38 +417,14 @@
     }
 
     .letter-body {
+      font-family: 'Josefin Sans', sans-serif;
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       line-height: 1.8;
-      font-style: italic;
       text-align: center;
     }
 
-    /* ================= PAGE 3: VIDEO SECTION (BORDERLESS WIDESCREEN) ================= */
-    .story-video-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-
-    .story-video-container {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-      background: #000;
-    }
-
-    .story-video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }/* ================= PAGE 3: VIDEO SECTION (BORDERLESS WIDESCREEN) ================= */
+    /* ================= PAGE 3: VIDEO SECTION ================= */
     .story-video-wrapper {
       max-width: 720px;
       margin: 0 auto;
@@ -585,7 +506,8 @@
     }
 
     .schedule-time {
-      font-size: 0.75rem;
+      font-family: 'Italiana', serif;
+      font-size: 0.9rem;
       letter-spacing: 1.5px;
       color: var(--gold);
       font-weight: 600;
@@ -594,20 +516,22 @@
     }
 
     .schedule-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
+      font-family: 'Italiana', serif;
+      font-size: 1.3rem;
       color: var(--maroon);
       font-weight: 600;
       margin-bottom: 4px;
     }
 
     .schedule-loc {
-      font-size: 0.85rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 10px;
     }
 
     .event-map-btn {
+      font-family: 'Josefin Sans', sans-serif;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -616,7 +540,7 @@
       color: var(--maroon);
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
@@ -632,7 +556,7 @@
       .timeline-node.left .schedule-card { text-align: left; }
     }
 
-    /* ================= PAGE 5: OUR MOMENTS (TWO-ROW DRIFT) ================= */
+    /* ================= PAGE 5: OUR MOMENTS (GALLERY) ================= */
     .drift {
       display: flex;
       flex-direction: column;
@@ -727,12 +651,10 @@
       box-shadow: 0 15px 35px rgba(74, 21, 37, 0.14);
     }
 
-    .arch-flourish { color: var(--gold); font-size: 1.5rem; margin-bottom: 12px; }
-
     .countdown-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 6px;
+      font-family: 'Italiana', serif;
+      font-size: 0.95rem;
+      letter-spacing: 4px;
       color: var(--maroon);
       font-weight: 600;
       margin-bottom: 25px;
@@ -743,8 +665,8 @@
     .count-unit:not(:last-child)::after {
       content: ""; position: absolute; right: -25px; top: 15%; height: 70%; width: 1px; background: var(--gold-border);
     }
-    .count-num { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; color: var(--maroon); line-height: 1; }
-    .count-sub { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
+    .count-num { font-family: 'Italiana', serif; font-size: 2.8rem; font-weight: 700; color: var(--maroon); line-height: 1; }
+    .count-sub { font-family: 'Josefin Sans', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
 
     /* Audio Mute/Unmute Floating Button */
     .music-toggle-btn {
@@ -768,7 +690,17 @@
 
     .music-toggle-btn:hover { transform: scale(1.1); background: var(--bg-blush); }
 
-    .footer { text-align: center; padding: 70px 20px 50px; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 2px; position: relative; z-index: 10; background: transparent; }
+    .footer { 
+      font-family: 'Josefin Sans', sans-serif;
+      text-align: center; 
+      padding: 70px 20px 50px; 
+      color: var(--text-muted); 
+      font-size: 0.9rem; 
+      letter-spacing: 2px; 
+      position: relative; 
+      z-index: 10; 
+      background: transparent; 
+    }
 
   </style>
 </head>
@@ -880,12 +812,11 @@
       </div>
     </section>
 
-    <!-- ================= 2. FAMILY & FRIENDS (ENVELOPE) ================= -->
     <!-- ================= 2. FAMILY & FRIENDS (ARCH CARD) ================= -->
     <section class="section-wrap">
       <div class="letter-arch-frame">
         <div class="arch-flourish">❦ ❧</div>
-        <h3 class="letter-title">DEAR FAMILY &amp; FRIENDS</h3>
+        <h3 class="letter-title">Dear Family &amp; Friends</h3>
         <p class="letter-body">
           It began with a glance across a classroom, a brief, ordinary moment that quietly set our destiny in motion. Two strangers became friends, friends fell hopelessly in love, and today, that journey brings us to the threshold of our forever.
         </p>
@@ -903,7 +834,7 @@
     <!-- ================= 4. WEDDING SCHEDULE ================= -->
     <section class="section-wrap">
       <h2 class="section-title">When and Where</h2>
-      <p style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
+      <p style="font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px;">
         ✦ Celebrating Love, Together ✦
       </p>
 
@@ -945,10 +876,11 @@
 
       <div class="drift" id="drift"></div>
     </section>
-<!-- ================= 3. OUR STORY VIDEO ================= -->
+
+    <!-- ================= 3. OUR STORY VIDEO ================= -->
     <section class="section-wrap">
       <h2 class="section-title">Our Highlight</h2>
-      <p style="font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: var(--gold); margin-bottom: 40px;">
+      <p style="font-family: 'Sacramento', cursive; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px;">
        Save the Date
       </p>
 
@@ -964,7 +896,7 @@
 
     <!-- ================= 6. ROYAL ARCH COUNTDOWN ================= -->
     <section class="countdown-section-wrap">
-      <h2 class="section-title">UNTIL OUR BIG DAY</h2>
+      <h2 class="section-title">Until Our Big Day</h2>
 
       <div class="countdown-arch-frame">
         <div class="arch-flourish">❦ ❧</div>
@@ -1005,24 +937,22 @@
       container.innerHTML = '';
       const flakeCount = 60;
 
-      // Your uploaded snowflake image files
       const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
 
       for (let i = 0; i < flakeCount; i++) {
         const flake = document.createElement('img');
         flake.classList.add('snowflake-img');
 
-        // Randomly pick one of the custom snowflake images
         const randomImage = snowflakeFiles[Math.floor(Math.random() * snowflakeFiles.length)];
         flake.src = randomImage;
 
         flake.style.left = Math.random() * 100 + 'vw';
         
-        const fallDuration = Math.random() * 6 + 6; // 6 to 12 seconds
+        const fallDuration = Math.random() * 6 + 6; 
         flake.style.animationDuration = `${fallDuration}s`;
         flake.style.animationDelay = `${Math.random() * 6}s`;
 
-        const size = Math.random() * 5 + 20; // Size between 25px and 45px
+        const size = Math.random() * 5 + 20; 
         flake.style.width = size + 'px';
         flake.style.height = 'auto';
 
@@ -1032,13 +962,11 @@
 
     createCustomSnowfall();
 
-    // 1b. Invite: fade from gif to jpg once, then stay on the jpg
     function initInviteFade() {
       const gif = document.getElementById('invite-fade-gif');
       const jpg = document.getElementById('invite-fade-jpg');
       if (!gif || !jpg) return;
 
-      // Ensure the gif is active first, jpg hidden
       gif.classList.add('on');
       jpg.classList.remove('on');
 
@@ -1048,7 +976,6 @@
       }, 3500); 
     }
 
-    // 3. Build the two drifting gallery rows
     function loadGalleryImages() {
       const drift = document.getElementById('drift');
       if (!drift) return;
@@ -1085,7 +1012,6 @@
 
     loadGalleryImages();
 
-    // 4. Open Invitation & Trigger Background Music & Invite GIF
     function openWeddingSite() {
       const cover = document.getElementById('cover');
       const mainSite = document.getElementById('main-site');
@@ -1097,7 +1023,6 @@
       cover.classList.add('opened');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // Trigger the invite GIF sequence fresh when the site opens
       initInviteFade();
 
       setTimeout(() => {
@@ -1114,7 +1039,6 @@
       }
     }
 
-    // 5. Audio Toggle & Video Playback Coordination
     const musicBtn = document.getElementById('musicToggle');
     const music = document.getElementById('bgMusic');
     const storyVideo = document.querySelector('.story-video-container video');
@@ -1153,7 +1077,6 @@
       });
     }
 
-    // 6. Countdown Timer to 12 December 2026
     const weddingDate = new Date("2026-12-12T09:30:00").getTime();
 
     function updateCountdown() {
