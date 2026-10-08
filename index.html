@@ -717,7 +717,8 @@
     /* ================= FOOTER LOGO ================= */
     .footer { 
       text-align: center; 
-      padding: 120px 20px 80px; /* Increased top padding to push it further down */
+      /* Big gap above, almost none below: sits at the very bottom edge like a Word footer */
+      padding: clamp(200px, 32vh, 360px) 20px calc(18px + env(safe-area-inset-bottom, 0px));
       position: relative; 
       z-index: 10; 
       background: transparent; 
