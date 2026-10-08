@@ -224,14 +224,15 @@
 
     .invite-fade {
       position: relative;
-      width: 100vw;          /* Full screen width on mobile */
-      max-width: 500px;      /* Caps the size on larger tablets/desktops */
-      aspect-ratio: 3 / 4;   /* Keeps your original image proportions */
+      /* Invitation is 9:16 (1449 x 2576). Width is capped so the WHOLE card always fits on screen. */
+      width: min(100vw, 500px, 56.25vh);
+      width: min(100vw, 500px, 56.25dvh);
+      aspect-ratio: 9 / 16;
       margin: 0 auto;
-      border-radius: 0;      /* Keeps the original sharp square corners */
+      border-radius: 0;
       overflow: hidden;
       background: #fff;
-      box-shadow: none;      /* Removes shadow so it blends seamlessly edge-to-edge */
+      box-shadow: none;
     }
 
     .invite-fade img {
@@ -246,6 +247,7 @@
     }
 
     .invite-fade img.on { opacity: 1; }
+    #invite-fade-jpg { object-fit: contain; }  /* show the full invitation, never crop it */
 
     /* ================= PAGE 1b: CALENDAR SAVE-THE-DATE ================= */
     .date-calendar-wrap {
