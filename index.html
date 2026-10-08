@@ -950,32 +950,59 @@
 
   <script>
     // 1. Generate Falling Custom Snowflakes on Cover
+    // 1. Generate Falling Custom Snowflakes & Normal Snow Dots on Cover
     function createCustomSnowfall() {
       const container = document.getElementById('cover-snow');
       if (!container) return;
       container.innerHTML = '';
-      const flakeCount = 60;
+      const totalFlakes = 75; // Total number of falling elements
 
+      // Your uploaded custom snowflake image files
       const snowflakeFiles = ['snowflake1.png', 'snowflake2.png', 'snowflake.png', 'snowflake4.png'];
 
-      for (let i = 0; i < flakeCount; i++) {
-        const flake = document.createElement('img');
-        flake.classList.add('snowflake-img');
+      for (let i = 0; i < totalFlakes; i++) {
+        const fallDuration = Math.random() * 6 + 6; // 6 to 12 seconds
+        const animDelay = Math.random() * 6;
+        const leftPos = Math.random() * 100;
 
-        const randomImage = snowflakeFiles[Math.floor(Math.random() * snowflakeFiles.length)];
-        flake.src = randomImage;
+        // Randomly decide whether to create a normal snow dot (30% chance) or a custom image flake (70% chance)
+        if (Math.random() < 0.4) {
+          // Create normal round snow dot
+          const dot = document.createElement('div');
+          dot.classList.add('snowflake-img'); // reuses falling animation class
+          dot.style.position = 'absolute';
+          dot.style.top = '-20px';
+          dot.style.left = leftPos + 'vw';
+          
+          const size = Math.random() * 4 + 4; // Size between 4px and 8px
+          dot.style.width = size + 'px';
+          dot.style.height = size + 'px';
+          dot.style.backgroundColor = '#ffffff';
+          dot.style.borderRadius = '50%';
+          dot.style.boxShadow = '0 0 6px rgba(255, 255, 255, 0.8)';
+          dot.style.opacity = Math.random() * 0.7 + 0.3;
+          
+          dot.style.animationDuration = `${fallDuration}s`;
+          dot.style.animationDelay = `${animDelay}s`;
+          container.appendChild(dot);
+        } else {
+          // Create custom image snowflake
+          const flake = document.createElement('img');
+          flake.classList.add('snowflake-img');
 
-        flake.style.left = Math.random() * 100 + 'vw';
-        
-        const fallDuration = Math.random() * 6 + 6; 
-        flake.style.animationDuration = `${fallDuration}s`;
-        flake.style.animationDelay = `${Math.random() * 6}s`;
+          const randomImage = snowflakeFiles[Math.floor(Math.random() * snowflakeFiles.length)];
+          flake.src = randomImage;
 
-        const size = Math.random() * 5 + 20; 
-        flake.style.width = size + 'px';
-        flake.style.height = 'auto';
+          flake.style.left = leftPos + 'vw';
+          flake.style.animationDuration = `${fallDuration}s`;
+          flake.style.animationDelay = `${animDelay}s`;
 
-        container.appendChild(flake);
+          const size = Math.random() * 5 + 20; // Size between 25px and 45px
+          flake.style.width = size + 'px';
+          flake.style.height = 'auto';
+
+          container.appendChild(flake);
+        }
       }
     }
 
