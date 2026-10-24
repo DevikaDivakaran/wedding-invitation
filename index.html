@@ -155,7 +155,7 @@
       text-transform: uppercase;
     }
 
-    /* ===== OPEN BUTTON: gold shimmer pill + wine arrow circle ===== */
+    /* ===== OPEN BUTTON: gold pill + wine envelope circle ===== */
     .open-btn {
       position: relative;
       overflow: hidden;
@@ -178,20 +178,6 @@
       transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
-    /* Shine sweep */
-    .open-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -70%;
-      width: 45%;
-      height: 100%;
-      pointer-events: none;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-      transform: skewX(-20deg);
-      animation: btnShine 3.5s ease-in-out infinite;
-    }
-
     .open-btn:hover {
       transform: scale(1.06);
       background: #ffffff;
@@ -200,7 +186,7 @@
 
     .open-btn:active { transform: scale(0.96); }
 
-    /* Wine arrow circle */
+    /* Wine envelope circle */
     .btn-icon {
       width: 46px;
       height: 46px;
@@ -212,7 +198,7 @@
       font-size: 1.4rem;
       background: linear-gradient(135deg, var(--wine), var(--maroon-dark));
       color: #e6b98f;
-      animation: arrowNudge 1.2s ease-in-out infinite;
+      animation: iconBeat 2.4s ease-in-out infinite;
     }
 
     @keyframes btnPulse {
@@ -221,18 +207,26 @@
       100% { box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 0 0 rgba(230, 185, 143, 0); }
     }
 
-    @keyframes btnShine {
-      0%, 55% { left: -70%; }
-      100%    { left: 130%; }
+    /* Envelope flap lifts open, then closes */
+    .env-flap {
+      transform-box: view-box;
+      transform-origin: 12px 8px;
+      animation: flapOpen 2.4s ease-in-out infinite;
     }
 
-    @keyframes arrowNudge {
-      0%, 100% { transform: translateX(0); }
-      50%      { transform: translateX(4px); }
+    @keyframes flapOpen {
+      0%, 30%   { transform: scaleY(1); }
+      50%, 75%  { transform: scaleY(-1); }
+      95%, 100% { transform: scaleY(1); }
+    }
+
+    @keyframes iconBeat {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.08); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .open-btn, .open-btn::after, .btn-icon { animation: none; }
+      .open-btn, .btn-icon, .env-flap { animation: none; }
     }
 
     /* ================= MAIN SITE CONTAINER ================= */
@@ -822,7 +816,12 @@
     <div class="cover-bottom">
       <p class="cover-tagline">And so, our forever begins.</p>
       <button class="open-btn" onclick="openWeddingSite()">
-        <span class="btn-icon">→</span>
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="18" height="12" rx="2"></rect>
+            <path class="env-flap" d="M3 8 L12 14.5 L21 8"></path>
+          </svg>
+        </span>
         <span class="btn-label">Open Invitation</span>
       </button>
     </div>
